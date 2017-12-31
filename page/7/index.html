@@ -248,17 +248,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-categories"></i> <br />
-            
-            Categories
+            Startseite
           </a>
         </li>
       
@@ -278,7 +268,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -288,27 +278,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-schedule"></i> <br />
-            
-            Schedule
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap.xml"></i> <br />
-            
-            Sitemap
+            Über
           </a>
         </li>
       
@@ -321,7 +291,7 @@
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
-            Search
+            Suche
           </a>
         </li>
       
@@ -375,6 +345,611 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-67/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-67/" itemprop="url">《剑指offer》刷题笔记（栈和队列）：滑动窗口的最大值</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:50:13+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-67/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（栈和队列）：滑动窗口的最大值">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
+<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
+<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
+<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个数组和滑动窗口的大小，找出所有滑动窗口里数值的最大值。例如，如果输入数组{2,3,4,2,6,2,5,1}及滑动窗口的大小3，那么一共存在6个滑动窗口，他们的最大值分别为{4,4,6,6,6,5}； 针对数组{2,3,4,2,6,2,5,1}的滑动窗口有以下6个： {[2,3,4],2,6,2,5,1}， {2,[3,4,2],6,2,5,1}， {2,3,[4,2,6],2,5,1}， {2,3,4,[2,6,2],5,1}， {2,3,4,2,[6,2,5],1}， {2,3,4,2,6,[2,5,1]}。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>实际上一个滑动窗口可以看成是一个队列。当窗口滑动时，处于窗口的第一个数字被删除，同时在窗口的末尾添加一个新的数字。这符合队列的先进先出特性。那么剩下的任务就是如何从队列中找出它的最大值了。</p>
+<p>之前有题目是用O(1)时间得到最小值的栈，也有题目是用两个栈实现队列，如果结合起来，我们就会很容易写出来代码。总的时间复杂度为O(n)。</p>
+<p>但是在这里，我们并不打算用上述方法，因为这相当于要写两个题的代码。我们试想一下，如果把比大小这一步放在入栈之前，情况会不会好点？</p>
+<p>我们可以用STL中的deque来实现，接下来我们以数组{2,3,4,2,6,2,5,1}为例，来细说整体思路。</p>
+<p>数组的第一个数字是2，把它存入队列中。第二个数字是3，比2大，所以2不可能是滑动窗口中的最大值，因此把2从队列里删除，再把3存入队列中。第三个数字是4，比3大，同样的删3存4。此时滑动窗口中已经有3个数字，而它的最大值4位于队列的头部。</p>
+<p>第四个数字2比4小，但是当4滑出之后它还是有可能成为最大值的，所以我们把2存入队列的尾部。下一个数字是6，比4和2都大，删4和2，存6。就这样依次进行，最大值永远位于队列的头部。</p>
+<p>但是我们怎样判断滑动窗口是否包括一个数字？应该在队列里存入数字在数组里的下标，而不是数值。当一个数字的下标与当前处理的数字的下标之差大于或者相等于滑动窗口大小时，这个数字已经从窗口中滑出，可以从队列中删除。</p>
+<p></p><br><img src="http://img.blog.csdn.net/20171226163637275?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
+
+<p>下述代码中，index是一个两端开口的队列，用来保存有可能是滑窗最大值的数字的下标。在存入一个数字的下标之前，首先要判断队列里已有数字是否小于待存入的数字。如果已有的数字小于待存入的数字，这些数字已经不可能是滑动窗口的最大值，因此它们将会依次从队列的尾部删除（调用pop_back）。同时，如果队列头部的数字已经从窗口里滑出，滑出的数字也需要从队列的头部删除（调用pop_front）。由于队列的头部和尾部都有可能删除数字，这也是需要两段开口的队列的原因。</p>
+<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; maxInWindows(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; num, <span class="keyword">unsigned</span> <span class="keyword">int</span> size)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; maxInWindows;</span><br><span class="line">        <span class="keyword">if</span>(num.size() &gt;= size &amp;&amp; size &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; index;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i)&#123;</span><br><span class="line">                <span class="keyword">while</span>(!index.empty() &amp;&amp; num[i] &gt;= num[index.back()])</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i = size; i &lt; num.size(); ++i)&#123;</span><br><span class="line">                maxInWindows.push_back(num[index.front()]);</span><br><span class="line">                <span class="keyword">while</span>(!index.empty() &amp;&amp; num[i] &gt;= num[index.back()])</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                <span class="keyword">if</span>(!index.empty() &amp;&amp; index.front() &lt;= (<span class="keyword">int</span>)(i-size))</span><br><span class="line">                    index.pop_front();</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            maxInWindows.push_back(num[index.front()]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxInWindows;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
+<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-63/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-63/" itemprop="url">《剑指offer》刷题笔记（树）：序列化二叉树</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:38:53+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-63/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：序列化二叉树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
+<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
+<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
+<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现两个函数，分别用来序列化和反序列化二叉树。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题其实没什么好说的，在牛客网上，即使你在反序列化的时候直接输出root也能通过测试。</p>
+<p>书上倒是写的听清楚。用到了dfs的思想，通过前序遍历来序列化或者反序列化。这块你只要自己写的格式能对应上，都是可以的。比如可以按照书中那样用$表示null并且用逗号分隔每个节点，也可以直接用下面代码所示的0xFFFFFFFF标识null。</p>
+<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; buf;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(TreeNode *root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            buf.push_back(<span class="number">0xFFFFFFFF</span>);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            buf.push_back(root-&gt;val);</span><br><span class="line">            dfs1(root-&gt;left);</span><br><span class="line">            dfs1(root-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">TreeNode* <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span>* &amp;str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(*str == <span class="number">0xFFFFFFFF</span>)&#123;</span><br><span class="line">            ++str;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* res = <span class="keyword">new</span> TreeNode(*str);</span><br><span class="line">        str++;</span><br><span class="line">        res-&gt;left = dfs2(str);</span><br><span class="line">        res-&gt;right = dfs2(str);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">char</span>* <span class="title">Serialize</span><span class="params">(TreeNode *root)</span> </span>&#123;    </span><br><span class="line">        buf.clear();</span><br><span class="line">        dfs1(root);</span><br><span class="line">        <span class="keyword">int</span> bufSize = buf.size();</span><br><span class="line">        <span class="keyword">int</span> *res = <span class="keyword">new</span> <span class="keyword">int</span>[bufSize];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; bufSize; i++) res[i] = buf[i];</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">char</span>*)res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">TreeNode* <span class="title">Deserialize</span><span class="params">(<span class="keyword">char</span> *str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> *p = (<span class="keyword">int</span>*)str;</span><br><span class="line">        <span class="keyword">return</span> dfs2(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
+<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-69/" itemprop="url">《剑指offer》刷题笔记（回溯法）：机器人的运动范围</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:41:43+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-69/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（回溯法）：机器人的运动范围">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
+<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
+<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
+<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<p>[toc]</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>和上一道题十分相似，只不过这次的限制条件变成了坐标位数之和。对于求坐标位数之和，我们单独用一个函数实现，然后套入上一道题的代码中即可。</p>
+<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span>* visited = <span class="keyword">new</span> <span class="keyword">bool</span>[rows * cols];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rows * cols; i++)</span><br><span class="line">            visited[i] = <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = movingCountCore(threshold, rows, cols, <span class="number">0</span>, <span class="number">0</span>, visited);</span><br><span class="line">        <span class="keyword">delete</span>[] visited;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">movingCountCore</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">bool</span>* visited)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols &amp;&amp; getDigitSum(row) + getDigitSum(col) &lt;= threshold &amp;&amp; !visited[row * cols + col])&#123;</span><br><span class="line">            visited[row * cols + col] = <span class="literal">true</span>;</span><br><span class="line">            </span><br><span class="line">            count = <span class="number">1</span> + movingCountCore(threshold, rows, cols, row+<span class="number">1</span>, col, visited)</span><br><span class="line">                + movingCountCore(threshold, rows, cols, row<span class="number">-1</span>, col, visited)</span><br><span class="line">                + movingCountCore(threshold, rows, cols, row, col+<span class="number">1</span>, visited)</span><br><span class="line">                + movingCountCore(threshold, rows, cols, row, col<span class="number">-1</span>, visited);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getDigitSum</span><span class="params">(<span class="keyword">int</span> number)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(number)&#123;</span><br><span class="line">            sum += number % <span class="number">10</span>;</span><br><span class="line">            number /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
+<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-66/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -404,7 +979,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
                 2017-12-28
@@ -420,9 +995,9 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">Updated at&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:40:37+08:00">
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:40:37+08:00">
                 2017-12-28
               </time>
             
@@ -437,7 +1012,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -574,207 +1149,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-64/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-64/" itemprop="url">《剑指offer》刷题笔记（链表）：二叉树的下一个结点</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:52:04+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-64/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（链表）：二叉树的下一个结点">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>如果一个结点有右子树，那么它的下一个结点就是它的右子树中的最左子结点；<br>如果给定结点是其父结点的左子结点，那么它的下一个结点就是它的父结点；<br>如果一个结点既没有右子树，并且它还是它父结点的右子结点，那我们就需要一直向上遍历，知道找到一个是其父结点的左子结点的结点。</p>
-<p>对最后一种情况做下解释，比如我们为了找到下图中结点i的下一个结点，我们沿着指向父结点的指针向上遍历，先到达结点e。由于结点e是它父结点的b的右结点，我们继续遍历到b。b是其父结点a的左子结点，因此b的父结点a就是结点i的下一个结点。</p>
-<p></p><br><img src="http://img.blog.csdn.net/20171222173052841?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
-
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeLinkNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeLinkNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeLinkNode *right;</span></span><br><span class="line"><span class="comment">    struct TreeLinkNode *next;</span></span><br><span class="line"><span class="comment">    TreeLinkNode(int x) :val(x), left(NULL), right(NULL), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeLinkNode* <span class="title">GetNext</span><span class="params">(TreeLinkNode* pNode)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pNode == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        TreeLinkNode* pNext = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//当前结点有右子树，则下一结点是右子树的最左结点</span></span><br><span class="line">        <span class="keyword">if</span>(pNode-&gt;right != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            TreeLinkNode* pRight = pNode-&gt;right;</span><br><span class="line">            <span class="keyword">while</span>(pRight-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">                pRight = pRight-&gt;left;</span><br><span class="line">            pNext = pRight;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//当前结点无右子树，则需要向上找到其父结点（可以是当前结点）可以作为左子树的时候</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pNode-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            TreeLinkNode* pCurrent = pNode;</span><br><span class="line">            TreeLinkNode* pParrent = pNode-&gt;next;</span><br><span class="line">            <span class="keyword">while</span>(pParrent != <span class="literal">NULL</span> &amp;&amp; pCurrent == pParrent-&gt;right)&#123;</span><br><span class="line">                pCurrent = pParrent;</span><br><span class="line">                pParrent = pParrent-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pNext = pParrent;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pNext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-65/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -804,7 +1178,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
                 2017-12-28
@@ -820,9 +1194,9 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">Updated at&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:51:55+08:00">
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:51:55+08:00">
                 2017-12-28
               </time>
             
@@ -837,7 +1211,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -976,7 +1350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-69/">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Word Zzzz">
@@ -995,7 +1369,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/28/atoffer-69/" itemprop="url">《剑指offer》刷题笔记（回溯法）：机器人的运动范围</a></h2>
+                <a class="post-title-link" href="/2017/12/28/atoffer-9/" itemprop="url">《剑指offer》刷题笔记（递归和循环）：变态跳台阶</a></h2>
         
 
         <div class="post-meta">
@@ -1005,7 +1379,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
                 2017-12-28
@@ -1021,9 +1395,9 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">Updated at&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:41:43+08:00">
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:34:41+08:00">
                 2017-12-28
               </time>
             
@@ -1038,7 +1412,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1059,7 +1433,7 @@
 
           
           
-             <span id="/2017/12/28/atoffer-69/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（回溯法）：机器人的运动范围">
+             <span id="/2017/12/28/atoffer-9/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（递归和循环）：变态跳台阶">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1121,10 +1495,16 @@
 <li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
 </ul>
 <hr>
-<p>[toc]</p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>和上一道题十分相似，只不过这次的限制条件变成了坐标位数之和。对于求坐标位数之和，我们单独用一个函数实现，然后套入上一道题的代码中即可。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span>* visited = <span class="keyword">new</span> <span class="keyword">bool</span>[rows * cols];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rows * cols; i++)</span><br><span class="line">            visited[i] = <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = movingCountCore(threshold, rows, cols, <span class="number">0</span>, <span class="number">0</span>, visited);</span><br><span class="line">        <span class="keyword">delete</span>[] visited;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">movingCountCore</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">bool</span>* visited)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(row &gt;= <span class="number">0</span> &amp;&amp; row &lt; rows &amp;&amp; col &gt;= <span class="number">0</span> &amp;&amp; col &lt; cols &amp;&amp; getDigitSum(row) + getDigitSum(col) &lt;= threshold &amp;&amp; !visited[row * cols + col])&#123;</span><br><span class="line">            visited[row * cols + col] = <span class="literal">true</span>;</span><br><span class="line">            </span><br><span class="line">            count = <span class="number">1</span> + movingCountCore(threshold, rows, cols, row+<span class="number">1</span>, col, visited)</span><br><span class="line">                + movingCountCore(threshold, rows, cols, row<span class="number">-1</span>, col, visited)</span><br><span class="line">                + movingCountCore(threshold, rows, cols, row, col+<span class="number">1</span>, visited)</span><br><span class="line">                + movingCountCore(threshold, rows, cols, row, col<span class="number">-1</span>, visited);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getDigitSum</span><span class="params">(<span class="keyword">int</span> number)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(number)&#123;</span><br><span class="line">            sum += number % <span class="number">10</span>;</span><br><span class="line">            number /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>因为n级台阶，第一步有n种跳法：跳1级、跳2级、到跳n级<br>跳1级，剩下n-1级，则剩下跳法是f(n-1)<br>跳2级，剩下n-2级，则剩下跳法是f(n-2)<br>所以f(n)=f(n-1)+f(n-2)+…+f(1)<br>因为f(n-1)=f(n-2)+f(n-3)+…+f(1)<br>所以f(n)=2*f(n-1)</p>
+<p>实现f(n)=2*f(n-1)的方法有很多种，递归、循环都可以。</p>
+<p>注意：由于递归比较耗费时间，加上python的运行效率本来就低，所以python的递归调用一般在牛客网的实例测试中下总是超时。</p>
+<h2 id="C-版代码实现："><a href="#C-版代码实现：" class="headerlink" title="C++版代码实现："></a>C++版代码实现：</h2><h3 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloorII</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(number &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(number == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span> * jumpFloorII(number <span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="循环："><a href="#循环：" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloorII</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(number == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> number;</span><br><span class="line">        <span class="keyword">int</span> total=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;number; i++)</span><br><span class="line">            total *= <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="移位："><a href="#移位：" class="headerlink" title="移位："></a>移位：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloorII</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>&lt;&lt;--number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Python-代码实现："><a href="#Python-代码实现：" class="headerlink" title="Python 代码实现："></a>Python 代码实现：</h2><h3 id="递归：-1"><a href="#递归：-1" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloorII</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number &lt;= <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">elif</span> number == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>*self.jumpFloorII(number<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="循环：-1"><a href="#循环：-1" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloorII</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> number</span><br><span class="line">        total = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(number<span class="number">-1</span>):</span><br><span class="line">            total *= <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+<h3 id="移位：-1"><a href="#移位：-1" class="headerlink" title="移位："></a>移位：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloorII</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>&lt;&lt;(number<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
 <p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
 <p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
 
@@ -1204,7 +1584,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
                 2017-12-28
@@ -1220,9 +1600,9 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">Updated at&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:34:03+08:00">
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:34:03+08:00">
                 2017-12-28
               </time>
             
@@ -1237,7 +1617,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1383,213 +1763,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-67/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-67/" itemprop="url">《剑指offer》刷题笔记（栈和队列）：滑动窗口的最大值</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:50:13+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-67/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（栈和队列）：滑动窗口的最大值">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个数组和滑动窗口的大小，找出所有滑动窗口里数值的最大值。例如，如果输入数组{2,3,4,2,6,2,5,1}及滑动窗口的大小3，那么一共存在6个滑动窗口，他们的最大值分别为{4,4,6,6,6,5}； 针对数组{2,3,4,2,6,2,5,1}的滑动窗口有以下6个： {[2,3,4],2,6,2,5,1}， {2,[3,4,2],6,2,5,1}， {2,3,[4,2,6],2,5,1}， {2,3,4,[2,6,2],5,1}， {2,3,4,2,[6,2,5],1}， {2,3,4,2,6,[2,5,1]}。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>实际上一个滑动窗口可以看成是一个队列。当窗口滑动时，处于窗口的第一个数字被删除，同时在窗口的末尾添加一个新的数字。这符合队列的先进先出特性。那么剩下的任务就是如何从队列中找出它的最大值了。</p>
-<p>之前有题目是用O(1)时间得到最小值的栈，也有题目是用两个栈实现队列，如果结合起来，我们就会很容易写出来代码。总的时间复杂度为O(n)。</p>
-<p>但是在这里，我们并不打算用上述方法，因为这相当于要写两个题的代码。我们试想一下，如果把比大小这一步放在入栈之前，情况会不会好点？</p>
-<p>我们可以用STL中的deque来实现，接下来我们以数组{2,3,4,2,6,2,5,1}为例，来细说整体思路。</p>
-<p>数组的第一个数字是2，把它存入队列中。第二个数字是3，比2大，所以2不可能是滑动窗口中的最大值，因此把2从队列里删除，再把3存入队列中。第三个数字是4，比3大，同样的删3存4。此时滑动窗口中已经有3个数字，而它的最大值4位于队列的头部。</p>
-<p>第四个数字2比4小，但是当4滑出之后它还是有可能成为最大值的，所以我们把2存入队列的尾部。下一个数字是6，比4和2都大，删4和2，存6。就这样依次进行，最大值永远位于队列的头部。</p>
-<p>但是我们怎样判断滑动窗口是否包括一个数字？应该在队列里存入数字在数组里的下标，而不是数值。当一个数字的下标与当前处理的数字的下标之差大于或者相等于滑动窗口大小时，这个数字已经从窗口中滑出，可以从队列中删除。</p>
-<p></p><br><img src="http://img.blog.csdn.net/20171226163637275?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
-
-<p>下述代码中，index是一个两端开口的队列，用来保存有可能是滑窗最大值的数字的下标。在存入一个数字的下标之前，首先要判断队列里已有数字是否小于待存入的数字。如果已有的数字小于待存入的数字，这些数字已经不可能是滑动窗口的最大值，因此它们将会依次从队列的尾部删除（调用pop_back）。同时，如果队列头部的数字已经从窗口里滑出，滑出的数字也需要从队列的头部删除（调用pop_front）。由于队列的头部和尾部都有可能删除数字，这也是需要两段开口的队列的原因。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; maxInWindows(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; num, <span class="keyword">unsigned</span> <span class="keyword">int</span> size)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; maxInWindows;</span><br><span class="line">        <span class="keyword">if</span>(num.size() &gt;= size &amp;&amp; size &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; index;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i)&#123;</span><br><span class="line">                <span class="keyword">while</span>(!index.empty() &amp;&amp; num[i] &gt;= num[index.back()])</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span> i = size; i &lt; num.size(); ++i)&#123;</span><br><span class="line">                maxInWindows.push_back(num[index.front()]);</span><br><span class="line">                <span class="keyword">while</span>(!index.empty() &amp;&amp; num[i] &gt;= num[index.back()])</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                <span class="keyword">if</span>(!index.empty() &amp;&amp; index.front() &lt;= (<span class="keyword">int</span>)(i-size))</span><br><span class="line">                    index.pop_front();</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            maxInWindows.push_back(num[index.front()]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxInWindows;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-68/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1619,7 +1792,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
                 2017-12-28
@@ -1635,9 +1808,9 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">Updated at&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:41:38+08:00">
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:41:38+08:00">
                 2017-12-28
               </time>
             
@@ -1652,7 +1825,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1793,7 +1966,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-8/">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Word Zzzz">
@@ -1812,7 +1985,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/28/atoffer-8/" itemprop="url">《剑指offer》刷题笔记（递归和循环）：跳台阶</a></h2>
+                <a class="post-title-link" href="/2017/12/28/atoffer/" itemprop="url">《剑指offer》刷题笔记系列综述</a></h2>
         
 
         <div class="post-meta">
@@ -1822,7 +1995,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
                 2017-12-28
@@ -1838,9 +2011,9 @@
                 <i class="fa fa-calendar-check-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">Updated at&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:42:29+08:00">
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:36:28+08:00">
                 2017-12-28
               </time>
             
@@ -1855,7 +2028,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1876,7 +2049,7 @@
 
           
           
-             <span id="/2017/12/28/atoffer-8/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（递归和循环）：跳台阶">
+             <span id="/2017/12/28/atoffer/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记系列综述">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1938,422 +2111,232 @@
 <li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
 </ul>
 <hr>
-<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>对于n级台阶，第一步有2种跳法：跳1级、跳2级；<br>跳1级，剩下n-1级，则剩下跳法是f(n-1)<br>跳2级，剩下n-2级，则剩下跳法是f(n-2)<br>所以f(n)=f(n-1)+f(n-2)。<br>其中：f(1) = 1, f(2) = 2。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;WordZzzz原计划按照牛客网上面的《剑指offer》的通过率高低来把66道编程题刷一遍，但是后来发现，相对于牛客网上大神的解答，WordZzzz更倾向于原书作者的详解。所以，从今天开始，本博主打算按照《剑指offer》纪念版上的题目顺序来进行后续的总结，以作者何大大思路为主，以牛客网上各路大声的代码为辅，对每一道题的解法进行详细的记录，方便自己日后查看，也为订阅本专栏的各位可爱的亲人们提供一些参考。</p>
+<ul>
+<li>《剑指offer》何大大的源码（含测试代码）传送门：<a href="https://github.com/zhedahht/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/zhedahht/CodingInterviewChinese2</a></li>
+<li>当然我自己也fork了一下：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></li>
+<li>再来个码云的传送门吧：<a href="https://gitee.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://gitee.com/WordZzzz/CodingInterviewChinese2</a></li>
+<li>至于《剑指offer》纪念版的电子版当然我也有，网上最清晰的资源，需要的请私信我。有条件的还是建议购买正版书籍，支持何大大，支持正版！</li>
+</ul>
+<p>&emsp;&emsp;另外，下面这道开胃菜牛客上没有，所以先贴出来了。</p>
+<h2 id="赋值运算符函数"><a href="#赋值运算符函数" class="headerlink" title="赋值运算符函数"></a>赋值运算符函数</h2><p>&emsp;&emsp;如下为类型CMyString的生命，请为该类型添加赋值运算符函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMyString</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CMyString(<span class="keyword">char</span>* pData = <span class="literal">NULL</span>);</span><br><span class="line">    CMyString(<span class="keyword">char</span>* CMyString&amp; str);</span><br><span class="line">    ~CMyString(<span class="keyword">void</span>);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span>* m_pData;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMyString</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CMyString(<span class="keyword">char</span>* pData = <span class="literal">NULL</span>);</span><br><span class="line">    CMyString(<span class="keyword">char</span>* CMyString&amp; str);</span><br><span class="line">    ~CMyString(<span class="keyword">void</span>);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span>* m_pData;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="考察细节"><a href="#考察细节" class="headerlink" title="考察细节"></a>考察细节</h3><ul>
+<li>是否会把返回值的类型声明为该类型的引用，并在函数结束前返回实例自身的引用（即*this）。只有返回一个引用，才可以允许连续赋值。否则如果函数的返回值是void，应用该赋值运算符将不能做连续赋值。假设有3个CMyString的对象：str1、str2和str3，在程序中语句str1=str2=str3是不能通过编译的。</li>
+<li>是否把传入的参数的类型声明为常量引用。如果传入的参数不是引用而是实例，那么从形参到实参会调用一次复制构造函数，吧参数声明为引用可以避免这样的消耗，能提高代码的效率。同时，我们在赋值运算符函数中不会改变传入的实例的状态，因此应该为传入的引用参数加上const关键字。</li>
+<li>是否释放实例自身已有的内存。如果我们忘记在分配新内存之前释放自身已有的空间，程序将出现内存泄漏。</li>
+<li>是否判断传入的参数和但钱的实例是不是同一个实例。如果是同一个，则不进行赋值操作，直接返回。如果事先不判断就进行赋值，那么在释放自身的内存的时候就会导致严重的问题：当*this和传入的参数是同一个实例时，那么一旦释放了自身的内存，传入的参数的内存也同时被释放了，因此再也找不到需要赋值的内容了。</li>
+</ul>
+<h3 id="经典的解法"><a href="#经典的解法" class="headerlink" title="经典的解法"></a>经典的解法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CMyString&amp; CMyString::<span class="keyword">operator</span> = (<span class="keyword">const</span> CMyString &amp;str)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> == &amp;str)</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">delete</span> []m_pData;</span><br><span class="line">    m_pData = <span class="literal">NULL</span>;</span><br><span class="line">    m_pData = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(str.m_pData) + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(m_pData, str.m_pData);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这是一般教材上提供的参考代码。明眼人可能会发现，上述代码在分配内存之前先用delete释放了实例m_pData的内存。如果此时内存不足导致new char抛出异常，m_pData将是一个空指针，这昂非常容易导致程序的崩溃。</p>
+<h3 id="考虑异常安全性的解法"><a href="#考虑异常安全性的解法" class="headerlink" title="考虑异常安全性的解法"></a>考虑异常安全性的解法</h3><p>&emsp;&emsp;要想在赋值运算符函数中实现异常安全性，一般有两种方法。一个简单的办法是我们先用new分配新内存再用delete释放已有的内容；一个更好的方法是创建临时实例，再交换临时实例和原来的实例。参考代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CMyString&amp; CMyString::<span class="keyword">operator</span> = (<span class="keyword">const</span> CMyString &amp;str)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str)</span><br><span class="line">    &#123;</span><br><span class="line">        CMyString strTemp(str);</span><br><span class="line">        </span><br><span class="line">        cahr* pTemp = strTemp.m_pData;</span><br><span class="line">        strTemp.m_pData = m_pData;</span><br><span class="line">        m_pData = pTemp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;程序比较简单，值得注意的是，strTemp是一个局部变量，程序运行到if的外面的时候，也就出了该变量的作用域，就会自动调用其析构函数，把strTemp.m_pData所指向的内存释放掉。由于strTemp.m_pData指向的内存就是实例之前m_pData的内存，这就相当于自动调用析构函数释放实例的内存。</p>
+<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
+<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-10/" itemprop="url">《剑指offer》刷题笔记（递归和循环）：矩形覆盖</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated at&#58;</span>
+              
+              <time title="Updated at" itemprop="dateModified" datetime="2017-12-28T19:42:35+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-10/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（递归和循环）：矩形覆盖">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
+<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
+<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
+<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>我们可以用2 <em> 1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2 </em> 1的小矩形无重叠地覆盖一个2 * n的大矩形，总共有多少种方法？</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>和跳台阶的解题思路是一样的。</p>
+<p>对于2 <em> n的矩形，第一步有2种覆盖方法：横着放一个2 </em> 1的矩形、竖着放两个2 <em> 1的矩形；<br>横着放一个2 </em> 1的矩形，剩下2 <em> n-1的矩形，则剩下覆盖方法是f(n-1)<br>竖着放两个2 </em> 1的矩形，剩下2 * n-2的矩形，则剩下覆盖方法是f(n-2)<br>所以f(n)=f(n-1)+f(n-2)。<br>其中：f(1) = 1, f(2) = 2。</p>
 <p>实现f(n)=f(n-1)+f(n-2)的方法有很多种，递归、循环都可以。</p>
 <p>注意：由于递归比较耗费时间，加上python的运行效率本来就低，所以python的递归调用一般在牛客网的实例测试中下总是超时。</p>
-<h2 id="C-版代码实现："><a href="#C-版代码实现：" class="headerlink" title="C++版代码实现："></a>C++版代码实现：</h2><h3 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloor</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(number &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(number &lt; <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> number;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> jumpFloor(number<span class="number">-1</span>)+jumpFloor(number<span class="number">-2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="循环："><a href="#循环：" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloor</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(number &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(number &lt; <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> number;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">1</span>, second = <span class="number">2</span>, third = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= number; i++) &#123;</span><br><span class="line">            third = first + second;</span><br><span class="line">            first = second;</span><br><span class="line">            second = third;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> third;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Python-代码实现："><a href="#Python-代码实现：" class="headerlink" title="Python 代码实现："></a>Python 代码实现：</h2><h3 id="递归：-1"><a href="#递归：-1" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloor</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> number &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> number</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.jumpFloor(number<span class="number">-1</span>) + self.jumpFloor(number<span class="number">-2</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="循环：-1"><a href="#循环：-1" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloor</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> number &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> number</span><br><span class="line">        first = <span class="number">1</span></span><br><span class="line">        second = <span class="number">2</span></span><br><span class="line">        third = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>,number+<span class="number">1</span>):</span><br><span class="line">            third = first + second</span><br><span class="line">            first = second</span><br><span class="line">            second = third</span><br><span class="line">        <span class="keyword">return</span> third</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-9/" itemprop="url">《剑指offer》刷题笔记（递归和循环）：变态跳台阶</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:34:41+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-9/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（递归和循环）：变态跳台阶">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>因为n级台阶，第一步有n种跳法：跳1级、跳2级、到跳n级<br>跳1级，剩下n-1级，则剩下跳法是f(n-1)<br>跳2级，剩下n-2级，则剩下跳法是f(n-2)<br>所以f(n)=f(n-1)+f(n-2)+…+f(1)<br>因为f(n-1)=f(n-2)+f(n-3)+…+f(1)<br>所以f(n)=2*f(n-1)</p>
-<p>实现f(n)=2*f(n-1)的方法有很多种，递归、循环都可以。</p>
-<p>注意：由于递归比较耗费时间，加上python的运行效率本来就低，所以python的递归调用一般在牛客网的实例测试中下总是超时。</p>
-<h2 id="C-版代码实现："><a href="#C-版代码实现：" class="headerlink" title="C++版代码实现："></a>C++版代码实现：</h2><h3 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloorII</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(number &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(number == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span> * jumpFloorII(number <span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="循环："><a href="#循环：" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloorII</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(number == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> number;</span><br><span class="line">        <span class="keyword">int</span> total=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;number; i++)</span><br><span class="line">            total *= <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="移位："><a href="#移位：" class="headerlink" title="移位："></a>移位：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jumpFloorII</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>&lt;&lt;--number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Python-代码实现："><a href="#Python-代码实现：" class="headerlink" title="Python 代码实现："></a>Python 代码实现：</h2><h3 id="递归：-1"><a href="#递归：-1" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloorII</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number &lt;= <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">elif</span> number == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>*self.jumpFloorII(number<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="循环：-1"><a href="#循环：-1" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloorII</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> number</span><br><span class="line">        total = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(number<span class="number">-1</span>):</span><br><span class="line">            total *= <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
-<h3 id="移位：-1"><a href="#移位：-1" class="headerlink" title="移位："></a>移位：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jumpFloorII</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>&lt;&lt;(number<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-1/" itemprop="url">《剑指offer》刷题笔记（数组）：二维数组中的查找</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-12-28T19:38:40+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-1/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（数组）：二维数组中的查找">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>首先选取数组中右上角的数字。如果该数字等于要查找的数字，查找过程结束；如果该数字大于要查找的数字，剔除这个数字所在的列；如果该数字小于要查找的数字，剔除这个数字所在的行。也就是说如果要查找的数字不在数组的右上角，则每一次都在数组的查找范围中剔除一行或者一列，这样每一步都可以缩小查找的范围，直到找到要查找的数字，或者查找范围为空。</p>
-<p>当然，大家也可以制定自己的规则，建议从左下角或者右上角开始，因为如果直接随机选取数组中的一个数开始进行比较，剩下的区域会出现重合的现象，即所谓的岔路，不好操作。比如我用的右上角，那就一直用右上角的进行判断，进行比较后剔除一行或者一列。算法时间复杂度为O(m+n)。</p>
-<p>还有人直接对每一行用二分法进行查找，算法时间复杂度为O(mlogn)。</p>
-<h2 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h2><h3 id="右上角"><a href="#右上角" class="headerlink" title="右上角"></a>右上角</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="built_in">array</span>.size();</span><br><span class="line">        <span class="keyword">int</span> col = <span class="built_in">array</span>[<span class="number">0</span>].size();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">array</span>.empty() &amp;&amp; row &gt; <span class="number">0</span> &amp;&amp; col &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> j = col - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; row &amp;&amp; j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">array</span>[i][j] == target)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">array</span>[i][j] &gt; target)</span><br><span class="line">                    --j;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    ++i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="二分遍历"><a href="#二分遍历" class="headerlink" title="二分遍历"></a>二分遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="built_in">array</span>.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> low=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> high=<span class="built_in">array</span>[i].size()<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">                <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(target &gt; <span class="built_in">array</span>[i][mid])</span><br><span class="line">                    low = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target &lt; <span class="built_in">array</span>[i][mid])</span><br><span class="line">                    high = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h2><h3 id="右上角-1"><a href="#右上角-1" class="headerlink" title="右上角"></a>右上角</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="comment"># array 二维列表</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Find</span><span class="params">(self, target, array)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        </span><br><span class="line">        row=len(array)</span><br><span class="line">        col=len(array[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">if</span> row &gt; <span class="number">0</span> <span class="keyword">and</span> col &gt; <span class="number">0</span>:</span><br><span class="line">            i = <span class="number">0</span></span><br><span class="line">            j = col <span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; row <span class="keyword">and</span> j &gt;= <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> array[i][j] == target:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">elif</span> array[i][j] &gt; target:</span><br><span class="line">                    j = j - <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    i = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="comment"># array 二维列表</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Find</span><span class="params">(self, target, array)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        n=len(array)</span><br><span class="line">        flag=<span class="string">'false'</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> target <span class="keyword">in</span> array[i]:</span><br><span class="line">                flag=<span class="string">'true'</span>;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> flag</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        S=Solution()</span><br><span class="line">        <span class="comment"># 字符串转为list</span></span><br><span class="line">        L=list(eval(raw_input()))</span><br><span class="line">        array=L[<span class="number">1</span>]</span><br><span class="line">        target=L[<span class="number">0</span>]</span><br><span class="line">        print(S.Find(target, array))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h2 id="C-版代码实现："><a href="#C-版代码实现：" class="headerlink" title="C++版代码实现："></a>C++版代码实现：</h2><h3 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rectCover</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(number &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(number &lt; <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> number;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> rectCover(number<span class="number">-1</span>)+rectCover(number<span class="number">-2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="循环："><a href="#循环：" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rectCover</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(number &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(number &lt; <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> number;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">1</span>, second = <span class="number">2</span>, third = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= number; i++) &#123;</span><br><span class="line">            third = first + second;</span><br><span class="line">            first = second;</span><br><span class="line">            second = third;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> third;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Python-代码实现："><a href="#Python-代码实现：" class="headerlink" title="Python 代码实现："></a>Python 代码实现：</h2><h3 id="递归：-1"><a href="#递归：-1" class="headerlink" title="递归："></a>递归：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rectCover</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> number &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> number</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.rectCover(number<span class="number">-1</span>) + self.rectCover(number<span class="number">-2</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="循环：-1"><a href="#循环：-1" class="headerlink" title="循环："></a>循环：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rectCover</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> number &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> number &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> number</span><br><span class="line">        first = <span class="number">1</span></span><br><span class="line">        second = <span class="number">2</span></span><br><span class="line">        third = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>,number+<span class="number">1</span>):</span><br><span class="line">            third = first + second</span><br><span class="line">            first = second</span><br><span class="line">            second = third</span><br><span class="line">        <span class="keyword">return</span> third</span><br></pre></td></tr></table></figure>
 <p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
 <p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
 
@@ -2448,7 +2431,7 @@
                 <a href="/archives">
               
                   <span class="site-state-item-count">73</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -2459,7 +2442,7 @@
               <div class="site-state-item site-state-categories">
                 
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 
               </div>
             
@@ -2470,7 +2453,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
