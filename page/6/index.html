@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-58/">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-56/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Word Zzzz">
@@ -364,7 +364,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/28/atoffer-58/" itemprop="url">《剑指offer》刷题笔记（树）：按之字形顺序打印二叉树</a></h2>
+                <a class="post-title-link" href="/2017/12/28/atoffer-56/" itemprop="url">《剑指offer》刷题笔记（字符串）：字符流中第一个不重复的字符</a></h2>
         
 
         <div class="post-meta">
@@ -392,7 +392,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:36:47+08:00">
                 2017-12-28
               </time>
             
@@ -428,7 +428,7 @@
 
           
           
-             <span id="/2017/12/28/atoffer-58/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：按之字形顺序打印二叉树">
+             <span id="/2017/12/28/atoffer-56/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（字符串）：字符流中第一个不重复的字符">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -480,1650 +480,19 @@
       
         
           
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题和上一道《把二叉树打印成多行》的思路是一样的，只不过，我们需要考虑如何来实现奇偶行的不同顺序输出。首先，肯定不能再上一道题的基础上对偶数行进行reverse，那样效率太低，根本不实用。</p>
-<p>如果还和上一道题一样用queue（左右结点的遍历顺序稍作更改），我们会发现，对于一个三层的二叉树（1-2-3-4-5-6-7），前两行都没问题，到了第三行，就乱了，无论你怎么更改第二个queue的遍历顺序。原因就在于，我上一行输出的最后一个结点，它的子结点要紧接着作为下一个输出才对，而queue是先进先出，所以你上一行输出的最后一个结点，它的子结点只能在同行中最后输出。</p>
-<p>先入先出不行，我们就用先入后出的stack。对于一个三层的二叉树（1-2-3-4-5-6-7），第一个stack压入1，弹出1后第二个stack顺序压入2、3，顺序弹出3（压7、6）、2（压5、4）后第一个stack顺序压入7、6、5、4，顺序弹出4、5、6、7后结束。没毛病。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; Print(TreeNode* pRoot) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">            <span class="keyword">if</span>(pRoot==<span class="literal">NULL</span>) <span class="keyword">return</span> ret;</span><br><span class="line">            <span class="built_in">stack</span>&lt;TreeNode*&gt; s1;</span><br><span class="line">            <span class="built_in">stack</span>&lt;TreeNode*&gt; s2;</span><br><span class="line">            s1.push(pRoot);</span><br><span class="line">            <span class="keyword">while</span>(!s1.empty()||!s2.empty())&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line">                <span class="keyword">while</span>(!s1.empty())&#123;</span><br><span class="line">                    v1.push_back(s1.top()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(s1.top()-&gt;left!=<span class="literal">NULL</span>) s2.push(s1.top()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(s1.top()-&gt;right!=<span class="literal">NULL</span>) s2.push(s1.top()-&gt;right);</span><br><span class="line">                    s1.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v1.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v1);</span><br><span class="line">                <span class="keyword">while</span>(!s2.empty())&#123;</span><br><span class="line">                    v2.push_back(s2.top()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(s2.top()-&gt;right!=<span class="literal">NULL</span>)   s1.push(s2.top()-&gt;right);</span><br><span class="line">                    <span class="keyword">if</span>(s2.top()-&gt;left!=<span class="literal">NULL</span>)  s1.push(s2.top()-&gt;left);</span><br><span class="line">                    s2.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v2.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v2);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-55/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-55/" itemprop="url">《剑指offer》刷题笔记（字符串）：表示数值的字符串</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:37:10+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-55/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（字符串）：表示数值的字符串">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串”+100”,”5e2”,”-123”,”3.1416”和”-1E-16”都表示数值。 但是”12e”,”1a3.14”,”1.2.3”,”+-5”和”12e+4.3”都不是。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>其实这道题也是正则表达式的匹配过程。判断一个字符串是否表示数值的正则表达式为：[+-]\?[0-9]*(.[0-9]*)\?([eE][+-]?[0-9]*)\?。更加详细的注释都在程序里了，这里就不再赘述。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 数字的格式可以用A[.[B]][e|EC]或者.B[e|EC]表示，其中A和C都是</span></span><br><span class="line">    <span class="comment">// 整数（可以有正负号，也可以没有），而B是一个无符号整数</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isNumeric</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">bool</span> numeric = scanInteger(&amp;str);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果出现'.'，接下来是数字的小数部分</span></span><br><span class="line">        <span class="keyword">if</span>(*str == <span class="string">'.'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ++str;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 下面一行代码用||的原因：</span></span><br><span class="line">            <span class="comment">// 1. 小数可以没有整数部分，例如.123等于0.123；</span></span><br><span class="line">            <span class="comment">// 2. 小数点后面可以没有数字，例如233.等于233.0；</span></span><br><span class="line">            <span class="comment">// 3. 当然小数点前面和后面可以有数字，例如233.666</span></span><br><span class="line">            numeric = scanUnsignedInteger(&amp;str) || numeric;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果出现'e'或者'E'，接下来跟着的是数字的指数部分</span></span><br><span class="line">        <span class="keyword">if</span>(*str == <span class="string">'e'</span> || *str == <span class="string">'E'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ++str;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 下面一行代码用&amp;&amp;的原因：</span></span><br><span class="line">            <span class="comment">// 1. 当e或E前面没有数字时，整个字符串不能表示数字，例如.e1、e1；</span></span><br><span class="line">            <span class="comment">// 2. 当e或E后面没有整数时，整个字符串不能表示数字，例如12e、12e+5.4</span></span><br><span class="line">            numeric = numeric &amp;&amp; scanInteger(&amp;str);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> numeric &amp;&amp; *str == <span class="string">'\0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">scanUnsignedInteger</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>** str)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span>* before = *str;</span><br><span class="line">        <span class="keyword">while</span>(**str != <span class="string">'\0'</span> &amp;&amp; **str &gt;= <span class="string">'0'</span> &amp;&amp; **str &lt;= <span class="string">'9'</span>)</span><br><span class="line">            ++(*str);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当str中存在若干0-9的数字时，返回true</span></span><br><span class="line">        <span class="keyword">return</span> *str &gt; before;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 整数的格式可以用[+|-]B表示, 其中B为无符号整数</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">scanInteger</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>** str)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(**str == <span class="string">'+'</span> || **str == <span class="string">'-'</span>)</span><br><span class="line">            ++(*str);</span><br><span class="line">        <span class="keyword">return</span> scanUnsignedInteger(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-54/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-54/" itemprop="url">《剑指offer》刷题笔记（字符串）：正则表达式匹配</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:36:56+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-54/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（字符串）：正则表达式匹配">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现一个函数用来匹配包括’.’和’*‘的正则表达式。模式中的字符’.’表示任意一个字符，而’*‘表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串”aaa”与模式”a.a”和”ab*ac*a”匹配，但是与”aa.a”和”ab*a”均不匹配。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>只有当模式串和字符串同时等于’\0’，才可以认为两个串匹配。</p>
-<p>在匹配中，对于每个位的匹配可以分为三种情况:</p>
-<ul>
-<li>1、（相应位匹配||模式串为’.’&amp;&amp;字符串不是’\0’）&amp;&amp;模式串下一位是’*’</li>
-<li>2、（相应位匹配||模式串为’.’&amp;&amp;字符串不是’\0’）&amp;&amp;模式串下一位不是’*’</li>
-<li>3、相应位不匹配&amp;&amp;（模式位不为’.’||字符串是’\0’）</li>
-</ul>
-<p>对应1，最复杂。分为*取0，*取1，*&gt;=2三种情况。<br>*取0对应跳过当前匹配位，继续寻找patter的下一个匹配位，str不变，pattern+2<br>*取1对应当前匹配位算一次成功匹配，str+1，pattern+2<br>*取&gt;=2对应一次成功匹配，继续匹配字符串的下一位是否匹配，str+1，pattern不变<br>三者取或。即只要有一种情况能匹配成功认为字符串就是匹配成功的。<br>对应2，相当于一次成功匹配，str+1，pattern+1<br>对应3，匹配失败，直接返回false</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">match</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str, <span class="keyword">const</span> <span class="keyword">char</span>* pattern)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="literal">nullptr</span> || pattern == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> matchCore(str, pattern);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">matchCore</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str, <span class="keyword">const</span> <span class="keyword">char</span>* pattern)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(*str == <span class="string">'\0'</span> &amp;&amp; *pattern == <span class="string">'\0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span>(*str != <span class="string">'\0'</span> &amp;&amp; *pattern == <span class="string">'\0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span>(*(pattern + <span class="number">1</span>) == <span class="string">'*'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(*pattern == *str || (*pattern == <span class="string">'.'</span> &amp;&amp; *str != <span class="string">'\0'</span>))</span><br><span class="line">                <span class="comment">// 进入有限状态机的下一个状态</span></span><br><span class="line">                <span class="keyword">return</span> matchCore(str + <span class="number">1</span>, pattern + <span class="number">2</span>)</span><br><span class="line">                <span class="comment">// 继续留在有限状态机的当前状态 </span></span><br><span class="line">                || matchCore(str + <span class="number">1</span>, pattern)</span><br><span class="line">                <span class="comment">// 略过一个'*' </span></span><br><span class="line">                || matchCore(str, pattern + <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="comment">// 略过一个'*'</span></span><br><span class="line">                <span class="keyword">return</span> matchCore(str, pattern + <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span>(*str == *pattern || (*pattern == <span class="string">'.'</span> &amp;&amp; *str != <span class="string">'\0'</span>))</span><br><span class="line">            <span class="keyword">return</span> matchCore(str + <span class="number">1</span>, pattern + <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-60/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-60/" itemprop="url">《剑指offer》刷题笔记（树）：对称的二叉树</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:11+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-60/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：对称的二叉树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>我们可以通过比较二叉树的前序遍历序列和对称前序遍历序列来判断二叉树是不是对称的。如果两个序列是一样的，那么二叉树就是对称的。需要注意的是，我们一定要加上null值得判断，要不然如果一棵树所有结点数值都一样的时候，我们就没办法区分是否对称了。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetrical</span><span class="params">(TreeNode* pRoot)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isSymmetrical(pRoot, pRoot);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetrical</span><span class="params">(TreeNode* pRoot1, TreeNode* pRoot2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pRoot1 == <span class="literal">NULL</span> &amp;&amp; pRoot2 == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(pRoot1 == <span class="literal">NULL</span> || pRoot2 == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(pRoot1-&gt;val != pRoot2-&gt;val)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> isSymmetrical(pRoot1-&gt;left, pRoot2-&gt;right)</span><br><span class="line">            &amp;&amp; isSymmetrical(pRoot1-&gt;right, pRoot2-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-6/" itemprop="url">《剑指offer》刷题笔记（查找和排序）：旋转数组的最小数字</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:49:06+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-6/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（查找和排序）：旋转数组的最小数字">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>查找和排序是面试时考查算法的重点，重点掌握二分查找、归并排序和快速排序。</p>
-<p>查找相对而言较为简单，不外乎顺序查找、二分查找、哈希表查找和二叉排序树查找。必须要信手拈来。</p>
-<p>哈希表表和二叉排序树查找的重点在于考察对应的数据结构而不是算法。哈希表最主要的优点是我们利用它能够在O(1)时间查找某一元素，是效率最高的查找方式，但是需要二外的空间来实现哈希表。与二叉排序树查找算法对应的数据结构是二叉搜索树，后面会涉及到。如果要在排序的数组（或者部分排序的数组）中查找一个数字或者统计某个数字出现的次数，我们都可以尝试用二分查找算法。</p>
-<p>排序比查找要复杂一些，我们需要比较插入排序、冒泡排序、归并排序、快速排序等不同算法的优劣，必须要烂熟于胸，能够从额外空间消耗、平均时间复杂度和最差时间复杂度等方面去比较他们的优缺点。同时，快排经常要求重写。</p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="直接查找"><a href="#直接查找" class="headerlink" title="直接查找"></a>直接查找</h3><p>算法复杂度O(n)。</p>
-<h3 id="再次排序"><a href="#再次排序" class="headerlink" title="再次排序"></a>再次排序</h3><p>再次排序后输出第一个数字，算法复杂度O(n*logn)。</p>
-<h3 id="分段二分查找"><a href="#分段二分查找" class="headerlink" title="分段二分查找"></a>分段二分查找</h3><p>算法复杂度O(logn)。</p>
-<ul>
-<li>我们用两个指针分别指向数组的第一个元素和最后一个元素。按照题目中旋转的规则，第一个元素应该是大于或者等于最后一个元素的（不完全对，有特例）。</li>
-<li>接着我们可以找到数组中间的元素。如果中间元素位于前面的递增子数组，那么它应该大于或者等于第一个指针指向的元素。此时最小元素应该位于该中间元素之后，然后我们把第一个指针指向该中间元素，移动之后第一个指针仍然位于前面的递增子数组中。</li>
-<li>同样，如果中间元素位于后面的递增子数组，那么它应该小于或者等于第二个指针指向的元素。此时最小元素应该位于该中间元素之前，然后我们把第二个指针指向该中间元素，移动之后第二个指针仍然位于后面的递增子数组中。</li>
-<li>第一个指针总是指向前面递增数组的元素，第二个指针总是指向后面递增数组的元素。最终它们会指向两个相邻的元素，而第二个指针指向的刚好是最小的元素，这就是循环结束的条件。</li>
-</ul>
-<p></p><br><img src="http://img.blog.csdn.net/20170929105837807?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
-
-<p>特殊情况：</p>
-<ul>
-<li>如果把排序数组的0个元素搬到最后面，这仍然是租住的一个需安装，我们的代码需要支持这种情况。如果发现数组中的一个数字小于最后一个数字，就可以直接返回第一个数字了。</li>
-<li>下面这种情况，即第一个指针指向的数字、第二个指针指向的数字和中间的数字三者相等，我们无法判断中间的数字1是数以前面的递增子数组还是后面的递增子数组。正样的话，我们只能进行顺序查找。</li>
-</ul>
-<p></p><br><img src="http://img.blog.csdn.net/20170929105856996?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
-
-<h2 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h2><h3 id="再次排序-1"><a href="#再次排序-1" class="headerlink" title="再次排序"></a>再次排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minNumberInRotateArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rotateArray)</span> </span>&#123;</span><br><span class="line">       sort(rotateArray.begin(),rotateArray.end());</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">return</span> rotateArray[<span class="number">0</span>];</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="分段二分法"><a href="#分段二分法" class="headerlink" title="分段二分法"></a>分段二分法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minNumberInRotateArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rotateArray)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> size = rotateArray.size();</span><br><span class="line">        <span class="keyword">if</span>(size == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = size - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// rotateArray[left] &gt;= rotateArray[right] 确保旋转</span></span><br><span class="line">        <span class="keyword">while</span>(rotateArray[left] &gt;= rotateArray[right])&#123;</span><br><span class="line">            <span class="comment">// 分界点</span></span><br><span class="line">            <span class="keyword">if</span>(right - left == <span class="number">1</span>)&#123;</span><br><span class="line">                mid = right;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="comment">// rotateArray[left] rotateArray[right] rotateArray[mid]三者相等</span></span><br><span class="line">            <span class="comment">// 无法确定中间元素是属于前面还是后面的递增子数组</span></span><br><span class="line">            <span class="comment">// 只能顺序查找</span></span><br><span class="line">            <span class="keyword">if</span>(rotateArray[left] == rotateArray[right] &amp;&amp; rotateArray[left] == rotateArray[mid])&#123;</span><br><span class="line">                <span class="keyword">return</span> MinOrder(rotateArray,left,right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 中间元素位于前面的递增子数组</span></span><br><span class="line">            <span class="comment">// 此时最小元素位于中间元素的后面</span></span><br><span class="line">            <span class="keyword">if</span>(rotateArray[mid] &gt;= rotateArray[left])&#123;</span><br><span class="line">                left = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 中间元素位于后面的递增子数组</span></span><br><span class="line">            <span class="comment">// 此时最小元素位于中间元素的前面</span></span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rotateArray[mid];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 顺序寻找最小值</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">MinOrder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;num,<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = num[left];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = left + <span class="number">1</span>;i &lt; right;++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(num[i] &lt; result)&#123;</span><br><span class="line">                result = num[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minNumberInRotateArray</span><span class="params">(self, rotateArray)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> len(rotateArray) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        pre = <span class="number">-7e20</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> rotateArray:</span><br><span class="line">            <span class="keyword">if</span> num &lt; pre :</span><br><span class="line">                <span class="keyword">return</span> num</span><br><span class="line">            pre = num</span><br><span class="line">        <span class="keyword">return</span> rotateArray[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-59/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-59/" itemprop="url">《剑指offer》刷题笔记（树）：把二叉树打印成多行</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:17+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-59/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：把二叉树打印成多行">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>层序遍历，之前求数的深度的时候简单用过。</p>
-<p>在线测试由于种种原因，测试结果需要是一个二维数组（vector<vector<int> &gt;），而不是原著中的每一层输出一行（其实意思都差不多），所以我们这里用两个队列进行实现（如果没有分行输出这个要求，一个队列就够了）。</vector<int></p>
-<p>queue是先进先出规则，我们初始化两个queue（q1和q2）交替来存储每一层结点（这种结构在下一个题目中也将用到，只不过queue变成了stack），从而达到所谓的每一层输出一行。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; Print(TreeNode* pRoot) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">            <span class="keyword">if</span>(pRoot==<span class="literal">NULL</span>) <span class="keyword">return</span> ret;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; q1;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; q2;</span><br><span class="line">            q1.push(pRoot);</span><br><span class="line">            <span class="keyword">while</span>(!q1.empty()||!q2.empty())&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line">                <span class="keyword">while</span>(!q1.empty())&#123;</span><br><span class="line">                    v1.push_back(q1.front()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(q1.front()-&gt;left!=<span class="literal">NULL</span>) q2.push(q1.front()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(q1.front()-&gt;right!=<span class="literal">NULL</span>) q2.push(q1.front()-&gt;right);</span><br><span class="line">                    q1.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v1.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v1);</span><br><span class="line">                <span class="keyword">while</span>(!q2.empty())&#123;</span><br><span class="line">                    v2.push_back(q2.front()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(q2.front()-&gt;left!=<span class="literal">NULL</span>)   q1.push(q2.front()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(q2.front()-&gt;right!=<span class="literal">NULL</span>)  q1.push(q2.front()-&gt;right);</span><br><span class="line">                    q2.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v2.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v2);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-61/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-61/" itemprop="url">《剑指offer》刷题笔记（树）：二叉搜索树的第k个结点</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:05+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-61/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：二叉搜索树的第k个结点">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一颗二叉搜索树，请找出其中的第k大的结点。例如， 5 / \ 3 7 /\ /\ 2 4 6 8 中，按结点数值大小顺序第三个结点的值为4。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>我感觉大家都很容易就能想到中序遍历，因为二叉搜索树本来就是排序的，左结点小于根结点小于右结点，这个顺序正好和中序遍历的顺序一样。参考代码如下，其中遍历右子树的时候多加了对target == NULL 的判断，意思是如果target有值了就没必要往下再遍历了。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">KthNode</span><span class="params">(TreeNode* pRoot, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pRoot == <span class="literal">NULL</span> || k &lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> KthNodeCore(pRoot, k);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">TreeNode* <span class="title">KthNodeCore</span><span class="params">(TreeNode* pRoot, <span class="keyword">int</span> &amp;k)</span></span>&#123;</span><br><span class="line">        TreeNode* target = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(pRoot-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">            target = KthNodeCore(pRoot-&gt;left, k);</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k == <span class="number">1</span>)</span><br><span class="line">                target = pRoot;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="literal">NULL</span> &amp;&amp; pRoot-&gt;right != <span class="literal">NULL</span>)</span><br><span class="line">            target = KthNodeCore(pRoot-&gt;right, k);</span><br><span class="line">        <span class="keyword">return</span> target;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
           
-        
-      
-    </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-64/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-64/" itemprop="url">《剑指offer》刷题笔记（链表）：二叉树的下一个结点</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:52:04+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-64/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（链表）：二叉树的下一个结点">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>如果一个结点有右子树，那么它的下一个结点就是它的右子树中的最左子结点；<br>如果给定结点是其父结点的左子结点，那么它的下一个结点就是它的父结点；<br>如果一个结点既没有右子树，并且它还是它父结点的右子结点，那我们就需要一直向上遍历，知道找到一个是其父结点的左子结点的结点。</p>
-<p>对最后一种情况做下解释，比如我们为了找到下图中结点i的下一个结点，我们沿着指向父结点的指针向上遍历，先到达结点e。由于结点e是它父结点的b的右结点，我们继续遍历到b。b是其父结点a的左子结点，因此b的父结点a就是结点i的下一个结点。</p>
-<p></p><br><img src="http://img.blog.csdn.net/20171222173052841?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
-
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeLinkNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeLinkNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeLinkNode *right;</span></span><br><span class="line"><span class="comment">    struct TreeLinkNode *next;</span></span><br><span class="line"><span class="comment">    TreeLinkNode(int x) :val(x), left(NULL), right(NULL), next(NULL) &#123;</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeLinkNode* <span class="title">GetNext</span><span class="params">(TreeLinkNode* pNode)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pNode == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        TreeLinkNode* pNext = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//当前结点有右子树，则下一结点是右子树的最左结点</span></span><br><span class="line">        <span class="keyword">if</span>(pNode-&gt;right != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            TreeLinkNode* pRight = pNode-&gt;right;</span><br><span class="line">            <span class="keyword">while</span>(pRight-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">                pRight = pRight-&gt;left;</span><br><span class="line">            pNext = pRight;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//当前结点无右子树，则需要向上找到其父结点（可以是当前结点）可以作为左子树的时候</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pNode-&gt;next != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            TreeLinkNode* pCurrent = pNode;</span><br><span class="line">            TreeLinkNode* pParrent = pNode-&gt;next;</span><br><span class="line">            <span class="keyword">while</span>(pParrent != <span class="literal">NULL</span> &amp;&amp; pCurrent == pParrent-&gt;right)&#123;</span><br><span class="line">                pCurrent = pParrent;</span><br><span class="line">                pParrent = pParrent-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pNext = pParrent;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pNext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-62/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Word Zzzz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WordZzzz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/atoffer-62/" itemprop="url">《剑指offer》刷题笔记（树）：数据流中的中位数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:50:48+08:00">
-                2017-12-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
-                    <span itemprop="name">AtOffer</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/28/atoffer-62/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：数据流中的中位数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>解法很多，直接列出表格吧。</p>
-<p></p><br><img src="http://img.blog.csdn.net/20171226114037598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"><br><p></p>
-
-<p>我们这里采用最优的最大最小堆来实现。下面来讨论一些细节问题。</p>
-<p>首先要保证数据平均分配到两个堆中，因此两个堆中数据的数目之差不能超过1.为了实现平均分配，可以在数据的总数目是偶数时把新数据插入到最小堆中，否则插入到最大堆中。</p>
-<p>此外，还要保证最大堆中所有数据小于最小堆中数据。所以，新传入的数据需要先和最大堆的最大值或者最小堆中的最小值进行比较。以总数目为偶数为例，按照我们制定的规则，新的数据会被插入到最小堆中，但是在这之前，我们需要判断这个数据和最大堆中的最大值谁更大，如果最大堆中的数据比较大，那么我们就需要把当前数据插入最大堆，然后弹出新的最大值，再插入到最小堆中。由于最终插入到最小堆的数字是原最大堆中最大的数字，这样就保证了最小堆中所有数字都大于最大堆的数字。</p>
-<p>下面代码中，我们基于stl中的函数push_heap、pop_heap以及vector实现堆。比较仿函数less和greater分别用来实现最大堆和最小堆。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(((min.size() + max.size()) &amp; <span class="number">1</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max.size() &gt; <span class="number">0</span> &amp;&amp; num &lt; max[<span class="number">0</span>])&#123;</span><br><span class="line">                max.push_back(num);</span><br><span class="line">                push_heap(max.begin(), max.end(), less&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">                num = max[<span class="number">0</span>];</span><br><span class="line">                pop_heap(max.begin(), max.end(), less&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">                max.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">            min.push_back(num);</span><br><span class="line">            push_heap(min.begin(), min.end(), greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(min.size() &gt; <span class="number">0</span> &amp;&amp; num &gt; min[<span class="number">0</span>])&#123;</span><br><span class="line">                min.push_back(num);</span><br><span class="line">                push_heap(min.begin(), min.end(), greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">                num = min[<span class="number">0</span>];</span><br><span class="line">                pop_heap(min.begin(), min.end(), greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">                min.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">            max.push_back(num);</span><br><span class="line">            push_heap(max.begin(), max.end(), less&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">GetMedian</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        <span class="keyword">int</span> size = max.size() + min.size();</span><br><span class="line">        <span class="keyword">if</span>(size == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>((size &amp; <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> min[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> (min[<span class="number">0</span>] + max[<span class="number">0</span>]) / <span class="number">2.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; min;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; max;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
-
-          
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-56/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2305,24 +674,1571 @@
       
         
           
-            <hr>
-<ul>
-<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
-<li><strong>代码地址：<a href="https://github.com/WordZzzz/CodingInterviewChinese2" target="_blank" rel="noopener">https://github.com/WordZzzz/CodingInterviewChinese2</a></strong></li>
-<li><strong>文章地址：<a href="https://github.com/WordZzzz/Note/tree/master/AtOffer" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/AtOffer</a></strong></li>
-<li><strong>刷题平台：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">https://www.nowcoder.com/</a></strong></li>
-<li><strong>题&emsp;&emsp;库：剑指offer</strong></li>
-<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
-</ul>
-<hr>
-<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定一个数组A[0,1,…,n-1],请构建一个数组B[0,1,…,n-1],其中B中的元素B[i]=A[0] <em> A[1] </em> … <em> A[i-1] </em> A[i+1] <em> … </em> A[n-1]。不能使用除法。</p>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>B[i]=A[0] <em> A[1] </em> … <em> A[i-1] </em> A[i+1] <em> … </em> A[n-1]<br>1.从左到右算 B[i]=A[0] <em> A[1] </em> … <em> A[i-1]<br>2.从右到左算 B[i] </em> =A[i+1] <em> … </em> A[n-1]<br>拒绝嵌套循环。</p>
-<h2 id="C-版代码实现："><a href="#C-版代码实现：" class="headerlink" title="C++版代码实现："></a>C++版代码实现：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; multiply(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = A.size();</span><br><span class="line">    	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; B(n);</span><br><span class="line">        <span class="keyword">int</span> ret=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ret*=A[i++])</span><br><span class="line">            B[i] = ret;</span><br><span class="line">        ret=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>; i&gt;=<span class="number">0</span>; ret*=A[i--])</span><br><span class="line">            B[i] *=ret;</span><br><span class="line">        <span class="keyword">return</span> B;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="Python版代码实现："><a href="#Python版代码实现：" class="headerlink" title="Python版代码实现："></a>Python版代码实现：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">multiply</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        num = len(A)</span><br><span class="line">        B = [<span class="keyword">None</span>] * num</span><br><span class="line">        B[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, num):</span><br><span class="line">            B[i] = B[i<span class="number">-1</span>] * A[i<span class="number">-1</span>]</span><br><span class="line">        tmp = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            tmp *= A[i+<span class="number">1</span>]   </span><br><span class="line">            B[i] *= tmp</span><br><span class="line">        <span class="keyword">return</span> B</span><br></pre></td></tr></table></figure>
-<p><span style="color: red">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</span></p>
-<p><span style="color: red">完的汪(∪｡∪)｡｡｡zzz</span></p>
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-57/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-53/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-53/" itemprop="url">《剑指offer》刷题笔记（数组）：数组中重复的数字</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:38:25+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-53/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（数组）：数组中重复的数字">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-53/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-59/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-59/" itemprop="url">《剑指offer》刷题笔记（树）：把二叉树打印成多行</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:17+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-59/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：把二叉树打印成多行">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-59/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-58/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-58/" itemprop="url">《剑指offer》刷题笔记（树）：按之字形顺序打印二叉树</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:22+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-58/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：按之字形顺序打印二叉树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-58/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-6/" itemprop="url">《剑指offer》刷题笔记（查找和排序）：旋转数组的最小数字</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:49:06+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-6/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（查找和排序）：旋转数组的最小数字">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-61/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-61/" itemprop="url">《剑指offer》刷题笔记（树）：二叉搜索树的第k个结点</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:05+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-61/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：二叉搜索树的第k个结点">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-61/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-60/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-60/" itemprop="url">《剑指offer》刷题笔记（树）：对称的二叉树</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:39:11+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-60/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：对称的二叉树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-60/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-62/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-62/" itemprop="url">《剑指offer》刷题笔记（树）：数据流中的中位数</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:50:48+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-62/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（树）：数据流中的中位数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-62/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/12/28/atoffer-64/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/28/atoffer-64/" itemprop="url">《剑指offer》刷题笔记（链表）：二叉树的下一个结点</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T00:00:00+08:00">
+                2017-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-28T19:52:04+08:00">
+                2017-12-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtOffer/" itemprop="url" rel="index">
+                    <span itemprop="name">AtOffer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/28/atoffer-64/" class="leancloud_visitors" data-flag-title="《剑指offer》刷题笔记（链表）：二叉树的下一个结点">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+转载请注明作者和出处：http://blog.csdn.net/u011475210
+代码地址：https://github.com/WordZzzz/CodingInterviewChinese2
+文章地址：https://github.com/WordZzzz/Note/tree/maste
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/atoffer-64/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2837,6 +2753,8 @@
 
 
   
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
 
 
 </body>

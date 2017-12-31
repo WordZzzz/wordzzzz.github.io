@@ -742,6 +742,20 @@ pre .javascript .function {
   max-width: 150px;
   max-height: 150px;
 }
+.exturl {
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid #999;
+}
+.exturl .fa {
+  font-size: 14px;
+}
+.exturl:active,
+.exturl:hover {
+  outline: 0;
+  color: #222;
+  border-bottom-color: #222;
+}
 .post-body .note {
   position: relative;
   padding: 15px;
@@ -929,6 +943,9 @@ pre .javascript .function {
   border-top: 3px solid transparent;
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
 }
 @media (max-width: 413px) {
   .post-body .tabs ul.nav-tabs li.tab {
@@ -1881,7 +1898,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #29abeb;
+  background: #a481e2;
 }
 .links-of-blogroll {
   font-size: 13px;
