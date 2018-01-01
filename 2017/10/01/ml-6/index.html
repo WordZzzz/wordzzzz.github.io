@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ML,python3,Logistic," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch05 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言：&amp;emsp;&amp;emsp;本节将使用Logistic会归">
+<meta name="keywords" content="ML,python3,Logistic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《机器学习实战》之Logistic回归（3）预测病马死亡率">
+<meta property="og:url" content="https://wordzzzz.github.io/2017/10/01/ml-6/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch05 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言：&amp;emsp;&amp;emsp;本节将使用Logistic会归">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-01T06:36:11.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《机器学习实战》之Logistic回归（3）预测病马死亡率">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch05 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言：&amp;emsp;&amp;emsp;本节将使用Logistic会归">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wordzzzz.github.io/2017/10/01/ml-6/"/>
+
+
+
+
+
+  <title>《机器学习实战》之Logistic回归（3）预测病马死亡率 | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/images/avatar.jpg"
+               alt="WordZzzz"/>
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/10/01/ml-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《机器学习实战》之Logistic回归（3）预测病马死亡率</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T00:00:00+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T14:36:11+08:00">
+                2018-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习实战/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/01/ml-6/" class="leancloud_visitors" data-flag-title="《机器学习实战》之Logistic回归（3）预测病马死亡率">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,881
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/ML/tree/master/Ch05" target="_blank" rel="noopener">https://github.com/WordZzzz/ML/tree/master/Ch05</a></strong></li>
+<li><strong>操作系统：WINDOWS 10</strong></li>
+<li><strong>软件版本：python-3.6.2-amd64</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<p>[toc]</p>
+<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>&emsp;&emsp;本节将使用Logistic会归来预测还有疝病的马的存货问题。智力的数据包含368个样本和28个特征。疝病逝描述马胃肠痛的术语，然而这种病不一定来源于马的肠胃问题，其他问题也可能引发该病。</p>
+<p>&emsp;&emsp;示例：使用Logistic回归估计马疝病的死亡率</p>
+<ul>
+<li>收集数据：给定数据文件。</li>
+<li>准备数据：用Python解析文本文件并填充缺失值。</li>
+<li>分析数据：可视化并观察数据。</li>
+<li>训练算法：使用优化算法，找到最佳的系数。</li>
+<li>测试算法：为了量化回归效果，需要观察错误率，根据错误率决定是否回退到训练阶段，通过改变迭代的次数和步长等参数来得到更好的回归系数。</li>
+<li>使用算法：实现一个简单的命令行程序来收集马的症状并输出预测结果并非难事，这可以作为留给读者的一道习题。</li>
+</ul>
+<p>&emsp;&emsp;另外需要说明的是，除了部分指标主观和难以测量外，该数据还存在一个问题，数据集中有30%的值是缺失的。下面将首先介绍如何处理数据集中的数据缺失问题，然后利用Logistic回归和随机梯度上升算法来预测病马的生死。</p>
+<h2 id="准备数据；处理数据中的缺失值"><a href="#准备数据；处理数据中的缺失值" class="headerlink" title="准备数据；处理数据中的缺失值"></a>准备数据；处理数据中的缺失值</h2><p>&emsp;&emsp;数据中的缺失值是个非常棘手的问题，有很多文献都致力于解决这个问题。下面给出一些可选的做法：</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 使用可用特征的均值来填补缺失值；</li>
+<li style="list-style: none"><input type="checkbox"> 使用特殊值来填补缺失值，如-1；</li>
+<li style="list-style: none"><input type="checkbox"> 忽略所有缺失的样本；</li>
+<li style="list-style: none"><input type="checkbox"> 使用相似样本的均值添补缺失值；</li>
+<li style="list-style: none"><input type="checkbox"> 使用另外的机器学习算法预测缺失值。</li>
+</ul>
+<p>&emsp;&emsp;现在，我们对后面用到的数据集进行预处理，使其可以顺利地使用分类算法。在预处理阶段需要做两件事：第一，所有的缺失值必须用一个实数值来替换，因为我们使用的Numpy数组不允许包含缺失值。这里选择实数0来替换所有缺失值，恰好能适用于Lodistic回归。这样做的原因在于，我们需要一个在更新时不会影响系数的值。回归系数的更新公式如下：</p>
+<p><code>!$weights = weights + alpha * error *dataMatrix[ranIndex]$</code></p>
+<p>&emsp;&emsp;很明显，如果dataMatrix的某特征对应值为0，那么该特征的系数将不做更新，即<code>!$weights = weights$</code>。另外，由于sigmoid(0)=0.5对结果的预测不具有任何倾向性，因为上述做法也不会对误差项造成任何影响，完美！</p>
+<p>&emsp;&emsp;预处理的第二件事是，如果发现一条数据的类别标签已经缺失，纳闷我们的简单做法就是将该条数据丢弃。这是因为类别标签和特征不同，很难确定采用某个合适的值来替换。采用Logistic回归进行分类时，这种做法是合理的，而如果采用类似kNN的方法就可能不太可行。</p>
+<p>&emsp;&emsp;原始数据经过预处理之后保存成两个文件：horseColicTest.txt和horseColicTraining.txt。如果相对原始数据和预处理数据进行比较，可以在<a href="http://archive.ics.uci.edu/ml/dataset/Horse+Colic浏览这些数据。" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/dataset/Horse+Colic浏览这些数据。</a></p>
+<h2 id="预测算法：用Logistic回归进行分类"><a href="#预测算法：用Logistic回归进行分类" class="headerlink" title="预测算法：用Logistic回归进行分类"></a>预测算法：用Logistic回归进行分类</h2><p>&emsp;&emsp;使用Logistic回归方法进行分类并不需要做很多工作，所需要做的只是把测试集上每个特征向量乘以最优化方法得来的回归系数，再将该乘积结果求和，最后输入到Sigmoid函数即可。实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classifyVector</span><span class="params">(inX, weights)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	Function：	分类函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Input：		inX：计算得出的矩阵100*1</span></span><br><span class="line"><span class="string">				weights：权重参数矩阵</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Output：	分类结果</span></span><br><span class="line"><span class="string">	"""</span>	</span><br><span class="line">	<span class="comment">#计算sigmoid值</span></span><br><span class="line">	prob = sigmoid(sum(inX*weights))</span><br><span class="line">	<span class="comment">#返回分类结果</span></span><br><span class="line">	<span class="keyword">if</span> prob &gt; <span class="number">0.5</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1.0</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">colicTest</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	Function：	训练和测试函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Input：		训练集和测试集文本文档</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Output：	分类错误率</span></span><br><span class="line"><span class="string">	"""</span>	</span><br><span class="line">	<span class="comment">#打开训练集</span></span><br><span class="line">	frTrain = open(<span class="string">'horseColicTraining.txt'</span>)</span><br><span class="line">	<span class="comment">#打开测试集</span></span><br><span class="line">	frTest = open(<span class="string">'horseColicTest.txt'</span>)</span><br><span class="line">	<span class="comment">#初始化训练集数据列表</span></span><br><span class="line">	trainingSet = []</span><br><span class="line">	<span class="comment">#初始化训练集标签列表</span></span><br><span class="line">	trainingLabels = []</span><br><span class="line">	<span class="comment">#遍历训练集数据</span></span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> frTrain.readlines():</span><br><span class="line">		<span class="comment">#切分数据集</span></span><br><span class="line">		currLine = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">		<span class="comment">#初始化临时列表</span></span><br><span class="line">		lineArr = []</span><br><span class="line">		<span class="comment">#遍历21项数据重新生成列表，因为后面格式要求，这里必须重新生成一下。</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">21</span>):</span><br><span class="line">			lineArr.append(float(currLine[i]))</span><br><span class="line">		<span class="comment">#添加数据列表</span></span><br><span class="line">		trainingSet.append(lineArr)</span><br><span class="line">		<span class="comment">#添加分类标签</span></span><br><span class="line">		trainingLabels.append(float(currLine[<span class="number">21</span>]))</span><br><span class="line">	<span class="comment">#获得权重参数矩阵</span></span><br><span class="line">	trainWeights = stocGradAscent1(array(trainingSet), trainingLabels, <span class="number">500</span>)</span><br><span class="line">	<span class="comment">#初始化错误分类计数</span></span><br><span class="line">	errorCount = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	numTestVec = <span class="number">0.0</span></span><br><span class="line">	<span class="comment">#遍历测试集数据</span></span><br><span class="line">	<span class="keyword">for</span> line <span class="keyword">in</span> frTest.readlines():</span><br><span class="line">		<span class="comment">#</span></span><br><span class="line">		numTestVec += <span class="number">1.0</span></span><br><span class="line">		<span class="comment">#切分数据集</span></span><br><span class="line">		currLine =line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">		<span class="comment">#初始化临时列表</span></span><br><span class="line">		lineArr = []</span><br><span class="line">		<span class="comment">#遍历21项数据重新生成列表，因为后面格式要求，这里必须重新生成一下。</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">21</span>):</span><br><span class="line">			lineArr.append(float(currLine[i]))</span><br><span class="line">		<span class="comment">#如果分类结果和分类标签不符，则错误计数+1</span></span><br><span class="line">		<span class="keyword">if</span> int(classifyVector(array(lineArr), trainWeights)) != int(currLine[<span class="number">21</span>]):</span><br><span class="line">			errorCount += <span class="number">1</span></span><br><span class="line">	<span class="comment">#计算分类错误率</span></span><br><span class="line">	errorRate = (float(errorCount)/numTestVec)</span><br><span class="line">	<span class="comment">#打印分类错误率</span></span><br><span class="line">	print(<span class="string">"the error rate of this test is: %f"</span> % errorRate)</span><br><span class="line">	<span class="comment">#返回分类错误率</span></span><br><span class="line">	<span class="keyword">return</span> errorRate</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multiTest</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	Function：	求均值函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Input：		无</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Output：	十次分类结果的平均值</span></span><br><span class="line"><span class="string">	"""</span>	</span><br><span class="line">	<span class="comment">#迭代次数</span></span><br><span class="line">	numTests = <span class="number">10</span></span><br><span class="line">	<span class="comment">#初始错误率和</span></span><br><span class="line">	errorSum = <span class="number">0.0</span></span><br><span class="line">	<span class="comment">#调用十次colicTest()，累加错误率</span></span><br><span class="line">	<span class="keyword">for</span> k <span class="keyword">in</span> range(numTests):</span><br><span class="line">		errorSum += colicTest()</span><br><span class="line">	<span class="comment">#打印平均分类结果</span></span><br><span class="line">	print(<span class="string">"after %d iterations the average error rate is: %f"</span> % (numTests, errorSum/float(numTests)))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;打开终端，输入命令行进行测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>reload(logRegres)</span><br><span class="line">&lt;module <span class="string">'logRegres'</span> <span class="keyword">from</span> <span class="string">'E:\\机器学习实战\\mycode\\Ch05\\logRegres.py'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>logRegres.multiTest()</span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.358209</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.402985</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.388060</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.328358</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.388060</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.313433</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.283582</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.313433</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.298507</span></span><br><span class="line">the error rate of this test <span class="keyword">is</span>: <span class="number">0.343284</span></span><br><span class="line">after <span class="number">10</span> iterations the average error rate <span class="keyword">is</span>: <span class="number">0.341791</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;从上面的结果可以看出，10次迭代之后的平均错误率为35%左右。事实上，这个结果并不差，因为哦我们有30%的数据缺失。当然，如果调整colicTest中迭代次数和stocGradAscent1中的步长，平均错误率科一降到20%左右。</p>
+<p>&emsp;&emsp;对于这一章的内容，还计划写一篇博文《机器学习实战》之Logistic回归（4）Logisitc回归与最大熵模型，主要是公式推导，预计两周后更新。《机器学习实战》的Python3代码实现还是每周日进行更新，相应章节对应的公式推导和拓展预计有两周延迟。</p>
+<p><strong><font color="red" size="3" face="仿宋">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wordzzzz.github.io/2017/10/01/ml-6/" title="《机器学习实战》之Logistic回归（3）预测病马死亡率">https://wordzzzz.github.io/2017/10/01/ml-6/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/Logistic/" rel="tag"># Logistic</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/ml-4/" rel="next" title="《机器学习实战》之Logistic回归（1）算法概述">
+                <i class="fa fa-chevron-left"></i> 《机器学习实战》之Logistic回归（1）算法概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/01/ml-7/" rel="prev" title="《机器学习实战》之决策树算法（1）算法概述">
+                《机器学习实战》之决策树算法（1）算法概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备数据；处理数据中的缺失值"><span class="nav-number">2.</span> <span class="nav-text">准备数据；处理数据中的缺失值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测算法：用Logistic回归进行分类"><span class="nav-number">3.</span> <span class="nav-text">预测算法：用Logistic回归进行分类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">139.4k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+
+</body>
+</html>

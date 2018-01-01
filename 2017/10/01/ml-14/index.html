@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ML,python3,SVM," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch06 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言&amp;emsp;&amp;emsp;这两周把之前落下的公式推导恶补了">
+<meta name="keywords" content="ML,python3,SVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《机器学习实战》之支持向量机（1）算法概述">
+<meta property="og:url" content="https://wordzzzz.github.io/2017/10/01/ml-14/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch06 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言&amp;emsp;&amp;emsp;这两周把之前落下的公式推导恶补了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20171008224923812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171008224940599?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171008225002114?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-01-01T06:31:53.700Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《机器学习实战》之支持向量机（1）算法概述">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch06 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言&amp;emsp;&amp;emsp;这两周把之前落下的公式推导恶补了">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20171008224923812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wordzzzz.github.io/2017/10/01/ml-14/"/>
+
+
+
+
+
+  <title>《机器学习实战》之支持向量机（1）算法概述 | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/images/avatar.jpg"
+               alt="WordZzzz"/>
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/10/01/ml-14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《机器学习实战》之支持向量机（1）算法概述</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T00:00:00+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T14:31:53+08:00">
+                2018-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习实战/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/01/ml-14/" class="leancloud_visitors" data-flag-title="《机器学习实战》之支持向量机（1）算法概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,376
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/ML/tree/master/Ch06" target="_blank" rel="noopener">https://github.com/WordZzzz/ML/tree/master/Ch06</a></strong></li>
+<li><strong>操作系统：WINDOWS 10</strong></li>
+<li><strong>软件版本：python-3.6.2-amd64</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<p>[toc]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;这两周把之前落下的公式推导恶补了一下，导致博客更新不及时。本系列博客涉及到的公式推导目前来看就两部分，一部分是logistic回归（最大熵问题也算在这里面了），一部分就是SVM（重头戏）。这两部分的公式我是都自己推导完了，但是还没整理成博客内容进行发布。我的博客都是先在小书匠上面做笔记，整理之后再发布的，但是由于公式推导部分之前全是手稿，码到小书匠上需要花费一定时间，加之最近项目催得紧，所以公式推导部分更新可能会滞后相当长的一段时间。但是，《机器学习实战》这本书的内容还是打算按照原计划进度更新下去。</p>
+<p>&emsp;&emsp;有人说，支持向量机（ Support Vector Machines， SVM ）是最好的现成分类器，这里所谓的“现成”指的是分类器不加修改即可直接使用。同时，这就意味着在数据上应用基本形式 SVM 分类器就可以得到低错误率的结果。 SVM 能够对训练集之外的数据点做出很好的分类决策。</p>
+<p>&emsp;&emsp;本篇博文主要讲述SVM的基本概念。</p>
+<h2 id="基于最大间隔分隔数据"><a href="#基于最大间隔分隔数据" class="headerlink" title="基于最大间隔分隔数据"></a>基于最大间隔分隔数据</h2><p>支持向量机：</p>
+<ul>
+<li>优点：泛化错误率低，计算开销不大，结果易解释。</li>
+<li>缺点：对参数调节和核函数的选择敏感，原始分类器不加修饰仅适用于处理二分类问题。</li>
+<li>试用数据类型：数值型和标称型数据。</li>
+</ul>
+<p>&emsp;&emsp;在介绍SVM之前，先解释几个概念。来看看下面这堆数据，我们能否画出一条直线将圆形点和方形点分开？</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20171008224923812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p>&emsp;&emsp;有点复杂？没关系，我们先来看看下图A中的两组数据，它们之间已经分隔得足够开，因此很容易就可以在图中画出一条直线将两组数据点分开。在这种情况下，这种数据被称为线性可分（ linearly separable ）数据。稍后当直线不能将数据点分开时，我们会对上述假设做一些修改。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20171008224940599?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p>&emsp;&emsp;上述将数据集分隔开来的直线称为分隔超平面（ separating hyperplane ）。上面的数据是二维的，所以此时分隔超平面就萎缩成一条直线了。如果数据时1024维的，那么就需要一个1023维的某某对象来对数据进行分隔。这个1023维的某某对象被称为超平面（ hyperplane ），也就是分类的决策边界。分布在超平面一侧的所有数据都属于某个类别，而分布在另一侧的所有数据则属于另一个类别。</p>
+<p>&emsp;&emsp;我们再来看框B到框D中的三条直线，它们都能将数据分隔开，但是其中哪一个更好呢？是否应该最小化数据点到分隔超平面的平均距离来求最佳直线？如果是那样，是不是就意味着框B和框C就真的比框D中的直线好呢？有木有感觉有点寻找最佳拟合直线的感觉？是的，上述做法确实有点像直线拟合，但并非最佳方案。我们希望找到离分隔超平面最近的点，确保它们离分割面的距离尽可能远。这里点到分割面的距离被称为间隔（ margin ）。我们希望这个距离尽可能地大，这样鲁棒性比较好。</p>
+<p>&emsp;&emsp;支持向量（ support vector ）就是离分隔超平面最近的那些点。接下来要试着最大化支持向量到分隔面的距离，需要找到此问题的优化求解方法。</p>
+<h2 id="寻找最大间隔"><a href="#寻找最大间隔" class="headerlink" title="寻找最大间隔"></a>寻找最大间隔</h2><p>&emsp;&emsp;分隔超平面的形式可以携程<code>!$ w^Tx + b $</code>。要计算点A到分隔超平面的距离，就必须给出点到分隔面的法线或垂线的长度，该值为<code>!$ |w^Tx + b| / \begin{Vmatrix} w \end{Vmatrix} $</code>。这里的常数b类似于Logistic回归中的截距<code>!$w_0$</code>。这里的向量w和常数b一起描述了所给数据的分隔线或超平面。接下来我们讨论分类器。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20171008225002114?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<h3 id="分类器求解的优化问题"><a href="#分类器求解的优化问题" class="headerlink" title="分类器求解的优化问题"></a>分类器求解的优化问题</h3><p>&emsp;&emsp;理解分类器工作原理将有助于理解基于优化问题的分类器求解过程。输入数据给分类器会输出一个类别标签，这相当于一个类似于Sigmoid的函数在作用。下面将使用类似单位阶跃函数对<code>!$ w^Tx + b $</code>作用得到<code>!$ f(w^Tx + b) $</code>，其中当u &lt; 0时f(u)输出-1，反之输出+1。Logistic那里的类别标签是0或1。</p>
+<p>&emsp;&emsp;这里的类别标签之所以采用-1或+1，是因为它们仅仅相差一个符号，方便数学上的处理。我们可以通过一个统一公式来表示间隔或者数据点到分隔超平面的距离，而不必担心数据到底属于哪一类。间隔通过<code>!$ label · (w^Tx + b) $</code>来计算，这时就能体现出-1和+1类的好处了。如果数据点处于正方向（+1类），并且离分隔超平面很远的位置时，<code>!$ w^Tx + b $</code>会是一个很大的正数，同时<code>!$ label · (w^Tx + b) $</code>也会是一个很大的正数；同理，当数据点处于负方向（-1类）并且离分隔超平面很远的位置时，<code>!$ label · (w^Tx + b) $</code>仍然是一个很大的正数。</p>
+<p>&emsp;&emsp;现在的目标就是要找出分类器定义中的w和b。那么，我们就需要找到具有最小间隔的数据点（支持向量），然后对该间隔最大化。可以写作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ arg max_&#123;w,b&#125;\&#123;min_n(label · (w^Tx + b)) · \frac&#123;1&#125;&#123;\begin&#123;Vmatrix&#125; w \end&#123;Vmatrix&#125;&#125;\&#125;$$</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;直接求解上述问题相当困难呐，对乘积进行优化是一种很鸡肋的事情啊，因此我们要做的是固定其中一个因子而最大化其他因子。如果令所有支持向量的<code>!$ label · (w^Tx + b) $</code>都为1，那么就可以通过求<code>!$ \begin{Vmatrix} w \end{Vmatrix}^{-1} $</code>的最大值来得到最终解。但是，只有那些离分隔超平面最近的点得到的值才为1，而离超平面越远的数据点，其<code>!$ label · (w^Tx + b) $</code>的值就越大。</p>
+<p>&emsp;&emsp;上述问题是一个带约束条件的最优化问题，这里的约束条件就是<code>!$ label · (w^Tx + b) \geq 1.0 $</code>。对于这类优化问题，有一个非常著名的求解方法，即拉格朗日乘子法。这里的约束条件都是基于数据点的，因此我们可以将超平面写成数据点的形式。于是，优化目标函数最后可以写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ max_\alpha[\sum^m_&#123;i=1&#125;\alpha - \frac&#123;1&#125;&#123;2&#125; \sum^m_&#123;i,j=1&#125;label^&#123;(i)&#125;·label^&#123;(j)&#125;· \alpha_i·\alpha_j \left\langle x_&#123;(i)&#125;,x_&#123;(j)&#125; \right\rangle ] $$</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其约束条件为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \alpha \geq 0, \sum^m_&#123;i-1&#125;\alpha_i·label^&#123;(i)&#125; = 0 $$</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;一切都是那么完美，但是这里有个假设：数据必须100%线性可分。数据如果不干净了，我们就需要引入所谓的松弛变量（ slack variable ），来允许有些数据点可以处于分隔面的错误一侧。这样我们的优化目标就能保持仍然不变，但是约束条件更改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ C \geq \alpha \geq 0, \sum^m_&#123;i-1&#125;\alpha_i·label^&#123;(i)&#125; = 0 $$</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里的常数C常用于控制“最大化间隔”和“保证大部分点的函数间隔小于1.0”这两个目标的权重。我们可以通过调节C来得到不同的结果。一旦求出了所有的alpha，那么分隔超平面就可以通过这些alpha来表达。这一结论非常直接，SVM中的主要工作就是求解这些alpha，从而求出w，然后利用<code>!$ w^Tx + b $</code>来分类。</p>
+<h3 id="SVM应用的一般框架"><a href="#SVM应用的一般框架" class="headerlink" title="SVM应用的一般框架"></a>SVM应用的一般框架</h3><p>&emsp;&emsp;在kNN中，我们定义了构建机器学习应用的一般步骤，但是这些步骤会随着机器学习任务或算法的不同而有所改变，因此有必要在此探讨如何在本章中实现他们。</p>
+<p>Logistic回归的一般过程：</p>
+<ul>
+<li>收集数据：采用任意方法收集数据。</li>
+<li>准备数据：需要数值型数据</li>
+<li>分析数据：有助于可视化分隔超平面。</li>
+<li>训练算法：SVM的大部分时间都源自训练，该过程主要实现两个参数的调优。</li>
+<li>测试算法：十分简单的计算过程就可以实现。</li>
+<li>使用算法：几乎所有分类问题都可以使用SVM，值得一提的是，SVM本身是一个二分类分类器，对多类问题应用SVM需要对代码做一些修改。</li>
+</ul>
+<p>&emsp;&emsp;到目前为止，我们已经了解了SVM相关的概念，我们当然希望能够通过编程，在数据集上将这些理论付诸实践。下一节将介绍一个简单而又强大的实现算法—序列最小优化（ Sequential MInimal Optimization，SMO ）算法。</p>
+<p><strong><font color="red" size="3" face="仿宋">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wordzzzz.github.io/2017/10/01/ml-14/" title="《机器学习实战》之支持向量机（1）算法概述">https://wordzzzz.github.io/2017/10/01/ml-14/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/SVM/" rel="tag"># SVM</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/ml-10/" rel="next" title="《机器学习实战》之朴素贝叶斯（1）算法概述">
+                <i class="fa fa-chevron-left"></i> 《机器学习实战》之朴素贝叶斯（1）算法概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/01/ml-17/" rel="prev" title="《机器学习实战》之支持向量机（4）核函数及其实现">
+                《机器学习实战》之支持向量机（4）核函数及其实现 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于最大间隔分隔数据"><span class="nav-number">2.</span> <span class="nav-text">基于最大间隔分隔数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找最大间隔"><span class="nav-number">3.</span> <span class="nav-text">寻找最大间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类器求解的优化问题"><span class="nav-number">3.1.</span> <span class="nav-text">分类器求解的优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVM应用的一般框架"><span class="nav-number">3.2.</span> <span class="nav-text">SVM应用的一般框架</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">139.4k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+
+</body>
+</html>

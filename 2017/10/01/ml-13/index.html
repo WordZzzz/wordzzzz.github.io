@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ML,python3,Bayes," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch04 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言：&amp;emsp;&amp;emsp;书中的最后一个例子，是分别从美">
+<meta name="keywords" content="ML,python3,Bayes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《机器学习实战》之朴素贝叶斯（4）从个人广告中获取区域倾向">
+<meta property="og:url" content="https://wordzzzz.github.io/2017/10/01/ml-13/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch04 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言：&amp;emsp;&amp;emsp;书中的最后一个例子，是分别从美">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-01T06:38:38.267Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《机器学习实战》之朴素贝叶斯（4）从个人广告中获取区域倾向">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch04 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 前言：&amp;emsp;&amp;emsp;书中的最后一个例子，是分别从美">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wordzzzz.github.io/2017/10/01/ml-13/"/>
+
+
+
+
+
+  <title>《机器学习实战》之朴素贝叶斯（4）从个人广告中获取区域倾向 | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/images/avatar.jpg"
+               alt="WordZzzz"/>
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/10/01/ml-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《机器学习实战》之朴素贝叶斯（4）从个人广告中获取区域倾向</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T00:00:00+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T14:38:38+08:00">
+                2018-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习实战/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/01/ml-13/" class="leancloud_visitors" data-flag-title="《机器学习实战》之朴素贝叶斯（4）从个人广告中获取区域倾向">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,295
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/ML/tree/master/Ch04" target="_blank" rel="noopener">https://github.com/WordZzzz/ML/tree/master/Ch04</a></strong></li>
+<li><strong>操作系统：WINDOWS 10</strong></li>
+<li><strong>软件版本：python-3.6.2-amd64</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<p>[toc]</p>
+<h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>&emsp;&emsp;书中的最后一个例子，是分别从美国的两个城市中选取一些人，通过分析这些人发布的征婚广告信息，来比较这两个城市的人们在广告用词上是否不同。如果结论确实是不同，那么他们各自的常用词是哪些？从人们的用词当中，我们能否对不同城市的人所关心的内容有所了解？</p>
+<p>示例：使用朴素贝叶斯来发现地域相关的用词。</p>
+<ul>
+<li>收集数据：从RSS源收集内容，这里需要对RSS创建一个接口。</li>
+<li>准备数据：将文本文件解析成词条向量。</li>
+<li>分析数据：检查词条确保解析的正确性。</li>
+<li>训练算法：使用我们之间建立的trainNB0()函数。</li>
+<li>测试算法：观察错误率，确保分类器可用，可以修改切分程序，以降低错误率，提高分类结果。</li>
+<li>使用算法：构建一个完整的程序，封装所有内容，给定两个RSS源，该程序会显示最常用的公共词。</li>
+</ul>
+<p>&emsp;&emsp;下面我们将使用来自不同城市的广告训练一个分类器，然后观察分类器的效果。注意，我们并不是要使用该分类器进行分类，而是通过观察单词和条件概率值来发现与特定城市相关的内容。</p>
+<h2 id="收集数据：导入RSS源"><a href="#收集数据：导入RSS源" class="headerlink" title="收集数据：导入RSS源"></a>收集数据：导入RSS源</h2><p>&emsp;&emsp;第一件事当然就是要准备数据，我们可以Python下载文本。利用RSS，这些文本很容易得到。现在所需要的是一个RSS阅读器。Universal Feed Parser是Python中最常用的RSS程序库。你可以在<a href="http://code.google.com/p/feedparser/下浏览相关文档，然后和其他Python包一样来安装feedparser，即" target="_blank" rel="noopener">http://code.google.com/p/feedparser/下浏览相关文档，然后和其他Python包一样来安装feedparser，即</a> pip3 install feedparse。</p>
+<p>书中使用的是Craigslist上的个人广告，当然希望是在服务条款允许的条件下。</p>
+<h2 id="测试算法：RSS源分类器"><a href="#测试算法：RSS源分类器" class="headerlink" title="测试算法：RSS源分类器"></a>测试算法：RSS源分类器</h2><p>&emsp;&emsp;我们还是先来构建一个类似于spamTest()的函数来对测试过程自动化吧。</p>
+<p>代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcMostFreq</span><span class="params">(vocabList, fullText)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	Function：	计算出现频率</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Args：		vocabList：词汇表</span></span><br><span class="line"><span class="string">				fullText：全部词汇</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Returns：	sortedFreq[:30]：出现频率最高的30个词</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">import</span> operator</span><br><span class="line">	freqDict = &#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> token <span class="keyword">in</span> vocabList:</span><br><span class="line">		freqDict[token] = fullText.count(token)</span><br><span class="line">	sortedFreq = sorted(freqDict.items(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)</span><br><span class="line">	<span class="keyword">return</span> sortedFreq[:<span class="number">30</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">localWords</span><span class="params">(feed1, feed0)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	Function：	RSS源分类器</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Args：		feed1：RSS源</span></span><br><span class="line"><span class="string">				feed0：RSS源</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Returns：	vocabList：词汇表</span></span><br><span class="line"><span class="string">				p0V：类别概率向量</span></span><br><span class="line"><span class="string">				p1V：类别概率向量</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">import</span> feedparser</span><br><span class="line">	<span class="comment">#初始化数据列表</span></span><br><span class="line">	docList = []; classList = []; fullText = []</span><br><span class="line">	minLen = min(len(feed1[<span class="string">'entries'</span>]), len(feed0[<span class="string">'entries'</span>]))</span><br><span class="line">	<span class="comment">#导入文本文件</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(minLen):</span><br><span class="line">		<span class="comment">#切分文本</span></span><br><span class="line">		wordList = textParse(feed1[<span class="string">'entries'</span>][i][<span class="string">'summary'</span>])</span><br><span class="line">		<span class="comment">#切分后的文本以原始列表形式加入文档列表</span></span><br><span class="line">		docList.append(wordList)</span><br><span class="line">		<span class="comment">#切分后的文本直接合并到词汇列表</span></span><br><span class="line">		fullText.extend(wordList)</span><br><span class="line">		<span class="comment">#标签列表更新</span></span><br><span class="line">		classList.append(<span class="number">1</span>)</span><br><span class="line">		<span class="comment">#切分文本</span></span><br><span class="line">		wordList = textParse(feed0[<span class="string">'entries'</span>][i][<span class="string">'summary'</span>])</span><br><span class="line">		<span class="comment">#切分后的文本以原始列表形式加入文档列表</span></span><br><span class="line">		docList.append(wordList)</span><br><span class="line">		<span class="comment">#切分后的文本直接合并到词汇列表</span></span><br><span class="line">		fullText.extend(wordList)</span><br><span class="line">		<span class="comment">#标签列表更新</span></span><br><span class="line">		classList.append(<span class="number">0</span>)</span><br><span class="line">	<span class="comment">#获得词汇表</span></span><br><span class="line">	vocabList = createVocabList(docList)</span><br><span class="line">	<span class="comment">#获得30个频率最高的词汇</span></span><br><span class="line">	top30Words = calcMostFreq(vocabList, fullText)</span><br><span class="line">	<span class="comment">#去掉出现次数最高的那些词</span></span><br><span class="line">	<span class="keyword">for</span> pairW <span class="keyword">in</span> top30Words:</span><br><span class="line">		<span class="keyword">if</span> pairW[<span class="number">0</span>] <span class="keyword">in</span> vocabList: vocabList.remove(pairW[<span class="number">0</span>])</span><br><span class="line">	trainingSet = range(<span class="number">2</span>*minLen); testSet = []</span><br><span class="line">	<span class="comment">#随机构建测试集，随机选取二十个样本作为测试样本，并从训练样本中剔除</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">		<span class="comment">#随机得到Index</span></span><br><span class="line">		randIndex = int(random.uniform(<span class="number">0</span>, len(trainingSet)))</span><br><span class="line">		<span class="comment">#将该样本加入测试集中</span></span><br><span class="line">		testSet.append(trainingSet[randIndex])</span><br><span class="line">		<span class="comment">#同时将该样本从训练集中剔除</span></span><br><span class="line">		<span class="keyword">del</span>(trainingSet[randIndex])</span><br><span class="line">	<span class="comment">#初始化训练集数据列表和标签列表</span></span><br><span class="line">	trainMat = []; trainClasses = []</span><br><span class="line">	<span class="comment">#遍历训练集</span></span><br><span class="line">	<span class="keyword">for</span> docIndex <span class="keyword">in</span> trainingSet:</span><br><span class="line">		<span class="comment">#词表转换到向量，并加入到训练数据列表中</span></span><br><span class="line">		trainMat.append(setOfWords2Vec(vocabList, docList[docIndex]))</span><br><span class="line">		<span class="comment">#相应的标签也加入训练标签列表中</span></span><br><span class="line">		trainClasses.append(classList[docIndex])</span><br><span class="line">	<span class="comment">#朴素贝叶斯分类器训练函数</span></span><br><span class="line">	p0V, p1V, pSpam = trainNB0(array(trainMat), array(trainClasses))</span><br><span class="line">	<span class="comment">#初始化错误计数</span></span><br><span class="line">	errorCount = <span class="number">0</span></span><br><span class="line">	<span class="comment">#遍历测试集进行测试</span></span><br><span class="line">	<span class="keyword">for</span> docIndex <span class="keyword">in</span> testSet:</span><br><span class="line">		<span class="comment">#词表转换到向量</span></span><br><span class="line">		wordVector = setOfWords2Vec(vocabList, docList[docIndex])</span><br><span class="line">		<span class="comment">#判断分类结果与原标签是否一致</span></span><br><span class="line">		<span class="keyword">if</span> classifyNB(array(wordVector), p0V, p1V, pSpam) != classList[docIndex]:</span><br><span class="line">			<span class="comment">#如果不一致则错误计数加1</span></span><br><span class="line">			errorCount += <span class="number">1</span></span><br><span class="line">			<span class="comment">#并且输出出错的文档</span></span><br><span class="line">			print(<span class="string">"classification error"</span>,docList[docIndex])</span><br><span class="line">	<span class="comment">#打印输出信息</span></span><br><span class="line">	print(<span class="string">'the erroe rate is: '</span>, float(errorCount)/len(testSet))</span><br><span class="line">	<span class="comment">#返回词汇表和两个类别概率向量</span></span><br><span class="line">	<span class="keyword">return</span> vocabList, p0V, p1V</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;上述代码类似于spamTest()，只不过添加了新的功能，引入calcMostFreq()来返回出现频率最高的30个单词，再狠心将他们剔除。当我们注释掉移除高频词的三行代码，会发现错误率提高了百分之二十左右。有趣的是，vocalList的大小约为3000个词，前30个高频词却占了30%，也就是说词汇表中的这一小部分单词，占据了所有文本用词的一大部分。产生这种现象的原因是语言中大部分都是冗余和结构辅助性内容，另一个常用的方法不仅移除高频词，同时从某个预定词表中移除结构上的辅助词。该词表为停用词表（stop word list），网上可以找到很多，例如<a href="http://www.ranks.nl/resources/stopwords.html。" target="_blank" rel="noopener">http://www.ranks.nl/resources/stopwords.html。</a></p>
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>reload(bayes)</span><br><span class="line">&lt;module <span class="string">'bayes'</span> <span class="keyword">from</span> <span class="string">'E:\\机器学习实战\\mycode\\Ch04\\bayes.py'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ny = feedparser.parse(<span class="string">'http://newyork.craiglist.org/stp/index.rss'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sf = feedparser.parse(<span class="string">'http://sfbay.craiglist.org/stp/index.rss'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>vocabList, pSF, pNY = bayes.localWords(ny, sf)</span><br><span class="line">the erroe rate <span class="keyword">is</span>:  <span class="number">0.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>vocabList, pSF, pNY = bayes.localWords(ny, sf)</span><br><span class="line">the erroe rate <span class="keyword">is</span>:  <span class="number">0.35</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>vocabList, pSF, pNY = bayes.localWords(ny, sf)</span><br><span class="line">the erroe rate <span class="keyword">is</span>:  <span class="number">0.5</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;需要注意的是RSS源要在函数外导入，因为网站上的RSS源会随着时间而改变。<br>&emsp;&emsp;为了得到错误率的精确估计，应该多次进行上述实验，然后取平均值。这里的错误率很高，但是我们关注的是单词概率而不是实际分类，因此这个问题倒不严重，可以改变要移除的单词数目，然后观察错误率的变化。</p>
+<h2 id="分析数据：显示地域性相关单词"><a href="#分析数据：显示地域性相关单词" class="headerlink" title="分析数据：显示地域性相关单词"></a>分析数据：显示地域性相关单词</h2><p>&emsp;&emsp;可以先对pSF和pNY进行排序，然后按照顺序将词打印出来。</p>
+<p>代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTopWords</span><span class="params">(ny, sf)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	Function：	最具表征性的词汇显示函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Args：		ny：RSS源</span></span><br><span class="line"><span class="string">				sf：RSS源</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Returns：	打印信息</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">import</span> operator</span><br><span class="line">	<span class="comment">#RSS源分类器返回概率</span></span><br><span class="line">	vocabList, p0V, p1V=localWords(ny, sf)</span><br><span class="line">	<span class="comment">#初始化列表</span></span><br><span class="line">	topNY = []; topSF = []</span><br><span class="line">	<span class="comment">#设定阈值，返回大于阈值的所有词，如果输出信息很多，就提高一下阈值</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(p0V)):</span><br><span class="line">		<span class="keyword">if</span> p0V[i] &gt; <span class="number">-4.5</span> : topSF.append((vocabList[i], p0V[i]))</span><br><span class="line">		<span class="keyword">if</span> p1V[i] &gt; <span class="number">-4.5</span> : topNY.append((vocabList[i], p1V[i]))</span><br><span class="line">	<span class="comment">#排序</span></span><br><span class="line">	sortedSF = sorted(topSF, key=<span class="keyword">lambda</span> pair: pair[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</span><br><span class="line">	print(<span class="string">"SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**"</span>)</span><br><span class="line">	<span class="comment">#打印</span></span><br><span class="line">	<span class="keyword">for</span> item <span class="keyword">in</span> sortedSF:</span><br><span class="line">		print(item[<span class="number">0</span>])</span><br><span class="line">	<span class="comment">#排序</span></span><br><span class="line">	sortedNY = sorted(topNY, key=<span class="keyword">lambda</span> pair: pair[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</span><br><span class="line">	print(<span class="string">"NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**"</span>)</span><br><span class="line">	<span class="comment">#打印</span></span><br><span class="line">	<span class="keyword">for</span> item <span class="keyword">in</span> sortedNY:</span><br><span class="line">		print(item[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;可以通过调节阈值的大小来改变输出量的多少，记住这里的阈值时取自然对数之后的概率哦，所以是负数。</p>
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>reload(bayes)</span><br><span class="line">&lt;module <span class="string">'bayes'</span> <span class="keyword">from</span> <span class="string">'E:\\机器学习实战\\mycode\\Ch04\\bayes.py'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bayes.getTopWords(ny,sf)</span><br><span class="line">the erroe rate <span class="keyword">is</span>:  <span class="number">0.45</span></span><br><span class="line">SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**SF**</span><br><span class="line">very</span><br><span class="line">let</span><br><span class="line">hello</span><br><span class="line">email</span><br><span class="line">sure</span><br><span class="line">was</span><br><span class="line">enjoy</span><br><span class="line">new</span><br><span class="line">well</span><br><span class="line">dates</span><br><span class="line">walk</span><br><span class="line">NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**NY**</span><br><span class="line">down</span><br><span class="line">them</span><br><span class="line">girl</span><br><span class="line">times</span><br><span class="line">great</span><br><span class="line">what</span><br><span class="line">feet</span><br><span class="line">most</span><br><span class="line">been</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;值得注意的是程序输出了大量的停用词，有兴趣的同学可以试着把停用词去掉，然后看看分类错误率会不会降低。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>&emsp;&emsp;对于分类而言，使用概率有时要比使用硬规则更为有效，贝叶斯概率及贝叶斯准则提供了一种利用已知值来估计未知概率的有效方法。尽管条件独立性假设并不正确，但是朴素贝叶斯仍然是一种有效的分类器。</p>
+<p>&emsp;&emsp;朴素贝叶斯：</p>
+<ul>
+<li>优点：在数据较少的情况下仍然有效，可以处理多类别问题。</li>
+<li>缺点：对于输入数据的准备方式较为敏感。</li>
+<li>适用数据类型：标称型数据。</li>
+</ul>
+<p><strong><font color="red" size="3" face="仿宋">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wordzzzz.github.io/2017/10/01/ml-13/" title="《机器学习实战》之朴素贝叶斯（4）从个人广告中获取区域倾向">https://wordzzzz.github.io/2017/10/01/ml-13/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/Bayes/" rel="tag"># Bayes</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/ml-12/" rel="next" title="《机器学习实战》之朴素贝叶斯（3）过滤垃圾邮件">
+                <i class="fa fa-chevron-left"></i> 《机器学习实战》之朴素贝叶斯（3）过滤垃圾邮件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/01/ml-10/" rel="prev" title="《机器学习实战》之朴素贝叶斯（1）算法概述">
+                《机器学习实战》之朴素贝叶斯（1）算法概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收集数据：导入RSS源"><span class="nav-number">2.</span> <span class="nav-text">收集数据：导入RSS源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试算法：RSS源分类器"><span class="nav-number">3.</span> <span class="nav-text">测试算法：RSS源分类器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析数据：显示地域性相关单词"><span class="nav-number">4.</span> <span class="nav-text">分析数据：显示地域性相关单词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">5.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">139.4k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+
+</body>
+</html>

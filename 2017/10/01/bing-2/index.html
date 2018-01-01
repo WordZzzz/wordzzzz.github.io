@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BING,源码," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50">
+<meta name="keywords" content="BING,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CVPR2014 Objectness BING 源码详解">
+<meta property="og:url" content="https://wordzzzz.github.io/2017/10/01/bing-2/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170823181219294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170823184337349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170823185011109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-01-01T07:30:25.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CVPR2014 Objectness BING 源码详解">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170823181219294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wordzzzz.github.io/2017/10/01/bing-2/"/>
+
+
+
+
+
+  <title>CVPR2014 Objectness BING 源码详解 | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/images/avatar.jpg"
+               alt="WordZzzz"/>
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2017/10/01/bing-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">CVPR2014 Objectness BING 源码详解</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-01T00:00:00+08:00">
+                2017-10-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T15:30:25+08:00">
+                2018-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BING/" itemprop="url" rel="index">
+                    <span itemprop="name">BING</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/01/bing-2/" class="leancloud_visitors" data-flag-title="CVPR2014 Objectness BING 源码详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,528
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>操作系统：WINDOWS 10</strong></li>
+<li><strong>软件版本：VS2013+OpenCV2.4.13</strong></li>
+<li><strong>编者: WordZzzz</strong></li>
+</ul>
+<hr>
+<h2 id="一、样本生成："><a href="#一、样本生成：" class="headerlink" title="一、样本生成："></a>一、样本生成：</h2><h3 id="1-正样本"><a href="#1-正样本" class="headerlink" title="1.正样本"></a>1.正样本</h3><p>&emsp;&emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50%的，重新归一化到8 <em> 8大小，计算新生成的有效正样本的梯度特征，并在水平方向翻转，最终保存新生成样本8 </em> 8的梯度特征与该特征的水平翻转特征作为xP.</p>
+<h3 id="2-负样本"><a href="#2-负样本" class="headerlink" title="2.负样本"></a>2.负样本</h3><p>&emsp;&emsp;固定100次随机产生100个备选的负样本窗口，筛选出与每张图片中，与所有目标的重叠率都小于50%的负样本窗，并将该窗口内保存图像作为负样本。</p>
+<h3 id="3-尺度处理"><a href="#3-尺度处理" class="headerlink" title="3.尺度处理"></a>3.尺度处理</h3><p>&emsp;&emsp;在筛选有效正样本时，同时保存了水平，垂直尺度系数，但是实际保存的尺度是归一化映射后的值，即(h - min) * num + w - min + 1,其中h,w表示筛选出的有效正样本相对原始目标的垂直，水平尺度系数，实际上，还是保存的尺度系数，只是在数据结构上，采用哈希映射存储罢了。</p>
+<h3 id="4-判定有效样本"><a href="#4-判定有效样本" class="headerlink" title="4.判定有效样本"></a>4.判定有效样本</h3><p>&emsp;&emsp;程序下一步，会在上面采样生成的所有有效正样本，进行直方图统计，统计出每个尺度下的样本数。例如有2500多个图像文件，计算所有正样本数，统计每个尺度下的正样本数。根据统计结果，剔除掉正样本数少于50的尺度。保存剩下的尺度统计结果，接着，对所有正负样本，统一分配到一个二维矩阵，垂直表示样本数，水平表示样本的8<em>8梯度特征值，直接保存。<br>以上，属于该算法的第一个亮点。<br>&emsp;&emsp;算法主要是用来加速传统的滑动窗口对象检测，通过训练通用的对象估计方法来产生候选对象窗口。作者观察到一般对象都会有定义完好的封闭轮廓，而且通过将相关图像窗口重置为固定大小，就可以通过梯度幅值进行区分。基于以上的观察以及复杂度的考虑，为了明确训练方法，将窗口固定为8</em>8的，并将梯度幅值转化为一个简单的64维的特征来描述这个窗口。这就相当于我们看路上走的人一样，在很远的地方即使我们没看清楚脸，只是看到一个轮廓也能识别出是不是我们认识的人，反而，如果脸贴着脸去看一个人可能会认不出来。<br>&emsp;&emsp;也就是作者发现，在固定窗口的大小下，物体与背景的梯度模式有所不同。如下图所示。图（a）中绿框代表背景，红框代表物体。如果把这些框都resize成固定大小，比如8X8，然后求出8X8这些块中每个点的梯度（Normed Gradient，简称NG特征，叫赋范梯度特征，就是计算梯度范数，即<code>!$\sqrt{(g_x^2 + g_y^2)}$</code>,实际就是该点的L2范数梯度，但是作者实现时，采用-1,0,1方式计算gx或者gy,因此，用|gx| + |gy|近似代替梯度的L2范数），可以明显看到物体与背景的梯度模式的差别，如图1（c）所示，物体的梯度分布呈现出较为杂乱的模式，而背景的较为单一和清楚。其实这个道理很浅显，就是图像中背景区域往往呈现出homogeneous的特性，早期的图像区域分割方法就是依靠这种特性来做的。然后我个人觉得这里不一定要用梯度，用其他一些统计特征甚至是图像特征都有可能得到类似的结果。<br>&emsp;&emsp;所以，作者首先将所有的标注样本，用不同尺度缩放采样，将采样出的有效正样本统一缩放到8 <em> 8，计算NG特征，也就是下面图中a生成c在过程。这样，通过SVM训练这些NG特征，得到目标和背景的第一次区分模型。<br>&emsp;&emsp;下面是原文的解释<br>&emsp;&emsp;对象一般是具有很好定义封闭轮廓和中心的。重置窗口的时候，就相当于将现实中的对象缩小到一个固定大小，因为在封闭的轮廓中，图像梯度变化很小，所以它是一个很好的可区分特征，就像是图1中，轮船和人在颜色，形状，纹理，光照等方面都有很大的不同，他们在梯度空间都存在共性。为了有效地利用观察结果，我们首先将输入图像重置为不同尺度的，在不同的尺度下计算梯度。然后再重置为取8 </em> 8大小的框，作为一个对应图像的64维的NG特征。<br>我们采用的NG特征，是一个密集的且紧凑的objectness特性，有以下几点优势：首先，由于归一化了支持域，所以无论对象窗口如何改变位置，尺度以及纵横比，它对应的NG特征基本不会改变。也就是说，NG特征是对于位置，尺度，纵横比是不敏感的，这一点是对于任意类别对象检测是很有用的。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20170823181219294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" width="800" height="700"></div><br><p></p>
+
+<p>&emsp;&emsp;图1 尽管对象（红色）和背景（绿色），在图像空间（a）呈现出了很大的不同，通过一个适当的尺度和纵横比，我们将其分别重置为固定大小(b)，他们对应的NG特征(c)表现出很大的共性,基于NG特征，我们学习了一个简单的64D线性模型（d），用来筛选对象窗口。<br>这种不敏感的特性是一个好的对象检测方法应该具备的。第二，NG特征的紧凑性，使得计算和核实更加有效率，而且能够很好的应用在实时应用程序中。<br>NG特征的缺点就是识别能力不够。但一般而言，会采用检测器来最终缺点结果的误报率。</p>
+<h2 id="二、两级SVM训练："><a href="#二、两级SVM训练：" class="headerlink" title="二、两级SVM训练："></a>二、两级SVM训练：</h2><h3 id="1-SVM第一级训练"><a href="#1-SVM第一级训练" class="headerlink" title="1.SVM第一级训练"></a>1.SVM第一级训练</h3><p>&emsp;&emsp;首先，算法传递进入第一级SVM的样本总数，在超过SVM默认参数值时，采用SVM默认训练总样本数。用所有正样本以及剩下的数量采用随机从原负样本中抽取。即，负样本在这种情况下，不是全部参加SVM第一级训练。而是随机抽取一部分，保证总样本数达到SVM默认训练总样本数。<br>&emsp;&emsp;算法做一些SVM的初始化，涉及到样本标签Y，实际上，正样本默认都为有标签，以及SVM参数初始化等。<br>&emsp;&emsp;通过第一级SVM训练后，算法生成第一级SVM模型，转换成8 * 8，并归一化到1~255，保存。该模型w是用来下文中投票打分的，为第二级SVM学习做准备。</p>
+<h3 id="2-二值化模型参数w"><a href="#2-二值化模型参数w" class="headerlink" title="2.二值化模型参数w"></a>2.二值化模型参数w</h3><p>&emsp;&emsp;首先通过上面的训练，我们可以得到分类的模型线性w，第一个要二值化的目标就是它，二值化的思想可以简单想象成找若干个基向量，并用这些基向量的线性组合来记表示w， 而且这些基向量的每一维只能取1或者-1（二值嘛）。那么假设我们用了Nw个基向量，每个基向量为aj, j = 1,…,Nw，那么就有<code>!$ w ≈  \sum_{j=1}^{N_w} \beta_j \alpha_j$</code>。具体模型的二值化近似可以按如下算法1的步骤进行：</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20170823184337349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" width="800" height="400"></div><br><p></p>
+
+<p>&emsp;&emsp;算法1的步骤也很明确，每一个都生成一个基向量，此基向量每一维都是由当前残差的符号决定，然后用当前残差减去残差在这基向量的投影（相当于去掉模型在这一维上的分量）。但在计算中因为二进制位只能为0或者1，所以为了处理方便，取：<code>!$\alpha_j^+∈\{ 0,1 \}^{64}$</code>,那么就可以将基向量表示为<code>!$\alpha_j = \alpha_j^+ - \overline{\alpha_j^+}$</code>。即基向量二进制与该二进制表示的补。<br>&emsp;&emsp;也就是说，αj表示基向量{-1,1}，βj表示校准系数，同时，将每个基向量，映射到一个64位类型的数据中。<br>这里，实际上采用Gram-Schmidt正交化，只取了包含大部分信息的前Nw个正交向量作为输出，目的也是为了降低计算量。二值化的目的在于后期位运算，后面还会把NG特征也二值化。直接采用硬件指令大幅度地提升速度。<br>&emsp;&emsp;代码中，Nw取2，也就是SVM生成的W 是8 * 8矩阵，矩阵元素任意值，通过这个二值化过程，生成2个基向量，每个基向量完全覆盖了W中每个元素，但是此时在基向量中，每个元素对应的取值变成0或者1，因此，原w的64个元素，拼接成了一个64位的单个数据，即基向量。同时，对应该基向量的校准系数，算法为了后期加速，只近似处理高4位的数据，因此，校准系数只有保存4个，且都是一样的值，但是由于后期位移运算，这里就把校准值放置到了对应bit位。于是，2个基向量，生成8个校准系数，2个64位的数据。</p>
+<h3 id="3-打分窗口"><a href="#3-打分窗口" class="headerlink" title="3.打分窗口"></a>3.打分窗口</h3><p>&emsp;&emsp;为了找到图像中的一般对象，对每张训练图像（注意，这里是原图像，不是标注框），进行上文生成正样本时得到所有尺度的量化，扫描每个尺度定义好的量化窗口（依据尺度或者是纵横比，也就是说，这里只是对原图像依据之前尺度系数做缩放，不是缩放到8 * 8,因此，才有下文的I）。每一个窗口通过上文得到模型w获得得分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">s_l = &lt; w,g_l &gt;(1)</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">l = &lt; i,x,y &gt;(2)</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>!$s_l$</code> 代表过滤器得分，  <code>!$g_l$</code> 代表NG特征，  <code>!$l$</code> 表示坐标，  <code>!$i$</code> 表示尺度，  <code>!$(x,y)$</code> 表示窗口位置。运用非最大抑制(NMS)，我们为每个尺度提供一些建议窗口。相对于其他窗口（例如：100 <em> 100），一些尺度（例如:10 </em> 500）的窗口包含对象的可能性是很小的。因此我们定义对象状态得分（校准过滤器得分）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">o_l = v_i · s_l + t_i  </span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;只需要按位与和字节统计操作.下面解释如何得到b.<br>因此，为了实现（1）的快速计算，作者先用上面的算法，二值化了w,现在开始二值化NG，即gl参数，得到上面的b.</p>
+<p>&emsp;&emsp;接下来我们还要对NG特征进行二值化，还记得我们刚才将NG归一化到[0,255]之间吧，那么8 * 8窗口上的每个点的NG特征值就可以用一个byte来存储，也就是每个值我们都可以用一个8位的二进制串来表示。那么我们就有一个8X8X8的三维矩阵，前两维是窗口位置（行，列），第三维是在二进制串中的位置（页）。举个例子，比如窗口中第1行，第2列的NG特征值是192，换成二进制就是1100 0000，那么矩阵的元素（1,2,1） = （1,2,2）= 1，（1,2,3），…,（1,2,8）= 0;那么我们一页一页地将矩阵元素取出来，再将每页8X8的矩阵元素排成一个64位的二进制串并存进一个int64里。既然思路已经有了，做法也就很简单了：对于每一页，将每一行每个元素取出来，不断加入int64中并左移1位，最后得到那个int64每一位对应的元素坐标排列就应该是（1,1）（1,2）（1,3）…(8,8)。然后作者在这里又玩了一个trick，他说你这样每次移动一位不是要循环64次嘛，如果先将8个拼成一组（就是刚才那样左移1次），那么只需要移动8组就好了啊！而且，这样在相邻的窗口中还能重用重叠的部分（在VS2010 的Debug模式下我试了下，1个数“每次左移1位，移动1万次”和“每次左移100位，移动100次”两种情况，的确是后者速度快）。<br>最后，为了进一步节省存储空间，还可以只取NG值的高位来作二值化。因为比如192和193、194，它们的二进制表达分别是1100 0000， 1100 0001和 1100 0010，要是我只看前面4位，后面4位忽略（取0）的话，那么它们的取值都是192。也就是我们可以用192来约等于193和194，这样我们就不需要用到8位那么多了！写成公式就是下面的式（2）这样，其中Ng 是我们要用的高位的位数（也就是前面说的三维矩阵的页）,bk,l就是对应三维矩阵中的第k页（二值）。</p>
+<p>最后将二值化模型w和二值化NG，结合起来对窗口打分的操作由卷积运算变成了大部分是位运算操作，</p>
+<p>&emsp;&emsp;一个图像窗口对应的BING特征  <code>!$b_{k,l}$</code> 的过滤器得分,见式(1),可以表示为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">s_l≈ \sum_&#123;j=1&#125;^&#123;N_w&#125;\beta_j\sum_&#123;k=1&#125;^&#123;N_g&#125;C_&#123;j,k&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中，  <code>!$C_{j,k} = 2^{8-k}(2&lt; \alpha_j^+,b_{k,l}&gt;-|b_{k,l}|)$</code> 可以通过一些快速的按位操作以及SSE指令操作计算得到。</p>
+<p>&emsp;&emsp;然后，运用非最大抑制(NMS)，做下滤波。</p>
+<p>&emsp;&emsp;总结一下：首先，根据第一级SVM得到模型参数w,对每张训练图像，进行所有尺度变换（不是固定8*8大小），然后计算NG特征，接着根据上文的打分系统，计算每个尺度下的sl（实际上，二值化w和二值化NG特征，就是BING特征）.并重新排序，利用NMS消除掉高分点附近领域内的打分值。这里只选择指定阈值以上的高分点。然后，在原始图像，找到对应打分点对应的方框大小，并保存。这样，针对每张图像，我们计算了不同尺度i下的打分项以及相对应的可能目标匡。然后，针对所有可能的目标匡，我们将其与原始图像中所有有效正样本做重叠率比对，只要有一个正样本框与该可能目标匡重叠与大于0.5，则该可能目标匡作为正样本，否则为负样本。在传入第二级SVM时，作者将可能目标框的打分值，重新根据尺度整合，即不同尺度下下，所有的打分值，作为正负样本。在第二级训练时，针对每个尺度，训练一次。</p>
+<h3 id="4-第二级SVM训练"><a href="#4-第二级SVM训练" class="headerlink" title="4.第二级SVM训练"></a>4.第二级SVM训练</h3><p>&emsp;&emsp;作者针对每种尺度下的打分值，训练SVM，每种尺度下样本总数不超过10W。超过，则随机在正负样本中抽取。确保先读取正样本，后需剩余的位置随即用负样本填满。训练结束后，生成新的权值vi,ti.</p>
+<h2 id="测试程序"><a href="#测试程序" class="headerlink" title="测试程序"></a>测试程序</h2><p>&emsp;&emsp;在读入测试图片后，计算图像的BING特征，跟二级SVM训练预处理一样，对图像进行不同尺度的缩放，计算NG，打分统计得到sl（用的还是第一级模型的w）</p>
+<p>&emsp;&emsp;然后，为每个尺度提供一些建议窗口。相对于其他窗口（例如：100 <em> 100），一些尺度（例如:10 </em> 500）的窗口包含对象的可能性是很小的。<br>&emsp;&emsp;针对不同尺度i的窗口，得到不同的独立学习系数。使用校准函数(3)是非常快的，通常只需要在最终的建议窗口重排。<br>这里，打分用的权值是二级模型训练出的，即上文的vi,ti.得到ol重新排序。整个过程，计算时间，给出每个检测图象的平均测试时间。并保存打分结果与对应的目标框。</p>
+<p>&emsp;&emsp;打分越高，越接近目标。实际上，算法生成的就是打分窗口，也就是所为的对象状态。下面测试的时候，根据打分窗口与标注的测试窗口重叠率大于0.5就认为检测到了。<br>接着，作者开始绘制结果，根据检测出的候选框与每个测试标注框计算重叠率，大于0.5，就认为检测到了，否则score为0未检到。之后，计算平均重叠率和平均检测率。</p>
+<p>这里解释下重叠率：</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20170823185011109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" width="800" height="700"></div><br><p></p>
+
+<p>&emsp;&emsp;上面的精度曲线称为DR-#WIN curves，源自TPAMI 2012的一篇论文：Measuring the objectness of image windows。原文还提出了将窗口数量比如[[0,5000]归一化到[0,1]之间，用曲线下的面积作为目标检测的度量结果，并称之为the area under the curve(AUC)，这样AUC的范围就在[0,1]之间了。</p>
+<p>&emsp;&emsp;DR的计算是参考The PASCAL Visual Object Classes (VOC) Challenge，目标检测任务中DR的计算的是true/false positive精度，将算法检测目标结果放到groud truth中，将“预测目标区域与groud truth区域的交集”除以“预测目标区域与groud truth区域的并集”作为DR：</p>
+<p>&emsp;&emsp;DR自少在50%以上才算目标检测正确，其实，50%已经是很低的了，几乎不能做为检测结果。</p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wordzzzz.github.io/2017/10/01/bing-2/" title="CVPR2014 Objectness BING 源码详解">https://wordzzzz.github.io/2017/10/01/bing-2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BING/" rel="tag"># BING</a>
+          
+            <a href="/tags/源码/" rel="tag"># 源码</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/01/bing-1/" rel="next" title="BING: Binarized Normed Gradients for Objectness Estimation at 300fps">
+                <i class="fa fa-chevron-left"></i> BING: Binarized Normed Gradients for Objectness Estimation at 300fps
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/01/ml-11/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、样本生成："><span class="nav-number">1.</span> <span class="nav-text">一、样本生成：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-正样本"><span class="nav-number">1.1.</span> <span class="nav-text">1.正样本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-负样本"><span class="nav-number">1.2.</span> <span class="nav-text">2.负样本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-尺度处理"><span class="nav-number">1.3.</span> <span class="nav-text">3.尺度处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-判定有效样本"><span class="nav-number">1.4.</span> <span class="nav-text">4.判定有效样本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、两级SVM训练："><span class="nav-number">2.</span> <span class="nav-text">二、两级SVM训练：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SVM第一级训练"><span class="nav-number">2.1.</span> <span class="nav-text">1.SVM第一级训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-二值化模型参数w"><span class="nav-number">2.2.</span> <span class="nav-text">2.二值化模型参数w</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-打分窗口"><span class="nav-number">2.3.</span> <span class="nav-text">3.打分窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-第二级SVM训练"><span class="nav-number">2.4.</span> <span class="nav-text">4.第二级SVM训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试程序"><span class="nav-number">3.</span> <span class="nav-text">测试程序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">139.4k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+
+</body>
+</html>
