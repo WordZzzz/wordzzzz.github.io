@@ -121,7 +121,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ML,python3,Bayes," />
 
 
 
@@ -134,18 +134,19 @@
 
 
 
-<meta name="description" content="title: “《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类”comments: truemathjax: truecategories:  机器学习实战tags: ML python3 Bayes—#     转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/">
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch04 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   前言：&amp;emsp;&amp;emsp;要从文本中获取特征，需要先拆分文本。这里的">
+<meta name="keywords" content="ML,python3,Bayes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WordZzzz">
+<meta property="og:title" content="《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类">
 <meta property="og:url" content="https://wordzzzz.github.io/2017/11/04/ml-11/index.html">
 <meta property="og:site_name" content="WordZzzz">
-<meta property="og:description" content="title: “《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类”comments: truemathjax: truecategories:  机器学习实战tags: ML python3 Bayes—#     转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch04 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   前言：&amp;emsp;&amp;emsp;要从文本中获取特征，需要先拆分文本。这里的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20170910153516173?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-01-01T12:04:49.069Z">
+<meta property="og:updated_time" content="2018-01-01T12:27:36.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WordZzzz">
-<meta name="twitter:description" content="title: “《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类”comments: truemathjax: truecategories:  机器学习实战tags: ML python3 Bayes—#     转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/">
+<meta name="twitter:title" content="《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/ML/tree/master/Ch04 操作系统：WINDOWS 10 软件版本：python-3.6.2-amd64 编&amp;emsp;&amp;emsp;者：WordZzzz   前言：&amp;emsp;&amp;emsp;要从文本中获取特征，需要先拆分文本。这里的">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170910153516173?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
@@ -182,7 +183,7 @@
 
 
 
-  <title> | WordZzzz</title>
+  <title>《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类 | WordZzzz</title>
   
 
 
@@ -402,7 +403,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类</h2>
         
 
         <div class="post-meta">
@@ -430,13 +431,35 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T20:04:49+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T20:27:36+08:00">
                 2018-01-01
               </time>
             
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习实战/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -444,7 +467,7 @@
 
           
           
-             <span id="/2017/11/04/ml-11/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2017/11/04/ml-11/" class="leancloud_visitors" data-flag-title="《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,7 +492,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,466
+                  3,428
                 </span>
               
 
@@ -485,7 +508,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15
+                  14
                 </span>
               
             </div>
@@ -507,14 +530,6 @@
 
       
         <hr>
-<p>title: “《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类”<br>comments: true<br>mathjax: true<br>categories:</p>
-<ul>
-<li>机器学习实战<br>tags:</li>
-<li>ML</li>
-<li>python3</li>
-<li>Bayes<br>—# </li>
-</ul>
-<hr>
 <ul>
 <li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
 <li><strong>代码地址：<a href="https://github.com/WordZzzz/ML/tree/master/Ch04" target="_blank" rel="noopener">https://github.com/WordZzzz/ML/tree/master/Ch04</a></strong></li>
@@ -584,7 +599,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://wordzzzz.github.io/2017/11/04/ml-11/" title="">https://wordzzzz.github.io/2017/11/04/ml-11/</a>
+    <a href="https://wordzzzz.github.io/2017/11/04/ml-11/" title="《机器学习实战》之朴素贝叶斯（2）使用Python进行文本分类">https://wordzzzz.github.io/2017/11/04/ml-11/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -596,6 +611,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/python3/" rel="tag"># python3</a>
+          
+            <a href="/tags/Bayes/" rel="tag"># Bayes</a>
+          
+        </div>
       
 
       
@@ -1189,6 +1214,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   
 
 
