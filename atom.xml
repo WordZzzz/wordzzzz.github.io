@@ -5,9 +5,9 @@
   <subtitle>My Awesome Site</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://wordzzzz.gitee.io/blog/"/>
+  <link href="http://wordzzzz.gitee.io/blog/"/>
   <updated>2018-01-01T07:12:52.680Z</updated>
-  <id>https://wordzzzz.gitee.io/blog/</id>
+  <id>http://wordzzzz.gitee.io/blog/</id>
   
   <author>
     <name>Word Zzzz</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>《剑指offer》刷题笔记（分解让复杂问题简单）：二叉搜索树与双向链表</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-18/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-18/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-18/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-18/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T07:12:52.680Z</updated>
     
@@ -36,21 +36,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="分解让复杂问题简单" scheme="https://wordzzzz.gitee.io/blog/tags/%E5%88%86%E8%A7%A3%E8%AE%A9%E5%A4%8D%E6%9D%82%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95/"/>
+      <category term="分解让复杂问题简单" scheme="http://wordzzzz.gitee.io/blog/tags/%E5%88%86%E8%A7%A3%E8%AE%A9%E5%A4%8D%E6%9D%82%E9%97%AE%E9%A2%98%E7%AE%80%E5%8D%95/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（代码完整性）：数值的整数次方</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-9/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-9/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-9/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-9/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T07:15:38.550Z</updated>
     
@@ -67,21 +67,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="代码完整性" scheme="https://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E5%AE%8C%E6%95%B4%E6%80%A7/"/>
+      <category term="代码完整性" scheme="http://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E5%AE%8C%E6%95%B4%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（代码的鲁棒性）：树的子结构</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-7/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-7/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-7/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-7/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T07:16:25.599Z</updated>
     
@@ -98,21 +98,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="代码的鲁棒性" scheme="https://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7/"/>
+      <category term="代码的鲁棒性" scheme="http://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（综合）：把字符串转换成整数</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-68/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-68/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-68/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-68/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:47:24.653Z</updated>
     
@@ -129,21 +129,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="综合" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%BB%BC%E5%90%88/"/>
+      <category term="综合" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%BB%BC%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（综合）：树中两个结点的最低公共祖先</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-69/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-69/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-69/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-69/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:47:16.189Z</updated>
     
@@ -160,21 +160,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="综合" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%BB%BC%E5%90%88/"/>
+      <category term="综合" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%BB%BC%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（字符串）：正则表达式匹配</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-66/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-66/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-66/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-66/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T09:04:29.461Z</updated>
     
@@ -191,21 +191,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="字符串" scheme="https://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <category term="字符串" scheme="http://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（代码完整性）：打印1到最大的n位数</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-8/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-8/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-8/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-8/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T07:16:02.722Z</updated>
     
@@ -222,21 +222,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="代码完整性" scheme="https://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E5%AE%8C%E6%95%B4%E6%80%A7/"/>
+      <category term="代码完整性" scheme="http://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E5%AE%8C%E6%95%B4%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（字符串）：字符流中第一个不重复的字符</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-67/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-67/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-67/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-67/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:47:38.303Z</updated>
     
@@ -253,21 +253,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="字符串" scheme="https://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <category term="字符串" scheme="http://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（字符串）：替换空格</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-65/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-65/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-65/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-65/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:48:11.211Z</updated>
     
@@ -284,21 +284,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="字符串" scheme="https://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <category term="字符串" scheme="http://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：左旋转字符串</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-63/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-63/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-63/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-63/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:50:52.413Z</updated>
     
@@ -315,21 +315,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（字符串）：表示数值的字符串</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-64/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-64/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-64/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-64/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:50:24.886Z</updated>
     
@@ -346,21 +346,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="字符串" scheme="https://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <category term="字符串" scheme="http://wordzzzz.gitee.io/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：数字在排序数组中出现的次数</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-61/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-61/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-61/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-61/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:51:30.354Z</updated>
     
@@ -377,21 +377,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（代码的鲁棒性）：链表中倒数第k个结点</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-6/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-6/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-6/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-6/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T07:16:44.948Z</updated>
     
@@ -408,21 +408,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="代码的鲁棒性" scheme="https://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7/"/>
+      <category term="代码的鲁棒性" scheme="http://wordzzzz.gitee.io/blog/tags/%E4%BB%A3%E7%A0%81%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：和为S的两个数字</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-59/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-59/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-59/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-59/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:52:29.564Z</updated>
     
@@ -439,21 +439,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：和为S的连续正数序列</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-58/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-58/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-58/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-58/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:52:45.308Z</updated>
     
@@ -470,21 +470,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：数组中只出现一次的数字</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-62/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-62/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-62/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-62/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:51:08.647Z</updated>
     
@@ -501,21 +501,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：平衡二叉树</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-60/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-60/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-60/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-60/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:52:12.850Z</updated>
     
@@ -532,21 +532,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（栈和队列）：用两个栈实现队列</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-55/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-55/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-55/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-55/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:53:46.764Z</updated>
     
@@ -563,21 +563,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="栈和队列" scheme="https://wordzzzz.gitee.io/blog/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"/>
+      <category term="栈和队列" scheme="http://wordzzzz.gitee.io/blog/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（栈和队列）：滑动窗口的最大值</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-54/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-54/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-54/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-54/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:54:06.036Z</updated>
     
@@ -594,21 +594,21 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="栈和队列" scheme="https://wordzzzz.gitee.io/blog/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"/>
+      <category term="栈和队列" scheme="http://wordzzzz.gitee.io/blog/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
   <entry>
     <title>《剑指offer》刷题笔记（知识迁移能力）：二叉树的深度</title>
-    <link href="https://wordzzzz.gitee.io/blog/2017/12/01/offer-56/"/>
-    <id>https://wordzzzz.gitee.io/blog/2017/12/01/offer-56/</id>
+    <link href="http://wordzzzz.gitee.io/blog/2017/12/01/offer-56/"/>
+    <id>http://wordzzzz.gitee.io/blog/2017/12/01/offer-56/</id>
     <published>2017-11-30T16:00:00.000Z</published>
     <updated>2018-01-01T06:53:25.317Z</updated>
     
@@ -625,14 +625,14 @@
     
     </summary>
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/categories/AtOffer/"/>
     
     
-      <category term="AtOffer" scheme="https://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
+      <category term="AtOffer" scheme="http://wordzzzz.gitee.io/blog/tags/AtOffer/"/>
     
-      <category term="c++" scheme="https://wordzzzz.gitee.io/blog/tags/c/"/>
+      <category term="c++" scheme="http://wordzzzz.gitee.io/blog/tags/c/"/>
     
-      <category term="知识迁移能力" scheme="https://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
+      <category term="知识迁移能力" scheme="http://wordzzzz.gitee.io/blog/tags/%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB%E8%83%BD%E5%8A%9B/"/>
     
   </entry>
   
