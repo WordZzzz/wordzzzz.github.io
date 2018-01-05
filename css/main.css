@@ -1949,7 +1949,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #98ff9d;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2845,9 +2845,6 @@ body {
   background-size: cover;
 /* 设置背景颜色，背景图加载过程中会显示背景色 */
   background-color: rgba(255,255,255,0.5);
-}
-#mydivshow {
-  opacity: 0;
 }
 .content {
   border-radius: 10px;
