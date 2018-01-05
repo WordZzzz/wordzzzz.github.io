@@ -224,14 +224,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta custom-logo">
-    
-      <div class="site-meta-headline">
-        <a>
-          <img class="custom-logo-image" src="/images/avatar.jpg"
-               alt="WordZzzz"/>
-        </a>
-      </div>
+  <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
@@ -619,8 +612,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/01/offer-68/" rel="next" title="《剑指offer》刷题笔记（综合）：把字符串转换成整数">
-                <i class="fa fa-chevron-left"></i> 《剑指offer》刷题笔记（综合）：把字符串转换成整数
+              <a href="/2017/12/01/offer-8/" rel="next" title="《剑指offer》刷题笔记（代码完整性）：打印1到最大的n位数">
+                <i class="fa fa-chevron-left"></i> 《剑指offer》刷题笔记（代码完整性）：打印1到最大的n位数
               </a>
             
           </div>
@@ -629,8 +622,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/01/offer-66/" rel="prev" title="《剑指offer》刷题笔记（字符串）：正则表达式匹配">
-                《剑指offer》刷题笔记（字符串）：正则表达式匹配 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/01/offer-19/" rel="prev" title="《剑指offer》刷题笔记（分解让复杂问题简单）：复杂链表的复制">
+                《剑指offer》刷题笔记（分解让复杂问题简单）：复杂链表的复制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -841,10 +834,10 @@ var ap = new APlayer({
     preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
     listmaxheight: '513px',                                             // Optional, max height of play list
     music: {                                                           // Required, music info, see: ###With playlist
-        title: '追光者',                                          // Required, music title
-        author: '岑宁儿',                          // Required, music author
-        url: 'https://y.qq.com/n/yqq/song/202773258_num.html',  // Required, music url
-        pic: '/images/visitor.jpg',  // Optional, music picture
+        title: 'Preparation',                                          // Required, music title
+        author: 'Hans Zimmer/Richard Harvey',                          // Required, music author
+        url: 'http://7xifn9.com1.z0.glb.clouddn.com/Preparation.mp3',  // Required, music url
+        pic: 'http://7xifn9.com1.z0.glb.clouddn.com/Preparation.jpg',  // Optional, music picture
         lrc: '[00:00.00]lrc here\n[00:01.00]aplayer'                   // Optional, lrc, see: ###With lrc
     }
 });
@@ -1236,7 +1229,33 @@ var ap = new APlayer({
   <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
 
 
-
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:false,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -1254,6 +1273,8 @@ var ap = new APlayer({
 
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
+
+
 
 </body>
 </html>
