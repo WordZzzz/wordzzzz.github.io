@@ -134,13 +134,13 @@
 
 
 
-<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50">
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过5">
 <meta name="keywords" content="BING,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CVPR2014 Objectness BING 源码详解">
 <meta property="og:url" content="https://wordzzzz.github.io/2017/10/01/bing-2/index.html">
 <meta property="og:site_name" content="WordZzzz">
-<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过5">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20170823181219294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170823184337349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -148,7 +148,7 @@
 <meta property="og:updated_time" content="2018-01-01T12:05:20.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CVPR2014 Objectness BING 源码详解">
-<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过50">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 操作系统：WINDOWS 10 软件版本：VS2013+OpenCV2.4.13 编者: WordZzzz   一、样本生成：1.正样本&amp;emsp;&amp;emsp;算法首先对每张图像上可能的所有标注框采样,生成不同尺度（该尺度在一定经验值范围内）的样本位置，并计算新生成的正样本与原始样本重叠率，保留重叠率超过5">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170823181219294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
@@ -524,7 +524,7 @@
       
 
       
-        <hr>
+        <script src="\assets\js\APlayer.min.js"> </script><hr>
 <ul>
 <li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
 <li><strong>操作系统：WINDOWS 10</strong></li>
@@ -633,14 +633,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/10/01/tx-7/" rel="next" title="NVIDIA Jetson TX1 系列开发教程之七：FFMPEG安装与测试">
+                <i class="fa fa-chevron-left"></i> NVIDIA Jetson TX1 系列开发教程之七：FFMPEG安装与测试
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/01/bing-3/" rel="prev" title="CVPR2014 Objectness BING 源码编译">
-                CVPR2014 Objectness BING 源码编译 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/01/tx-9/" rel="prev" title="NVIDIA Jetson TX1 系列开发教程之九：USB摄像头MJPEG格式图像采集">
+                NVIDIA Jetson TX1 系列开发教程之九：USB摄像头MJPEG格式图像采集 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
