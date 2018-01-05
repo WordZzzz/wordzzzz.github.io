@@ -1949,7 +1949,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: #93ffaa;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2836,7 +2836,7 @@ embed {
   display: inline-block;
 }
 body {
-  background: url("https://gitee.com/WordZzzz/Picture/blob/master/blogbk.jpg") no-repeat;
+  background: url("/images/blogbk.jpg") no-repeat;
 /* 背景图垂直、水平均居中 */
   background-position: center center;
 /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
@@ -2844,7 +2844,7 @@ body {
 /* 让背景图基于容器大小伸缩 */
   background-size: cover;
 /* 设置背景颜色，背景图加载过程中会显示背景色 */
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(0,0,0,0.5);
 }
 .content {
   border-radius: 10px;
@@ -2852,7 +2852,7 @@ body {
   background: rgba(255,255,255,0.8) none repeat scroll !important;
 }
 #sidebar {
-  background: url("https://gitee.com/WordZzzz/Picture/blob/master/sidebar.jpg");
+  background: url("/images/sidebar.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
