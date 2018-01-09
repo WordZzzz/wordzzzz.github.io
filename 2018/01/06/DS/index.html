@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="排序,快速排序," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 个人博客：https://wordzzzz.github.io/ &amp;amp;&amp;amp; https://wordzzzz.gitee.io/ 代码地址：https://github.com/WordZzzz/Note/tree/master/DS-A 博客作者：WordZzzz，一只热爱技术的文艺青年">
+<meta name="keywords" content="排序,快速排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法系列之一：八大排序之快速排序">
+<meta property="og:url" content="http://yoursite.com/2018/01/06/DS/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 个人博客：https://wordzzzz.github.io/ &amp;amp;&amp;amp; https://wordzzzz.gitee.io/ 代码地址：https://github.com/WordZzzz/Note/tree/master/DS-A 博客作者：WordZzzz，一只热爱技术的文艺青年">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20180108223019362?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180108223101863?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-01-09T08:23:58.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法系列之一：八大排序之快速排序">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 个人博客：https://wordzzzz.github.io/ &amp;amp;&amp;amp; https://wordzzzz.gitee.io/ 代码地址：https://github.com/WordZzzz/Note/tree/master/DS-A 博客作者：WordZzzz，一只热爱技术的文艺青年">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20180108223019362?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/06/DS/"/>
+
+
+
+
+
+  <title>数据结构与算法系列之一：八大排序之快速排序 | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/06/DS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">数据结构与算法系列之一：八大排序之快速排序</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T00:00:00+08:00">
+                2018-01-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-09T16:23:58+08:00">
+                2018-01-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/06/DS/" class="leancloud_visitors" data-flag-title="数据结构与算法系列之一：八大排序之快速排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,322
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>个人博客：<a href="https://wordzzzz.github.io/" target="_blank" rel="noopener">https://wordzzzz.github.io/</a> &amp;&amp; <a href="https://wordzzzz.gitee.io/" target="_blank" rel="noopener">https://wordzzzz.gitee.io/</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/Note/tree/master/DS-A" target="_blank" rel="noopener">https://github.com/WordZzzz/Note/tree/master/DS-A</a></strong></li>
+<li><strong>博客作者：WordZzzz，一只热爱技术的文艺青年</strong></li>
+</ul>
+<hr>
+<p>[toc]</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;建议先看排序综述，传送门：<a href="http://blog.csdn.net/u011475210/article/details/79014021" target="_blank" rel="noopener">数据结构与算法系列之一：八大排序综述</a>。</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>&emsp;&emsp;快速排序（英语：Quicksort），又称划分交换排序（partition-exchange sort），一种排序算法，最早由东尼·霍尔提出。在平均状况下，排序 ${\displaystyle n}$ 个项目要 ${\displaystyle O(n\log n)}$ （大O符号）次比较。在最坏状况下则需要 ${\displaystyle O(n^{2})}$ 次比较，但这种状况并不常见。事实上，快速排序通常明显比其他 ${\displaystyle O(n\log n)}$ 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>&emsp;&emsp;快速排序使用分治法（Divide and conquer）策略来把一个序列（list）分为两个子序列（sub-lists）。</p>
+<p>&emsp;&emsp;步骤为：</p>
+<ul>
+<li>从数列中挑出一个元素，称为”基准”（pivot）.</li>
+<li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+<li>递归到最底部时，数列的大小是零或一，也就是已经排序好了。这个算法一定会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</li>
+</ul>
+<p>&emsp;&emsp;wikipedia的大数据规模演示：</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180108223019362?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="quicksort from wikipedia"></div><br><p></p>
+
+<p>&emsp;&emsp;wordzzzz的小数据规模演示：</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180108223101863?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="quicksort from wordzzzz"></div><br><p></p>
+
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>&emsp;&emsp;先给出公用接口，之后的三个递归实现和一个迭代实现在代码中都有详细的说明，我就不再在此赘述。</p>
+<h4 id="公用接口"><a href="#公用接口" class="headerlink" title="公用接口"></a>公用接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 快速排序主体函数（递归）</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt; </span><br><span class="line">void QuickSort(T *array, const int length) &#123; </span><br><span class="line">	if (array == NULL)</span><br><span class="line">		throw invalid_argument(&quot;Array must not be empty&quot;); </span><br><span class="line">	if (length &lt;= 0) </span><br><span class="line">		return; </span><br><span class="line"></span><br><span class="line">	Partion1(array, 0, length - 1);</span><br><span class="line">//  Partion2(array, 0, length - 1);</span><br><span class="line">//  Partion3(array, 0, length - 1);</span><br><span class="line">//	PartionInsert(array, 0, length - 1);</span><br><span class="line">//	PartionSecond(array, 0, length - 1);</span><br><span class="line">//	PartionThird(array, 0, length - 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">/* </span><br><span class="line"> * 快速排序1：</span><br><span class="line"> * 将第一个元素array[left]提出来作pivot，i=left(该索引之前的数比pivot小，初始值为left)，</span><br><span class="line"> * j从left+1开始遍历数组，找到一个比pivot小的数，i+1，如果i和j序列号不等就交换（小值到前）。</span><br><span class="line"> * j到最右端之后，for循环结束，再把pivot与i所指数据做交换，当前pivot就到达了它的最终位置。</span><br><span class="line"> */ </span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void Partion1(T *array, int left, int right)&#123;</span><br><span class="line">	if (left &gt;= right)</span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	int i = left;</span><br><span class="line">	int j = left + 1;</span><br><span class="line">	T pivot = array[left];						// 取第一个数为基准</span><br><span class="line">	for (; j &lt;= right; ++j)&#123;					// 循环直至 j 扫描至 right</span><br><span class="line">		if (array[j] &lt; pivot)&#123;					// 如果遇到比基准小的数，i右移一位</span><br><span class="line">			i++;</span><br><span class="line">			if (j != i)&#123;						// 如果i与j不重合，则交换他们指向的值</span><br><span class="line">				swap(array[j],array[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	swap(array[left], array[i]);				// 基准值的位置确定</span><br><span class="line">	Partion1(array, left, i - 1);</span><br><span class="line">	Partion1(array, i + 1, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 快速排序2：</span><br><span class="line"> * 将第一个元素array[left]提出来作pivot，i = left+1从左向右遍历找到一个比pivot大的数停止，</span><br><span class="line"> * 然后等待j从右往左遍历找到一个pivot小的数，两者交换，然后继续寻找直到i=j，for循环结束。</span><br><span class="line"> * 之后我们需要做判断，如果pivot比i所指数据大就交换两者，否则i回退一步（因为开始忽略了首元素）。</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void Partion2(T *array, int left, int right) &#123;</span><br><span class="line">	if (left &gt;= right)</span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	int i = left + 1;</span><br><span class="line">	int j = right;</span><br><span class="line">	T pivot = array[left];						// 取第一个数为基准</span><br><span class="line">	while (i &lt; j)&#123;								// 循环直至 i,j 相遇</span><br><span class="line">		while (i &lt; j &amp;&amp; array[j] &gt;= pivot)		// j向左遍历，直到找到比pivot小的值</span><br><span class="line">			--j;</span><br><span class="line">		while (i &lt; j &amp;&amp; array[i] &lt; pivot)		// i向右遍历，直到找到比pivot大的值</span><br><span class="line">			++i;</span><br><span class="line">		if (i &lt; j)								// 如果i &lt; j，就交换刚才找到的那两个值</span><br><span class="line">			swap(array[j], array[i]);</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	if (array[i] &lt;= array[left])				// 这里一定要做判断再决定是否交换</span><br><span class="line">		swap(array[i], array[left]);</span><br><span class="line">		</span><br><span class="line">	else										// 如果不交换，说明left是最小，但i是不是第二小不确定，所以需要下次判断</span><br><span class="line">		--i;</span><br><span class="line">	Partion2(array, left, i - 1);</span><br><span class="line">	Partion2(array, i + 1, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 快速排序3：</span><br><span class="line"> * 将第一个元素array[left]提出来作pivot，然后从j = right向前搜索第一个比pivot小的元素假设为array[k]，</span><br><span class="line"> * 该元素放在array[left]的位置。因为array[left]已经保存pivot覆盖也没关系，于是array[k]又可以被覆盖了，</span><br><span class="line"> * 从前往后搜索比pivot大的元素放到array[k]。一直进行下去直到i=j。</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt; </span><br><span class="line">void Partion3(T *array, int left, int right) &#123;</span><br><span class="line">	if (left &gt;= right)</span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	int i = left;</span><br><span class="line">	int j = right;</span><br><span class="line">	T pivot = array[left];						// 取第一个数为基准</span><br><span class="line">	while (i &lt; j)&#123;								// 循环直至 i,j 相遇</span><br><span class="line">		while (i &lt; j &amp;&amp; array[j] &gt;= pivot)</span><br><span class="line">			--j; </span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			array[i++] = array[j];				// 从右向左扫描，将比基准小的数填到左边</span><br><span class="line">		while (i &lt; j &amp;&amp; array[i] &lt; pivot)</span><br><span class="line">			++i; </span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			array[j--] = array[i];				// 从左向右扫描，将比基准大的数填到右边</span><br><span class="line">	&#125; </span><br><span class="line">	array[i] = pivot;							// 将基准数填回</span><br><span class="line">	Partion3(array, left, i - 1);</span><br><span class="line">	Partion3(array, i + 1, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 快速排序迭代实现</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">void QuickSortIteration(T *array, const int length) &#123;</span><br><span class="line"></span><br><span class="line">	stack&lt;pair&lt;int, int&gt;&gt; trace;</span><br><span class="line">	trace.push(make_pair(0, length - 1));		// 将数组首尾压栈</span><br><span class="line"></span><br><span class="line">	while (!trace.empty()) &#123;</span><br><span class="line">		auto top = trace.top();					// 将栈顶元素保存下来</span><br><span class="line">		trace.pop();							// 弹出栈顶</span><br><span class="line"></span><br><span class="line">		int i = top.first;						// 取出首尾地址</span><br><span class="line">		int j = top.second;</span><br><span class="line"></span><br><span class="line">		T pivot = array[i];						// 取第一个数为基准</span><br><span class="line"></span><br><span class="line">		while (i &lt; j) &#123;							// 循环直至 i,j 相遇</span><br><span class="line">			while (i &lt; j &amp;&amp; array[j] &gt;= pivot)</span><br><span class="line">				--j;</span><br><span class="line">			if (i &lt; j)</span><br><span class="line">				array[i++] = array[j];			// 从右向左扫描，将比基准小的数填到左边</span><br><span class="line">			while (i &lt; j &amp;&amp; array[i] &lt; pivot)</span><br><span class="line">				++i;</span><br><span class="line">			if (i &lt; j)</span><br><span class="line">				array[j--] = array[i];			// 从左向右扫描，将比基准大的数填到右边</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		array[i] = pivot;						// 将基准数填回</span><br><span class="line"></span><br><span class="line">		if (i &gt; top.first) trace.push(make_pair(top.first, i - 1));</span><br><span class="line">		if (j &lt; top.second) trace.push(make_pair(j + 1, top.second));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3><ul>
+<li>数据结构    不定</li>
+<li>最坏时间复杂度    ${\displaystyle O(n^{2})}$ </li>
+<li>最优时间复杂度    ${\displaystyle O(n\log n)}$ </li>
+<li>平均时间复杂度    ${\displaystyle O(n\log n)}$ </li>
+<li>空间复杂度    根据实现的方式不同而不同</li>
+</ul>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;快速排序是二叉查找树（二叉查找树）的一个空间最优化版本。不是循序地把数据项插入到一个明确的树中，而是由快速排序组织这些数据项到一个由递归调用所隐含的树中。这两个算法完全地产生相同的比较次数，但是顺序不同。对于排序算法的稳定性指标，原地分区版本的快速排序算法是不稳定的。其他变种是可以通过牺牲性能和空间来维护稳定性的。</p>
+<p>&emsp;&emsp;快速排序的最直接竞争者是堆排序（Heapsort）。堆排序通常比快速排序稍微慢，但是最坏情况的运行时间总是 ${\displaystyle O(n\log n)}$ 。快速排序是经常比较快，除了introsort变化版本外，仍然有最坏情况性能的机会。如果事先知道堆排序将会是需要使用的，那么直接地使用堆排序比等待introsort再切换到它还要快。堆排序也拥有重要的特点，仅使用固定额外的空间（堆排序是原地排序），而即使是最佳的快速排序变化版本也需要 ${\displaystyle O(\log n)}$ 的空间。然而，堆排序需要有效率的随机存取才能变成可行。</p>
+<p>&emsp;&emsp;快速排序也与归并排序（Mergesort）竞争，这是另外一种递归排序算法，但有坏情况 ${\displaystyle O(n\log n)}$ 运行时间的优势。不像快速排序或堆排序，归并排序是一个稳定排序，且可以轻易地被采用在链表（linked list）和存储在慢速访问媒体上像是磁盘存储或网络连接存储的非常巨大数列。尽管快速排序可以被重新改写使用在链串列上，但是它通常会因为无法随机存取而导致差的基准选择。归并排序的主要缺点，是在最佳情况下需要 ${\displaystyle \Omega (n)}$ 额外的空间。</p>
+<h4 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h4><p>&emsp;&emsp;快排的优化、归并排序的优化一向是面试的考察重点，至于算法的优化，重点还是要知道现有算法的不足之处。</p>
+<ul>
+<li>当序列长度很小时，快排效率低，研究表明长度在5~25的数组，快排表现不如插入排序。</li>
+<li>当pivot选择不当是，会导致树的不平衡，这样导致快排的时间复杂度为${\displaystyle O(n^{2})}$。</li>
+<li>当数组中有大量重复的元素，快排效率将非常之低。</li>
+</ul>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>&emsp;&emsp;针对上面提出的快排的局限性，我们依次做出优化策略：</p>
+<ul>
+<li>当当前序列长度小于特定值时，直接采用插入排序，或者不做处理，等到快排都执行完毕后（大致有序）在执行一次插入排序。</li>
+<li>针对pivot的选择，不再选取固定值，而是采用其他选取策略，如随机、三值取中等。</li>
+<li>如果数组中重复元素多，就采用三路划分算法：以某个数为基准将一个数组分成三部分：第一部分表示小于该pivot，第二部分等于pivot，第三部分大于pivot，要得到三部分得区间范围。</li>
+</ul>
+<p>&emsp;&emsp;下面的代码是对上述改进算法的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 快速排序3优化1：</span><br><span class="line">* 当排序的子序列小于预定的值M时，采用插入排序</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void PartionInsert(T *array, int left, int right) &#123;</span><br><span class="line">	if (left &gt;= right)</span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	if (right - left &lt;= M)</span><br><span class="line">		InsertSort(array, left, right);</span><br><span class="line">	else&#123;</span><br><span class="line">		int i = left;</span><br><span class="line">		int j = right;</span><br><span class="line">		T pivot = array[left];					// 取第一个数为基准</span><br><span class="line">		while (i &lt; j)&#123;							// 循环直至 i,j 相遇</span><br><span class="line">			while (i &lt; j &amp;&amp; array[j] &gt;= pivot)</span><br><span class="line">				--j;</span><br><span class="line">			if (i &lt; j)</span><br><span class="line">				array[i++] = array[j];			// 从右向左扫描，将比基准小的数填到左边</span><br><span class="line">			while (i &lt; j &amp;&amp; array[i] &lt; pivot)</span><br><span class="line">				++i;</span><br><span class="line">			if (i &lt; j)</span><br><span class="line">				array[j--] = array[i];			// 从左向右扫描，将比基准大的数填到右边</span><br><span class="line">		&#125;</span><br><span class="line">		array[i] = pivot;						// 将基准数填回</span><br><span class="line">		PartionInsert(array, left, i - 1);</span><br><span class="line">		PartionInsert(array, i + 1, right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//产生随机数</span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void Random(T *array, int left, int right)</span><br><span class="line">&#123;</span><br><span class="line">	int size = right - left + 1;</span><br><span class="line">	int i = left + rand() % size;</span><br><span class="line">	swap(array[i], array[left]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//取中位数移至left</span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void Median(T *array, int left, int right)</span><br><span class="line">&#123;</span><br><span class="line">	int mid = left + ((right - left )&gt;&gt; 1);</span><br><span class="line">	int minIndex = right;</span><br><span class="line"></span><br><span class="line">	if (array[minIndex] &gt; array[mid])</span><br><span class="line">		minIndex = mid;</span><br><span class="line">	if (array[minIndex] &gt; array[left])</span><br><span class="line">		minIndex = left;</span><br><span class="line">	if (minIndex != right)						//三个判断，把最小值移到最右侧</span><br><span class="line">		swap(array[minIndex], array[right]);</span><br><span class="line">	if (array[mid] &lt; array[left])				//那么剩下的两个数，最小的那个就是中位数了</span><br><span class="line">		swap(array[left], array[mid]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">* 快速排序3优化2：</span><br><span class="line">* 取随机数或者三值取中作为基准值</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void PartionSecond(T *array, int left, int right) &#123;</span><br><span class="line">	if (left &gt;= right)</span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">//	Random(array, left, right);					// 优化2-1：取随机数至最左端（基准值）</span><br><span class="line">	Median(array, left, right);					// 优化2-2：取中位数至最左端（基准值）</span><br><span class="line">	int i = left;</span><br><span class="line">	int j = right;</span><br><span class="line">	T pivot = array[left];						// 取第一个数为基准</span><br><span class="line">	while (i &lt; j)&#123;								// 循环直至 i,j 相遇</span><br><span class="line">		while (i &lt; j &amp;&amp; array[j] &gt;= pivot)</span><br><span class="line">			--j;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			array[i++] = array[j];				// 从右向左扫描，将比基准小的数填到左边</span><br><span class="line">		while (i &lt; j &amp;&amp; array[i] &lt; pivot)</span><br><span class="line">			++i;</span><br><span class="line">		if (i &lt; j)</span><br><span class="line">			array[j--] = array[i];				// 从左向右扫描，将比基准大的数填到右边</span><br><span class="line">	&#125;</span><br><span class="line">	array[i] = pivot;							// 将基准数填回</span><br><span class="line">	PartionSecond(array, left, i - 1);</span><br><span class="line">	PartionSecond(array, i + 1, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">* 快速排序3优化3：</span><br><span class="line">* 重复数据比较多的话，可以分为小于等于大于三段</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">void PartionThird(T *array, int left, int right) &#123;</span><br><span class="line">	if (left &gt;= right)</span><br><span class="line">		return;</span><br><span class="line"></span><br><span class="line">	int less = left;</span><br><span class="line">	int greater = right;</span><br><span class="line">	int it = left;</span><br><span class="line">	T pivot = array[left];						// 取第一个数为基准</span><br><span class="line">	while (it &lt;= greater)&#123;						// 循环直至it和greater相遇</span><br><span class="line">		if (array[it] == pivot)					// 如果等于pivot，it右移</span><br><span class="line">			++it;</span><br><span class="line">		else if (array[it] &lt; pivot)&#123;			// 如果小于pivot，扔左边，it和less右移</span><br><span class="line">			swap(array[less], array[it]);</span><br><span class="line">			++it;</span><br><span class="line">			++less;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;									// 如果大于pivot，扔右边，greater左移</span><br><span class="line">			swap(array[greater], array[it]);</span><br><span class="line">			--greater;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	PartionThird(array, left, less - 1);</span><br><span class="line">	PartionThird(array, greater + 1, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><font color="red" size="3" face="仿宋">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/01/06/DS/" title="数据结构与算法系列之一：八大排序之快速排序">http://yoursite.com/2018/01/06/DS/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/排序/" rel="tag"># 排序</a>
+          
+            <a href="/tags/快速排序/" rel="tag"># 快速排序</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/05/DS/" rel="next" title="数据结构与算法系列之一：八大排序之冒泡排序">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法系列之一：八大排序之冒泡排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/07/DS/" rel="prev" title="数据结构与算法系列之一：八大排序之归并排序">
+                数据结构与算法系列之一：八大排序之归并排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">122</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/wordzzzz" target="_blank" title="Gitee">
+                    
+                      <i class="fa fa-fw fa-glide"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/wordzzzz" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="CSDN博客主页" target="_blank">CSDN博客主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wordzzzz.gitee.io" title="中国站主页" target="_blank">中国站主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wordzzzz.github.io" title="全球站主页" target="_blank">全球站主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: '你曾是少年',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://mp3.qqmusic.cc/yq/102426570.mp3',  // Required, music url
+        pic: '/images/visitor.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">1.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">1.3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#公用接口"><span class="nav-number">1.4.1.</span> <span class="nav-text">公用接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归法"><span class="nav-number">1.4.2.</span> <span class="nav-text">递归法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代法"><span class="nav-number">1.4.3.</span> <span class="nav-text">迭代法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法复杂度"><span class="nav-number">1.5.</span> <span class="nav-text">算法复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.6.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性"><span class="nav-number">1.6.1.</span> <span class="nav-text">局限性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化"><span class="nav-number">1.6.2.</span> <span class="nav-text">优化</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">154.5k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
