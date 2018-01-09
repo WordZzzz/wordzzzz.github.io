@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="WordZzzz">
 <meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 个人博客：https://wordzzzz.github.io/ https://wordzzzz.gitee.io/ 代码地址：https://github.com/WordZzzz/Note/tree/master/DS&amp;amp;A/sort 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-09T08:26:21.077Z">
+<meta property="og:updated_time" content="2018-01-09T09:05:28.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法系列之一：八大排序综述">
 <meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 个人博客：https://wordzzzz.github.io/ https://wordzzzz.gitee.io/ 代码地址：https://github.com/WordZzzz/Note/tree/master/DS&amp;amp;A/sort 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc">
@@ -424,7 +424,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-09T16:26:21+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-09T17:05:28+08:00">
                 2018-01-09
               </time>
             
@@ -485,7 +485,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,071
+                  2,102
                 </span>
               
 
@@ -532,7 +532,7 @@
 <hr>
 <p>[toc]</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;剑指offer刷完了，是时候总结一波数据结构与算法了。本系列文章暂定包括数据结构中树和图的各种操作，以及查找、排序等基本算法和动态规划等高级算法。本系列文章只是作为总结性的文献，为自己日后的面试做准备。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;直接引自维基百科：<a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95。总结性强。" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95。总结性强。</a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;直接引自维基百科：<a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">排序算法</a>。总结性强。</p>
 <p>&emsp;&emsp;在计算机科学与数学中，一个排序算法（英语：Sorting algorithm）是一种能将一串数据依照特定排序方式进行排列的一种算法。最常用到的排序方式是数值顺序以及字典顺序。有效的排序算法在一些算法（例如搜索算法与合并算法）中是重要的，如此这些算法才能得到正确解答。排序算法也用在处理文字数据以及产生人类可读的输出结果。基本上，排序算法的输出必须遵守下列两个原则：</p>
 <ul>
 <li>输出结果为递增序列（递增是针对所需的排序顺序而言）</li>
@@ -592,15 +592,16 @@
 <p>&emsp;&emsp;再贴出来以后要用到的main函数和头文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;stdexcept&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std; </span><br><span class="line">#define M 5</span><br><span class="line"></span><br><span class="line">int main() &#123; </span><br><span class="line">	int arr[] = &#123;2,4,6,8,9,7,5,3,1&#125;;</span><br><span class="line">	int len = sizeof(arr) / sizeof(*arr);</span><br><span class="line">//	double arr[] = &#123;4.5, 2.3,6.7, 3.5, 1.1&#125;;</span><br><span class="line">//	const int len = sizeof(arr) / sizeof(arr[0]);</span><br><span class="line">//	BubbleSort(arr, len);</span><br><span class="line">//	BubbleSort1(arr, len);</span><br><span class="line">//	BubbleSort2(arr, len);</span><br><span class="line">//	BubbleSort3(arr, len);</span><br><span class="line">//	InsertSort(arr, len);</span><br><span class="line">//	ShellSort(arr, len);	</span><br><span class="line">//	QuickSort(arr, len);</span><br><span class="line">//	QuickSortIteration(arr, len);</span><br><span class="line">//	SelectSort(arr, len);	</span><br><span class="line">//	HeapSort(arr, len);		</span><br><span class="line">//	MergeSort(arr, len); </span><br><span class="line">	MergeSortIteration(arr, len);</span><br><span class="line"></span><br><span class="line">	for(auto v : arr)&#123;</span><br><span class="line">		cout &lt;&lt; v &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125; cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;最后就要打开传送门了：</p>
+<p>csdn告诉我今天上传博客的次数到达上限了，然而我还有两个没有上传，那我只好先引流到我的个人博客了。</p>
 <ul>
-<li><a href="https://wordzzzz.github.io/2018/01/01/DA/" target="_blank" rel="noopener">插入排序</a>：（有序区，无序区）。把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/02/DA/" target="_blank" rel="noopener">希尔排序</a>：每一轮按照事先决定的间隔进行插入排序，间隔会依次缩小，最后一次一定要是1。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/03/DA/" target="_blank" rel="noopener">选择排序</a>：（有序区，无序区）。在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/04/DA/" target="_blank" rel="noopener">堆排序</a>：（最大堆，有序区）。<br>从堆顶把根卸出来放在有序区之前，再恢复堆。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/05/DA/" target="_blank" rel="noopener">冒泡排序</a>：（无序区，有序区）。从无序区通过交换找出最大元素放到有序区前端。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/06/DA/" target="_blank" rel="noopener">快速排序</a>：（小数，基准元素，大数）。<br>在区间中随机挑选一个元素作基准，将小于基准的元素放在基准之前，大于基准的元素放在基准之后，再分别对小数区与大数区进行排序。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/07/DA/" target="_blank" rel="noopener">归并排序</a>：把数据分为两段，从两段中逐个选最小的元素移入新数据段的末尾。<br>可从上到下或从下到上进行。</li>
-<li><a href="https://wordzzzz.github.io/2018/01/08/DA/" target="_blank" rel="noopener">基数排序</a>：一种多关键字的排序算法，可用桶排序实现。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/01/DS/" target="_blank" rel="noopener">插入排序</a>：（有序区，无序区）。把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/02/DS/" target="_blank" rel="noopener">希尔排序</a>：每一轮按照事先决定的间隔进行插入排序，间隔会依次缩小，最后一次一定要是1。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/03/DS/" target="_blank" rel="noopener">选择排序</a>：（有序区，无序区）。在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/04/DS/" target="_blank" rel="noopener">堆排序</a>：（最大堆，有序区）。<br>从堆顶把根卸出来放在有序区之前，再恢复堆。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/05/DS/" target="_blank" rel="noopener">冒泡排序</a>：（无序区，有序区）。从无序区通过交换找出最大元素放到有序区前端。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/06/DS/" target="_blank" rel="noopener">快速排序</a>：（小数，基准元素，大数）。<br>在区间中随机挑选一个元素作基准，将小于基准的元素放在基准之前，大于基准的元素放在基准之后，再分别对小数区与大数区进行排序。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/07/DS/" target="_blank" rel="noopener">归并排序</a>：把数据分为两段，从两段中逐个选最小的元素移入新数据段的末尾。<br>可从上到下或从下到上进行。</li>
+<li><a href="https://wordzzzz.github.io/2018/01/08/DS/" target="_blank" rel="noopener">基数排序</a>：一种多关键字的排序算法，可用桶排序实现。</li>
 </ul>
 <p>参考链接：<br><a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">维基百科</a><br><a href="https://visualgo.net/en/sorting" target="_blank" rel="noopener">数据结构与算法可视化可视化</a><br><a href="http://www.cnblogs.com/skywang12345/category/508186.html" target="_blank" rel="noopener">数据结构与算法</a><br><a href="http://www.open-open.com/lib/view/open1404781467544.html" target="_blank" rel="noopener">排序算法可视化</a><br><a href="http://wuchong.me/blog/2014/02/09/algorithm-sort-summary/" target="_blank" rel="noopener">经典排序算法总结与实现</a></p>
 
