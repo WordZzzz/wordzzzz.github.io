@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="jekyll,hexo,github,gitee," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="[toc]  前言&amp;emsp;&amp;emsp;喜欢写Blog的人，会经历三个阶段。  第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。 第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。 第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。  引自阮一峰 &amp;emsp;&amp;emsp;第一阶段我已经经历过了，目前在CSDN的文章仍">
+<meta name="keywords" content="jekyll,hexo,github,gitee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的个人博客之旅：从jekyll到hexo">
+<meta property="og:url" content="https://wordzzzz.github.io/2018/01/10/HEXO/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="[toc]  前言&amp;emsp;&amp;emsp;喜欢写Blog的人，会经历三个阶段。  第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。 第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。 第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。  引自阮一峰 &amp;emsp;&amp;emsp;第一阶段我已经经历过了，目前在CSDN的文章仍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110111003603?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110111311091?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110111420247?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110111512090?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110111533728?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110142732584?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110142739639?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180110114341558?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-01-10T07:00:18.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的个人博客之旅：从jekyll到hexo">
+<meta name="twitter:description" content="[toc]  前言&amp;emsp;&amp;emsp;喜欢写Blog的人，会经历三个阶段。  第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。 第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。 第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。  引自阮一峰 &amp;emsp;&amp;emsp;第一阶段我已经经历过了，目前在CSDN的文章仍">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20180110111003603?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wordzzzz.github.io/2018/01/10/HEXO/"/>
+
+
+
+
+
+  <title>我的个人博客之旅：从jekyll到hexo | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2018/01/10/HEXO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">我的个人博客之旅：从jekyll到hexo</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T00:00:00+08:00">
+                2018-01-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-10T15:00:18+08:00">
+                2018-01-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/博客搭建/" itemprop="url" rel="index">
+                    <span itemprop="name">博客搭建</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/10/HEXO/" class="leancloud_visitors" data-flag-title="我的个人博客之旅：从jekyll到hexo">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,124
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><hr>
+<p>[toc]</p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;喜欢写Blog的人，会经历三个阶段。</p>
+<ul>
+<li>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</li>
+<li>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</li>
+<li>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</li>
+</ul>
+<p>引自<a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html" target="_blank" rel="noopener">阮一峰</a></p>
+<p>&emsp;&emsp;第一阶段我已经经历过了，目前在CSDN的文章仍然在更新。但是作为一个免费空间，一个技术博客的聚集地，其管理和运营虽说正在变得越来越好，但是恶心人的事件也时有发生，比如对新手不友好的审核机制、近期改版造成的各种不兼容问题。</p>
+<p>&emsp;&emsp;于是，就想着挣脱枷锁，向第二第三阶段发展。</p>
+<p>&emsp;&emsp;我这人吧凡事都考虑的比较详尽，，我感觉我如果再去经历第二阶段的话既浪费精力又消耗时间，而且自己也过了玩网站、玩博客的年纪，如果申请个域名再搞个网站，我不知道这股热度会持续多久。</p>
+<p>&emsp;&emsp;所以，我就直接跳到了第三个阶段，开始在github上搭建自己的博客。由于自己对前端一无所知，即使使用现成的博客框架，刚开始玩的时候特别费劲。但是经过不断摸索，我的博客已经基本成型，传送门开启：<a href="https://wordzzzz.github.io/">wordzzzz的个人博客-托管于github</a> <a href="https://wordzzzz.gitee.io/" target="_blank" rel="noopener">wordzzzz的个人博客-托管于gitee</a>。</p>
+<p>&emsp;&emsp;本篇博文并不打算长篇大论的介绍基于GitHub Pages或者Gitee Pages搭建博客的步骤，因为这类的文章实在是太多了，青菜萝卜又各有所爱，不如给出资源，让大家自己折腾。所以我只是在此有序贴出我在搭建博客的过程中用到的各种有用资源，以及搭建博客的大致流程，也算是对我这段时间的一个告别仪式吧。</p>
+<h2 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h2><p>&emsp;&emsp;我想在GitHub Pages推出之前，由于技术门槛的存在，第三个阶段应该会很少有人涉足。所以在开始一切之前，我们先来看看什么是<a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>。</p>
+<p>&emsp;&emsp;Github Pages 是面向用户、组织和项目开放的公共静态页面搭建托管服 务，站点可以被免费托管在 Github 上，你可以选择使用 Github Pages 默 认提供的域名 github.io 或者自定义域名来发布站点。Github Pages 支持 自动利用 Jekyll 生成站点，也同样支持纯 HTML 文档，将你的 Jekyll 站 点托管在 Github Pages 上是一个不错的选择。</p>
+<p>&emsp;&emsp;网站首页就是搭建GitHub Pages的过程其中第一步之后，选择不同的git客户端选项，会出现相应的初始化步骤，很人性化。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110111003603?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p>&emsp;&emsp;大家可以跟着上面的链接先在自己的github新建仓库，仓库名称为username.github.io，其中username要替换成你github的名称，比如我的github名称为wordzzzz，所以我新建的仓库就应该是wordzzzz.github.io。那么等我以后搭建好了我的博客，我就可以通过<a href="https://wordzzzz.github.io来访问我的主页了。" target="_blank" rel="noopener">https://wordzzzz.github.io来访问我的主页了。</a></p>
+<p>&emsp;&emsp;到现在为止，只是搭建博客的准备工作。搭建博客的下一步是选择合适的静态博客框架。</p>
+<h2 id="jekyll-or-hexo"><a href="#jekyll-or-hexo" class="headerlink" title="jekyll or hexo"></a>jekyll or hexo</h2><p>&emsp;&emsp;目前有两大静态博客主流框架：<a href="http://jekyllcn.com/" target="_blank" rel="noopener">jekyll</a>和<a href="https://hexo.io/" target="_blank" rel="noopener">hexo</a>。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110111311091?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110111420247?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p>&emsp;&emsp;我一开始用的是jekyll，这是中文社区翻译出来的<a href="http://jekyllcn.com/" target="_blank" rel="noopener">中文开发文档</a>。我使用的主题是<a href="https://mmistakes.github.io/minimal-mistakes/" target="_blank" rel="noopener">Minimal Mistakes</a>，开发文档很详细。但是后来由于jekyll体验不是很好（中文资料少，我英语比较差我会说嘛），依赖环境总是出问题（需要安装ruby），markdown采用的是Kramdown（Kramdown对我之前的一些博客格式支持的不是很好，我自己写文档用的都是小书匠，然后发表到CSDN，所以并不想花时间在改格式上面），而且我使用的这个主题是个人维护的，种种原因导致最后做出来的博客很难符合我的胃口，最后被我扔进了停尸房<a href="https://github.com/WordZzzz/jekyll_mysite" target="_blank" rel="noopener">jekyll_mysite</a>。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110111512090?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110111533728?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p>&emsp;&emsp;就在我将要放弃之时，hexo拯救了我。对，没错，它有<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">中文开发文档</a>。而在hexo界，使用最多的主题就是<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">next</a>了。光是看到这两份资料，我就已经激动的不行了，这种扁平化设计的网站，不就正是我需要的么。加上详尽的开发文档和丰富的第三方接口，让我对它爱不释手。最终定稿了自己的个人博客，存储在github<a href="https://wordzzzz.github.io/">wordzzzz的个人博客-托管于github</a>和gitee<a href="https://wordzzzz.gitee.io/" target="_blank" rel="noopener">wordzzzz的个人博客-托管于gitee</a>上。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110142732584?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110142739639?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<h2 id="next主题"><a href="#next主题" class="headerlink" title="next主题"></a>next主题</h2><p>&emsp;&emsp;next主题支持三种外观显示，支持多国语言，5套代码高亮主题，可以深度定制。在其<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">Github</a>上，更是有三个主题的代表作，其中我最喜欢的莫过于基于Muse scheme的<a href="https://notes.wanghao.work/" target="_blank" rel="noopener">wanghao的博客</a>。于是，我就在wanghao的博客的基础上进行了相应的更改，形成了我现在的博客，主题文件全部在我的<a href="https://github.com/WordZzzz/hexo-next" target="_blank" rel="noopener">github</a>上，欢迎大家fork、star、follow。</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180110114341558?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<p>&emsp;&emsp;其实先按照hexo配置开发环境，再按照next文档配置站点文件，完全可以轻松搭建起自己的博客。但是还是藏不住内心那颗年轻的心啊，终究还是搜罗了一些好玩的东西放到了自己的博客上，比如音乐播放器。</p>
+<p>&emsp;&emsp;下面我先简单介绍一下基于github平台、hexo框架的next主题博客开发步骤：</p>
+<ul>
+<li><a href="">Github上新建username.github.io仓库并初始化</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">PC端安装hexo及其依赖项并熟悉开发流程</a></li>
+<li><a href="https://github.com/WordZzzz/hexo-next" target="_blank" rel="noopener">下载我的主题文件</a>或者<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">下载next主题文件</a></li>
+<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">按照next官方教程验证主题</a></li>
+<li><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">按照next官方教程配置站点文件和主题文件</a></li>
+<li><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="noopener">按照next官方教程集成第三方服务</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/generating.html" target="_blank" rel="noopener">生成静态文件</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/server.html" target="_blank" rel="noopener">开启本地服务查看站点效果</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/deployment.html" target="_blank" rel="noopener">部署至Github</a></li>
+</ul>
+<p>&emsp;&emsp;文档都非常详细，下面我主要就第三方服务做一些说明。我提到的大部分三方服务在<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="noopener">next的官方文档</a>都提及到了，所以具体配置大家跟着官方文档走就行，我只是为每一类服务选择哪个做一下建议。</p>
+<h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><p>&emsp;&emsp;我用的韩国的<a href="https://livere.com/" target="_blank" rel="noopener">livere</a>，从国内到国外，支持几乎全部社交账号登陆，具体步骤请按照<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="noopener">next的官方文档</a>操作。</p>
+<h3 id="数据统计与分析"><a href="#数据统计与分析" class="headerlink" title="数据统计与分析"></a>数据统计与分析</h3><p>&emsp;&emsp;<a href="https://tongji.baidu.com/web/welcome/login" target="_blank" rel="noopener">百度统计</a>和<a href="https://www.google.com/intl/zh-CN/analytics/" target="_blank" rel="noopener">google分析</a>我都加上了，具体步骤请按照<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="noopener">next的官方文档</a>操作。</p>
+<h3 id="阅读量统计"><a href="#阅读量统计" class="headerlink" title="阅读量统计"></a>阅读量统计</h3><p>&emsp;&emsp;我用的<a href="https://leancloud.cn/" target="_blank" rel="noopener">LeanCloud</a>，具体操作步骤请直接跳转至<a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener"> 为NexT主题添加文章阅读量统计功能</a>。</p>
+<h3 id="内容分享服务"><a href="#内容分享服务" class="headerlink" title="内容分享服务"></a>内容分享服务</h3><p>&emsp;&emsp;我采用的是<a href="https://github.com/revir/need-more-share2" target="_blank" rel="noopener">need-more-share2</a>，直接在主题配置文件里面打开就行。</p>
+<h3 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h3><p>&emsp;&emsp;我采用的是<a href="https://swiftype.com/" target="_blank" rel="noopener">Swiftype</a>，具体步骤请按照<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="noopener">next的官方文档</a>操作。</p>
+<h3 id="网站收录"><a href="#网站收录" class="headerlink" title="网站收录"></a>网站收录</h3><p>&emsp;&emsp;<a href="https://www.google.com/webmasters/tools/" target="_blank" rel="noopener">Google Webmaster tools</a>收录特别快，具体步骤请按照<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="noopener">next的官方文档</a>操作。但是<a href="http://ziyuan.baidu.com/?castk=LTE%3D" target="_blank" rel="noopener">百度站长</a>收录的就很慢了，我的到现在还没被收录。</p>
+<h3 id="其他服务"><a href="#其他服务" class="headerlink" title="其他服务"></a>其他服务</h3><p>&emsp;&emsp;NexT 借助于 MathJax 来显示数学公式，此选项默认关闭，如果博客中有公式，那么一定要打开这个选项。</p>
+<h2 id="next进阶"><a href="#next进阶" class="headerlink" title="next进阶"></a>next进阶</h2><p>&emsp;&emsp;最后想说一下其他一些配置，比如添加背景图片、侧边栏头像旋转、侧边栏鼠标滑入显示、背景音乐等等，此处大部分参考<a href="http://mashirosorata.vicp.io/HEXO-NEXT%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE.html" target="_blank" rel="noopener">这个博客</a>。</p>
+<p>&emsp;&emsp;next人性化的为用户提供了custom接口，我们可以在不影响主题文件的基础上进行个性化定制。</p>
+<h3 id="给页面添加背景图片"><a href="#给页面添加背景图片" class="headerlink" title="给页面添加背景图片"></a>给页面添加背景图片</h3><p>&emsp;&emsp;在theme/next/source/css/_custom文件夹下打开custom.styl文件，往里面添加以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  background: url(/images/blogbk.jpg) no-repeat;</span><br><span class="line">  <span class="comment">/* 背景图垂直、水平均居中 */</span></span><br><span class="line">  <span class="attribute">background-position</span>: center center;</span><br><span class="line">  <span class="comment">/* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */</span></span><br><span class="line">  <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">  <span class="comment">/* 让背景图基于容器大小伸缩 */</span></span><br><span class="line">  <span class="attribute">background-size</span>: cover;</span><br><span class="line">  <span class="comment">/* 设置背景颜色，背景图加载过程中会显示背景色 */</span></span><br><span class="line">  <span class="attribute">background-color</span>: rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中的css样式属性都可以根据你的自定义图片来更改，以达到最佳的效果。</p>
+<h3 id="给侧边栏添加背景图片"><a href="#给侧边栏添加背景图片" class="headerlink" title="给侧边栏添加背景图片"></a>给侧边栏添加背景图片</h3><p>&emsp;&emsp;在theme/next/source/css/_custom文件夹下打开custom.styl文件，往里面添加以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#sidebar</span> &#123;</span><br><span class="line">            background:url(/images/sidebar.jpg);</span><br><span class="line">            <span class="attribute">background-size</span>: cover;</span><br><span class="line">            <span class="attribute">background-position</span>:center;</span><br><span class="line">            <span class="attribute">background-repeat</span>:no-repeat;</span><br><span class="line">            <span class="selector-tag">p</span>,<span class="selector-tag">span</span>,<span class="selector-tag">a</span> &#123;<span class="attribute">color</span>: rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="文字背景色以及半透明的设置"><a href="#文字背景色以及半透明的设置" class="headerlink" title="文字背景色以及半透明的设置"></a>文字背景色以及半透明的设置</h3><p>&emsp;&emsp;在theme/next/source/css/_custom文件夹下打开custom.styl文件，往里面添加以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">            <span class="attribute">border-radius</span>: <span class="number">20px</span>;</span><br><span class="line">			<span class="attribute">padding</span>: <span class="number">30px</span> <span class="number">60px</span> <span class="number">30px</span> <span class="number">60px</span>;</span><br><span class="line">            <span class="attribute">background</span>:rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.8</span>) none repeat scroll !important;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中border-radius是给文章背景设置圆角，margin-top是设置文章到顶部的距离，其中属性可根据自己的需要进行调整。</p>
+<h3 id="评论-来必力-添加背景色"><a href="#评论-来必力-添加背景色" class="headerlink" title="评论(来必力)添加背景色"></a>评论(来必力)添加背景色</h3><p>&emsp;&emsp;在theme/next/source/css/_custom文件夹下打开custom.styl文件，往里面添加以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#lv-container</span> &#123;</span><br><span class="line">       <span class="attribute">border-radius</span>: <span class="number">20px</span>;</span><br><span class="line">	   <span class="attribute">padding</span>: <span class="number">30px</span> <span class="number">60px</span> <span class="number">30px</span> <span class="number">60px</span>;</span><br><span class="line">       <span class="attribute">background</span>:rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.8</span>) none repeat scroll !important;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;和上面一样，背景色和圆角可自己调整更改。</p>
+<h3 id="实现点击出现桃心效果"><a href="#实现点击出现桃心效果" class="headerlink" title="实现点击出现桃心效果"></a>实现点击出现桃心效果</h3><p>&emsp;&emsp;在网址输入如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://7u2ss1.com1.z0.glb.clouddn.com/love.js</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;然后将里面的代码copy一下，新建love.js文件并且将代码复制进去，然后保存。将love.js文件放到路径/themes/next/source/js/src里面，然后打开\themes\next\layout_layout.swig文件,在末尾（在前面引用会出现找不到的bug）添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 页面点击小红心 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/src/love.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="侧边栏头像旋转"><a href="#侧边栏头像旋转" class="headerlink" title="侧边栏头像旋转"></a>侧边栏头像旋转</h3><p>&emsp;&emsp;打开\themes\next\source\css_common\components\sidebar\sidebar-author.styl，在里面添加如下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.site-author-image</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="variable">$site</span>-author-image-padding;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="variable">$site</span>-author-image-width;</span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">$site</span>-author-image-height;</span><br><span class="line">  <span class="attribute">border</span>: <span class="variable">$site</span>-author-image-border-width solid <span class="variable">$site</span>-author-image-border-color;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* start*/</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span></span><br><span class="line">  webkit-<span class="attribute">transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  moz-<span class="attribute">transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  ms-<span class="attribute">transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="attribute">transition</span>: <span class="number">1.4s</span> all;</span><br><span class="line">  <span class="comment">/* end */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* start */</span></span><br><span class="line"><span class="selector-class">.site-author-image</span>:hover &#123;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#55DAE1</span>;</span><br><span class="line">  webkit-<span class="attribute">transform</span>: rotate(<span class="number">360deg</span>) scale(<span class="number">1.1</span>);</span><br><span class="line">  moz-<span class="attribute">transform</span>: rotate(<span class="number">360deg</span>) scale(<span class="number">1.1</span>);</span><br><span class="line">  ms-<span class="attribute">transform</span>: rotate(<span class="number">360deg</span>) scale(<span class="number">1.1</span>);</span><br><span class="line">  <span class="attribute">transform</span>: rotate(<span class="number">360deg</span>) scale(<span class="number">1.1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* end */</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置鼠标划入侧边栏才显示站点信息："><a href="#设置鼠标划入侧边栏才显示站点信息：" class="headerlink" title="设置鼠标划入侧边栏才显示站点信息："></a>设置鼠标划入侧边栏才显示站点信息：</h3><h4 id="设置自定义div"><a href="#设置自定义div" class="headerlink" title="设置自定义div"></a>设置自定义div</h4><p>&emsp;&emsp;在theme/next/layout/_macro文件夹下打开sidebar.swig文件，找到以下代码行的位置：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"site-state motion-element"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在其上添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--my custom code begin--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  $("#sidebar").hover(function()&#123;</span></span><br><span class="line"><span class="undefined">    $("#mydivshow").velocity('stop').velocity(&#123;opacity: 1&#125;);</span></span><br><span class="line"><span class="undefined">  &#125;,function()&#123;</span></span><br><span class="line"><span class="undefined">    $("#mydivshow").velocity('stop').velocity(&#123;opacity: 0&#125;);</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"mydivshow"</span> <span class="attr">class</span>=<span class="string">"mydivshow"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--my custom code end--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;然后找到代码行：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">&#123;% if display_toc and toc(page.content).length &gt; 1 %&#125;</span><br><span class="line"><span class="comment">&lt;!--noindex--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"post-toc-wrap motion-element sidebar-panel sidebar-panel-active"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在此的上方添加一个，如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--my custom code begin--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--my custom code end--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">&#123;% if display_toc and toc(page.content).length &gt; 1 %&#125;</span><br><span class="line"><span class="comment">&lt;!--noindex--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"post-toc-wrap motion-element sidebar-panel sidebar-panel-active"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-toc"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="自定义区域的初始化设置"><a href="#自定义区域的初始化设置" class="headerlink" title="自定义区域的初始化设置"></a>自定义区域的初始化设置</h4><p>&emsp;&emsp;在theme/next/source/css/_custom文件夹下打开custom.styl文件，向里面增添下列代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#mydivshow&#123;<span class="attribute">opacity</span>: <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>注：具体代码添加位置以及代码里的section.site-overview可以自己修改，<div id="mydivshow" class="mydivshow">和末尾的</div>是控制显示区域，section.site-overview则是用户鼠标滑入划出时的触发事件区域。</p>
+<h3 id="自定义音乐播放器"><a href="#自定义音乐播放器" class="headerlink" title="自定义音乐播放器"></a>自定义音乐播放器</h3><p>&emsp;&emsp;描述：本站所用的音乐播放器是由DIYgod所制作的APlayer，其详细资料可参见<a href="https://aplayer.js.org/docs/#/" target="_blank" rel="noopener">这里</a>。</p>
+<h4 id="安装APlayer插件"><a href="#安装APlayer插件" class="headerlink" title="安装APlayer插件"></a>安装APlayer插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install aplayer --save</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;安装完后在node_modules目录下找到APlayer.min.js文件，将其复制到theme/next/source/js/src/目录下。</p>
+<h4 id="生成音乐播放器"><a href="#生成音乐播放器" class="headerlink" title="生成音乐播放器"></a>生成音乐播放器</h4><p>&emsp;&emsp;在你想要加入音乐播放器的地方插入以下代码，本站把他放在了侧边栏里，具体操作如下。</p>
+<p>&emsp;&emsp;打开theme/next/layout/_custom/文件夹下的sidebar.swig文件，向其中添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"player1"</span> <span class="attr">class</span>=<span class="string">"aplayer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/src/APlayer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">var ap = new APlayer(&#123;</span></span><br><span class="line"><span class="undefined">    element: document.getElementById('player1'),                       // Optional, player element</span></span><br><span class="line"><span class="undefined">    narrow: false,                                                     // Optional, narrow style</span></span><br><span class="line"><span class="undefined">    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers</span></span><br><span class="line"><span class="undefined">    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc</span></span><br><span class="line"><span class="undefined">    mutex: true,                                                       // Optional, pause other players when this player playing</span></span><br><span class="line"><span class="undefined">    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff</span></span><br><span class="line"><span class="undefined">    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`</span></span><br><span class="line"><span class="undefined">    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'</span></span><br><span class="line"><span class="undefined">    listmaxheight: '513px',                                             // Optional, max height of play list</span></span><br><span class="line"><span class="undefined">    music: &#123;                                                           // Required, music info, see: ###With playlist</span></span><br><span class="line"><span class="undefined">        title: '你曾是少年',                                          // Required, music title</span></span><br><span class="line"><span class="undefined">        author: 'cover',                                              // Required, music author</span></span><br><span class="line"><span class="undefined">        url: 'http://mp3.qqmusic.cc/yq/102426570.mp3',                // Required, music url</span></span><br><span class="line"><span class="undefined">        pic: '/images/visitor.jpg',                                   // Optional, music picture</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里的歌曲url必须是在线音乐，当时现在大部分播放器都不会曝露出真实的歌曲播放地址，找资源很是费劲。这里给大家推荐一个<a href="http://www.qqmusic.cc/" target="_blank" rel="noopener">解析平台</a>，大部分的qq音乐还是可以解析出来或者直接在该平台上找到播放链接的。大家可以写多个music结构，以此来添加多个音乐。</p>
+<p>&emsp;&emsp;当然，我们还可以通过添加网易云音乐外链的方式在我们的博客中添加音乐。打开theme/next/layout/_custom/文件夹下的sidebar.swig文件，向其中添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"music163player"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">"no"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">marginwidth</span>=<span class="string">"0"</span> <span class="attr">marginheight</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">"//music.163.com/outchain/player?type=2&amp;id=458789090&amp;auto=0&amp;height=66"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;替换上述代码中的iframe标签之间的内容，就可以替换不同的音乐进行播放了。网易云音乐的歌单也可以生成外链，前提是歌单里的歌曲都有版权哦~</p>
+<h4 id="自定义播放器样式"><a href="#自定义播放器样式" class="headerlink" title="自定义播放器样式"></a>自定义播放器样式</h4><p>&emsp;&emsp;包含颜色更改，列表歌曲信息的排版修改。</p>
+<p>&emsp;&emsp;在theme/next/source/css/_custom文件夹下打开custom.styl文件，往里面添加以下代码：</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.aplayer-list</span> <span class="selector-tag">ol</span> <span class="selector-tag">li</span>:hover &#123;   <span class="comment">/*列表悬停颜色*/</span></span><br><span class="line">                  <span class="attribute">background</span>:rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>) none repeat scroll !important;&#125;</span><br><span class="line"><span class="selector-class">.aplayer-list</span> <span class="selector-tag">ol</span> <span class="selector-tag">li</span> &#123;   <span class="comment">/*列表底色*/</span></span><br><span class="line">                        <span class="attribute">background</span>:rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);&#125;</span><br><span class="line"><span class="selector-class">.aplayer-list-light</span> &#123;   <span class="comment">/*列表播放歌曲颜色*/</span></span><br><span class="line">                      <span class="attribute">background</span>:rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>) none repeat scroll !important;&#125;</span><br><span class="line"><span class="selector-id">#player1</span> &#123;    <span class="comment">/*边框样式*/</span></span><br><span class="line">          <span class="attribute">border-radius</span>: <span class="number">6px</span>;</span><br><span class="line">          <span class="selector-tag">div</span>,<span class="selector-tag">ol</span> &#123;<span class="attribute">border-radius</span>: <span class="number">6px</span>;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="selector-id">#player1</span> *&#123;<span class="attribute">color</span>: rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">1</span>);&#125;    <span class="comment">/*字体颜色*/</span></span><br><span class="line"><span class="comment">/*列表歌曲信息的排版*/</span></span><br><span class="line">.aplayer-list-index&#123;<span class="attribute">float</span>:left;&#125;</span><br><span class="line">.aplayer-list-title&#123;<span class="attribute">float</span>:left;&#125;</span><br><span class="line">.aplayer-list-author&#123;<span class="attribute">float</span>:right;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义萌萌哒音乐播放控制边栏"><a href="#自定义萌萌哒音乐播放控制边栏" class="headerlink" title="自定义萌萌哒音乐播放控制边栏"></a>自定义萌萌哒音乐播放控制边栏</h3><p>&emsp;&emsp;这一步要在自定义音乐播放器的配置完成之后才能进行，因为aplayer-controler依赖于aplayer来实现播放功能。</p>
+<h4 id="安装aplayer-controler插件"><a href="#安装aplayer-controler插件" class="headerlink" title="安装aplayer-controler插件"></a>安装aplayer-controler插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install aplayer-controler --save</span><br></pre></td></tr></table></figure>
+<h4 id="添加js代码"><a href="#添加js代码" class="headerlink" title="添加js代码"></a>添加js代码</h4><p>&emsp;&emsp;安装APlayer-Controler的js文件：<a href="https://github.com/Mashiro-Sorata/APlayer-Controler/blob/master/demo/src/Aplayer-Controler.js" target="_blank" rel="noopener">APlayer-Controler.js</a></p>
+<p>&emsp;&emsp;将其放入theme/next/source/js/src下。</p>
+<h4 id="创建按钮区域"><a href="#创建按钮区域" class="headerlink" title="创建按钮区域"></a>创建按钮区域</h4><p>&emsp;&emsp;在theme/next/layout/_custom/文件夹下新建一个myapcontroler.swig的文件。向其中添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/src/Aplayer-Controler.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"AP-controler"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">var myapc=new APlayer_Controler(&#123;</span></span><br><span class="line"><span class="undefined">		APC_dom:$('#AP-controler'),</span></span><br><span class="line"><span class="undefined">		aplayer:ap, //此为绑定的aplayer对象</span></span><br><span class="line"><span class="undefined">		attach_right:true,</span></span><br><span class="line"><span class="undefined">		position:&#123;top:'300px',bottom:''&#125;,</span></span><br><span class="line"><span class="undefined">		fixed:true,</span></span><br><span class="line"><span class="undefined">		btn_width:100,</span></span><br><span class="line"><span class="undefined">		btn_height:120,</span></span><br><span class="line"><span class="undefined">		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',</span></span><br><span class="line"><span class="undefined">				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',</span></span><br><span class="line"><span class="undefined">				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',</span></span><br><span class="line"><span class="undefined">				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],</span></span><br><span class="line"><span class="undefined">		img_style:&#123;repeat:'no-repeat',position:'center',size:'contain'&#125;,</span></span><br><span class="line"><span class="undefined">		ctrls_color:'rgba(173,255,47,0.8)',</span></span><br><span class="line"><span class="undefined">		ctrls_hover_color:'rgba(255,140,0,0.7)',</span></span><br><span class="line"><span class="undefined">		tips_on:true,</span></span><br><span class="line"><span class="undefined">		tips_width:140,</span></span><br><span class="line"><span class="undefined">		tips_height:25,</span></span><br><span class="line"><span class="undefined">		tips_color:'rgba(255,255,255,0.6)',</span></span><br><span class="line"><span class="undefined">		tips_content:&#123;&#125;,</span></span><br><span class="line"><span class="undefined">		timeout:30</span></span><br><span class="line"><span class="undefined">	&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="将控制按钮加入body页面"><a href="#将控制按钮加入body页面" class="headerlink" title="将控制按钮加入body页面"></a>将控制按钮加入body页面</h4><p>&emsp;&emsp;在theme/next/layout文件夹下打开_layout.swig文件，在前添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include '_custom/myapcontroler.swig' %&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;到此，自定义音乐播放控制边栏就基本完成，完成整个配置需要根据自己的主题背景进一步修改完善。</p>
+<hr>
+<p><strong><font color="red" size="3" face="仿宋">本教程到此结束，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wordzzzz.github.io/2018/01/10/HEXO/" title="我的个人博客之旅：从jekyll到hexo">https://wordzzzz.github.io/2018/01/10/HEXO/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jekyll/" rel="tag"># jekyll</a>
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+            <a href="/tags/github/" rel="tag"># github</a>
+          
+            <a href="/tags/gitee/" rel="tag"># gitee</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/09/DS/" rel="next" title="数据结构与算法系列之一：八大排序综述">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法系列之一：八大排序综述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/wordzzzz" target="_blank" title="Gitee">
+                    
+                      <i class="fa fa-fw fa-glide"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/wordzzzz" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="CSDN博客主页" target="_blank">CSDN博客主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wordzzzz.gitee.io" title="中国站主页" target="_blank">中国站主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wordzzzz.github.io" title="全球站主页" target="_blank">全球站主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: '你曾是少年',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://mp3.qqmusic.cc/yq/102426570.mp3',  // Required, music url
+        pic: '/images/visitor.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Pages"><span class="nav-number">2.</span> <span class="nav-text">GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jekyll-or-hexo"><span class="nav-number">3.</span> <span class="nav-text">jekyll or hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题"><span class="nav-number">4.</span> <span class="nav-text">next主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#评论系统"><span class="nav-number">4.1.</span> <span class="nav-text">评论系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据统计与分析"><span class="nav-number">4.2.</span> <span class="nav-text">数据统计与分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阅读量统计"><span class="nav-number">4.3.</span> <span class="nav-text">阅读量统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容分享服务"><span class="nav-number">4.4.</span> <span class="nav-text">内容分享服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索服务"><span class="nav-number">4.5.</span> <span class="nav-text">搜索服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网站收录"><span class="nav-number">4.6.</span> <span class="nav-text">网站收录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他服务"><span class="nav-number">4.7.</span> <span class="nav-text">其他服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next进阶"><span class="nav-number">5.</span> <span class="nav-text">next进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#给页面添加背景图片"><span class="nav-number">5.1.</span> <span class="nav-text">给页面添加背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给侧边栏添加背景图片"><span class="nav-number">5.2.</span> <span class="nav-text">给侧边栏添加背景图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文字背景色以及半透明的设置"><span class="nav-number">5.3.</span> <span class="nav-text">文字背景色以及半透明的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评论-来必力-添加背景色"><span class="nav-number">5.4.</span> <span class="nav-text">评论(来必力)添加背景色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现点击出现桃心效果"><span class="nav-number">5.5.</span> <span class="nav-text">实现点击出现桃心效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#侧边栏头像旋转"><span class="nav-number">5.6.</span> <span class="nav-text">侧边栏头像旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置鼠标划入侧边栏才显示站点信息："><span class="nav-number">5.7.</span> <span class="nav-text">设置鼠标划入侧边栏才显示站点信息：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置自定义div"><span class="nav-number">5.7.1.</span> <span class="nav-text">设置自定义div</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义区域的初始化设置"><span class="nav-number">5.7.2.</span> <span class="nav-text">自定义区域的初始化设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义音乐播放器"><span class="nav-number">5.8.</span> <span class="nav-text">自定义音乐播放器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装APlayer插件"><span class="nav-number">5.8.1.</span> <span class="nav-text">安装APlayer插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成音乐播放器"><span class="nav-number">5.8.2.</span> <span class="nav-text">生成音乐播放器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义播放器样式"><span class="nav-number">5.8.3.</span> <span class="nav-text">自定义播放器样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义萌萌哒音乐播放控制边栏"><span class="nav-number">5.9.</span> <span class="nav-text">自定义萌萌哒音乐播放控制边栏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装aplayer-controler插件"><span class="nav-number">5.9.1.</span> <span class="nav-text">安装aplayer-controler插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加js代码"><span class="nav-number">5.9.2.</span> <span class="nav-text">添加js代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建按钮区域"><span class="nav-number">5.9.3.</span> <span class="nav-text">创建按钮区域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将控制按钮加入body页面"><span class="nav-number">5.9.4.</span> <span class="nav-text">将控制按钮加入body页面</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">158.6k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
