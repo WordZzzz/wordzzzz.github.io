@@ -1949,7 +1949,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fffe36;
+  background: #9420ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2849,13 +2849,14 @@ body {
 .content {
   border-radius: 20px;
   padding: 30px 60px 30px 60px;
-  background: rgba(255,255,255,0.8) none repeat scroll !important;
+  background: rgba(0,0,0,0.8) none repeat scroll !important;
 }
 #sidebar {
   background: url("/images/sidebar.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0.5);
 /* 设置字体颜色 */
 }
 #sidebar p,

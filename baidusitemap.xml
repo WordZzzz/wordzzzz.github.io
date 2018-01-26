@@ -4,6 +4,94 @@
 
     
   <url>
+    <loc>http://wordzzzz.gitee.io/2018/01/26/Greedy3/</loc>
+    <lastmod>2018-01-26T13:42:52.897Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（贪心）：minimum-window-substring</title>
+        <pubTime>2018-01-25T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Greedy</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wordzzzz.gitee.io/2018/01/26/Greedy2/</loc>
+    <lastmod>2018-01-26T13:42:23.580Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（贪心）：maximal-rectangle</title>
+        <pubTime>2018-01-25T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Greedy</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wordzzzz.gitee.io/2018/01/26/Greedy1/</loc>
+    <lastmod>2018-01-26T13:41:55.145Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（贪心）：gas-station</title>
+        <pubTime>2018-01-25T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Greedy</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://wordzzzz.gitee.io/2018/01/26/Recursive/</loc>
+    <lastmod>2018-01-26T13:41:18.306Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（递归）：valid-palindrome</title>
+        <pubTime>2018-01-25T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Recursive</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wordzzzz.gitee.io/2018/01/22/LIST6/</loc>
     <lastmod>2018-01-22T03:14:00.693Z</lastmod>
     <data>
