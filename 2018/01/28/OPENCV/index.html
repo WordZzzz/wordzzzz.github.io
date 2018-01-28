@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta name="baidu-site-verification" content="UqlC4pwKIm" />
+  <meta name="baidu-site-verification" content="d3U0dGeqGw" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1C1XSuJ8TgM2O0mcZvsgzEdy0IdRZOJfxDYPyh18U9Q" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OPENCV2,OPENCV3,畸变校正," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WordZzzz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/fisheye_calibration 软件版本：VS2013+OPENCV2.4.13 OR VS2013+OPENCV3.4.0 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 我的代码&amp;emsp;&amp;emsp;最近在整理自">
+<meta name="keywords" content="OPENCV2,OPENCV3,畸变校正">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鱼眼摄像头标定与畸变校正（双OPENCV版本）">
+<meta property="og:url" content="https://wordzzzz.github.io/2018/01/28/OPENCV/index.html">
+<meta property="og:site_name" content="WordZzzz">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/fisheye_calibration 软件版本：VS2013+OPENCV2.4.13 OR VS2013+OPENCV3.4.0 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 我的代码&amp;emsp;&amp;emsp;最近在整理自">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20180128134953810?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180128135032366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-01-28T05:51:11.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鱼眼摄像头标定与畸变校正（双OPENCV版本）">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/fisheye_calibration 软件版本：VS2013+OPENCV2.4.13 OR VS2013+OPENCV3.4.0 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 我的代码&amp;emsp;&amp;emsp;最近在整理自">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20180128134953810?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wordzzzz.github.io/2018/01/28/OPENCV/"/>
+
+
+
+
+
+  <title>鱼眼摄像头标定与畸变校正（双OPENCV版本） | WordZzzz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-111723881-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38fde15c2737a3b69622e9dd4f67f6f1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WordZzzz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">My Awesome Site</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iq-MyA_RWX5unhdM-oNs','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wordzzzz.github.io/2018/01/28/OPENCV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Word Zzzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WordZzzz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">鱼眼摄像头标定与畸变校正（双OPENCV版本）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T00:00:00+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-28T13:51:11+08:00">
+                2018-01-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OPENCV/" itemprop="url" rel="index">
+                    <span itemprop="name">OPENCV</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/28/OPENCV/" class="leancloud_visitors" data-flag-title="鱼眼摄像头标定与畸变校正（双OPENCV版本）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,840
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><hr>
+<ul>
+<li><strong>转载请注明作者和出处：<a href="http://blog.csdn.net/u011475210" target="_blank" rel="noopener">http://blog.csdn.net/u011475210</a></strong></li>
+<li><strong>代码地址：<a href="https://github.com/WordZzzz/fisheye_calibration" target="_blank" rel="noopener">https://github.com/WordZzzz/fisheye_calibration</a></strong></li>
+<li><strong>软件版本：VS2013+OPENCV2.4.13 OR VS2013+OPENCV3.4.0</strong></li>
+<li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
+</ul>
+<hr>
+<p>[toc]</p>
+<h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><p>&emsp;&emsp;最近在整理自己以前做过的一些东西，这是基于opencv的鱼眼摄像头畸变校正程序的<a href="https://github.com/WordZzzz/fisheye_calibration" target="_blank" rel="noopener">github地址</a>。</p>
+<p>其中：</p>
+<ul>
+<li>normal_calibrate：基于OPENCV2与OPENCV3通用的函数实现，可实现USB摄像头实时畸变校正；</li>
+<li>fishey_calibrate：基于OPENCV3独有的fishyey结构体实现，可实现USB摄像头实时畸变校正；</li>
+<li>fishey_calibrate_img：基于OPENCV3独有的fishyey结构体实现，可实现单张图片畸变校正；</li>
+</ul>
+<p>&emsp;&emsp;opencv1.0 2.0版只有一种摄像机标定模型，就是普通的小孔成像模型，在cv：：空间下。而从opencv3.0开始，新增了一种鱼眼相机标定模型，在fisheye::空间下。两种模型的主要区别在于像与物的投影关系不同，具体的文献资料依然是数不胜数，这里就不赘述。根据opencv官方文档的建议，在畸变程度较大的广角镜头（比如：鱼眼镜头）上进行摄像机标定和畸变校正，最好是用fisheye模型，该模型在图像边缘畸变程度很大的地方比普通相机模型的效果要好。</p>
+<p>&emsp;&emsp;当然，还是要贴上官方文档的：</p>
+<ul>
+<li><a href="https://docs.opencv.org/2.4/doc/tutorials/calib3d/camera_calibration/camera_calibration.html" target="_blank" rel="noopener">Camera calibration With OpenCV2</a>；</li>
+<li><a href="https://docs.opencv.org/trunk/db/d58/group__calib3d__fisheye.html" target="_blank" rel="noopener">Camera calibration With OpenCV3</a>；</li>
+</ul>
+<hr>
+<p>华丽的分割线</p>
+<hr>
+<h2 id="可供参考资料"><a href="#可供参考资料" class="headerlink" title="可供参考资料"></a>可供参考资料</h2><p>&emsp;&emsp;以下是在写这篇博客的时候偶然发现的对opencv两个版本标定过程的讲解，这里直接copy过来并稍微做了一下排版，因为自己忙于为找工作做准备，实在是没时间自己整理了。<a href="http://www.cnblogs.com/riddick/p/7811877.html" target="_blank" rel="noopener">原文链接</a>。</p>
+<p>&emsp;&emsp;图像算法中会经常用到摄像机的畸变校正，有必要总结分析OpenCV中畸变校正方法，其中包括普通针孔相机模型和鱼眼相机模型fisheye两种畸变校正方法。</p>
+<p>&emsp;&emsp;普通相机模型畸变校正函数针对OpenCV中的cv::initUndistortRectifyMap()，鱼眼相机模型畸变校正函数对应OpenCV中的cv::fisheye::initUndistortRectifyMap()。两种方法算出映射Mapx和Mapy后，统一用cv::Remap()函数进行插值得到校正后的图像。</p>
+<h3 id="FishEye模型的畸变校正。"><a href="#FishEye模型的畸变校正。" class="headerlink" title="FishEye模型的畸变校正。"></a>FishEye模型的畸变校正。</h3><p>&emsp;&emsp;方便起见，直接贴出OpenCV源码，我在里面加了注释说明。建议参考<a href="https://docs.opencv.org/3.0-beta/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#fisheye-initundistortrectifymap" target="_blank" rel="noopener">OpenCV官方文档</a>看畸变模型原理会更清楚。</p>
+<p>&emsp;&emsp;简要流程就是：</p>
+<ul>
+<li><p>1.求内参矩阵的逆，由于摄像机坐标系的三维点到二维图像平面，需要乘以旋转矩阵R和内参矩阵K。那么反向投影回去则是二维图像坐标乘以  K*R的逆矩阵。</p>
+</li>
+<li><p>2.将目标图像中的每一个像素点坐标(j,i)，乘以1中求出的逆矩阵iR，转换到摄像机坐标系（_x,_y,_w）,并归一化得到z=1平面下的三维坐标(x,y,1)。</p>
+</li>
+<li><p>3.求出平面模型下像素点对应鱼眼半球模型下的极坐标(r, theta)。</p>
+</li>
+<li><p>4.利用鱼眼畸变模型求出拥有畸变时像素点对应的theta_d。</p>
+</li>
+</ul>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180128134953810?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p>
+
+<ul>
+<li><p>5.利用求出的theta_d值将三维坐标点重投影到二维图像平面得到(u,v)，(u,v)即为目标图像对应的畸变图像中像素点坐标。</p>
+</li>
+<li><p>6.使用cv::Remap（）函数，根据mapx,mapy取出对应坐标位置的像素值赋值给目标图像，一般采用双线性插值法，得到畸变校正后的目标图像。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> cv::fisheye::initUndistortRectifyMap( InputArray K, InputArray D, InputArray R, InputArray P,</span><br><span class="line">    <span class="keyword">const</span> cv::Size&amp; size, <span class="keyword">int</span> m1type, OutputArray map1, OutputArray map2 )</span><br><span class="line">&#123;</span><br><span class="line">    CV_Assert( m1type == CV_16SC2 || m1type == CV_32F || m1type &lt;=<span class="number">0</span> );</span><br><span class="line">    map1.create( size, m1type &lt;= <span class="number">0</span> ? CV_16SC2 : m1type );</span><br><span class="line">    map2.create( size, map1.type() == CV_16SC2 ? CV_16UC1 : CV_32F );</span><br><span class="line"></span><br><span class="line">    CV_Assert((K.depth() == CV_32F || K.depth() == CV_64F) &amp;&amp; (D.depth() == CV_32F || D.depth() == CV_64F));</span><br><span class="line">    CV_Assert((P.empty() || P.depth() == CV_32F || P.depth() == CV_64F) &amp;&amp; (R.empty() || R.depth() == CV_32F || R.depth() == CV_64F));</span><br><span class="line">    CV_Assert(K.size() == Size(<span class="number">3</span>, <span class="number">3</span>) &amp;&amp; (D.empty() || D.total() == <span class="number">4</span>));</span><br><span class="line">    CV_Assert(R.empty() || R.size() == Size(<span class="number">3</span>, <span class="number">3</span>) || R.total() * R.channels() == <span class="number">3</span>);</span><br><span class="line">    CV_Assert(P.empty() || P.size() == Size(<span class="number">3</span>, <span class="number">3</span>) || P.size() == Size(<span class="number">4</span>, <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从内参矩阵K中取出归一化焦距fx,fy; cx,cy</span></span><br><span class="line">    cv::Vec2d f, c;</span><br><span class="line">    <span class="keyword">if</span> (K.depth() == CV_32F)</span><br><span class="line">    &#123;</span><br><span class="line">        Matx33f camMat = K.getMat();</span><br><span class="line">        f = Vec2f(camMat(<span class="number">0</span>, <span class="number">0</span>), camMat(<span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">        c = Vec2f(camMat(<span class="number">0</span>, <span class="number">2</span>), camMat(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Matx33d camMat = K.getMat();</span><br><span class="line">        f = Vec2d(camMat(<span class="number">0</span>, <span class="number">0</span>), camMat(<span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">        c = Vec2d(camMat(<span class="number">0</span>, <span class="number">2</span>), camMat(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//从畸变系数矩阵D中取出畸变系数k1,k2,k3,k4</span></span><br><span class="line">    Vec4d k = Vec4d::all(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (!D.empty())</span><br><span class="line">        k = D.depth() == CV_32F ? (Vec4d)*D.getMat().ptr&lt;Vec4f&gt;(): *D.getMat().ptr&lt;Vec4d&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//旋转矩阵RR转换数据类型为CV_64F，如果不需要旋转，则RR为单位阵</span></span><br><span class="line">    cv::Matx33d RR  = cv::Matx33d::eye();</span><br><span class="line">    <span class="keyword">if</span> (!R.empty() &amp;&amp; R.total() * R.channels() == <span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cv::Vec3d rvec;</span><br><span class="line">        R.getMat().convertTo(rvec, CV_64F);</span><br><span class="line">        RR = Affine3d(rvec).rotation();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!R.empty() &amp;&amp; R.size() == Size(<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">        R.getMat().convertTo(RR, CV_64F);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//新的内参矩阵PP转换数据类型为CV_64F</span></span><br><span class="line">    cv::Matx33d PP = cv::Matx33d::eye();</span><br><span class="line">    <span class="keyword">if</span> (!P.empty())</span><br><span class="line">        P.getMat().colRange(<span class="number">0</span>, <span class="number">3</span>).convertTo(PP, CV_64F);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//关键一步：新的内参矩阵*旋转矩阵，然后利用SVD分解求出逆矩阵iR，后面用到</span></span><br><span class="line">    cv::Matx33d iR = (PP * RR).inv(cv::DECOMP_SVD);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//反向映射，遍历目标图像所有像素位置，找到畸变图像中对应位置坐标(u,v)，并分别保存坐标(u,v)到mapx和mapy中</span></span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size.height; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">float</span>* m1f = map1.getMat().ptr&lt;<span class="keyword">float</span>&gt;(i);</span><br><span class="line">        <span class="keyword">float</span>* m2f = map2.getMat().ptr&lt;<span class="keyword">float</span>&gt;(i);</span><br><span class="line">        <span class="keyword">short</span>*  m1 = (<span class="keyword">short</span>*)m1f;</span><br><span class="line">        ushort* m2 = (ushort*)m2f;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//二维图像平面坐标系-&gt;摄像机坐标系</span></span><br><span class="line">        <span class="keyword">double</span> _x = i*iR(<span class="number">0</span>, <span class="number">1</span>) + iR(<span class="number">0</span>, <span class="number">2</span>),</span><br><span class="line">               _y = i*iR(<span class="number">1</span>, <span class="number">1</span>) + iR(<span class="number">1</span>, <span class="number">2</span>),</span><br><span class="line">               _w = i*iR(<span class="number">2</span>, <span class="number">1</span>) + iR(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; size.width; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//归一化摄像机坐标系，相当于假定在Z=1平面上</span></span><br><span class="line">            <span class="keyword">double</span> x = _x/_w, y = _y/_w;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//求鱼眼半球体截面半径r</span></span><br><span class="line">            <span class="keyword">double</span> r = <span class="built_in">sqrt</span>(x*x + y*y);</span><br><span class="line">            <span class="comment">//求鱼眼半球面上一点与光心的连线和光轴的夹角Theta</span></span><br><span class="line">            <span class="keyword">double</span> theta = <span class="built_in">atan</span>(r);</span><br><span class="line">            <span class="comment">//畸变模型求出theta_d，相当于有畸变的角度值</span></span><br><span class="line">            <span class="keyword">double</span> theta2 = theta*theta, theta4 = theta2*theta2, theta6 = theta4*theta2, theta8 = theta4*theta4;</span><br><span class="line">            <span class="keyword">double</span> theta_d = theta * (<span class="number">1</span> + k[<span class="number">0</span>]*theta2 + k[<span class="number">1</span>]*theta4 + k[<span class="number">2</span>]*theta6 + k[<span class="number">3</span>]*theta8);</span><br><span class="line">            <span class="comment">//利用有畸变的Theta值，将摄像机坐标系下的归一化三维坐标，重投影到二维图像平面，得到(j,i)对应畸变图像中的(u,v)</span></span><br><span class="line">            <span class="keyword">double</span> scale = (r == <span class="number">0</span>) ? <span class="number">1.0</span> : theta_d / r;</span><br><span class="line">            <span class="keyword">double</span> u = f[<span class="number">0</span>]*x*scale + c[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">double</span> v = f[<span class="number">1</span>]*y*scale + c[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">//保存(u,v)坐标到mapx,mapy</span></span><br><span class="line">            <span class="keyword">if</span>( m1type == CV_16SC2 )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> iu = cv::saturate_cast&lt;<span class="keyword">int</span>&gt;(u*cv::INTER_TAB_SIZE);</span><br><span class="line">                <span class="keyword">int</span> iv = cv::saturate_cast&lt;<span class="keyword">int</span>&gt;(v*cv::INTER_TAB_SIZE);</span><br><span class="line">                m1[j*<span class="number">2</span>+<span class="number">0</span>] = (<span class="keyword">short</span>)(iu &gt;&gt; cv::INTER_BITS);</span><br><span class="line">                m1[j*<span class="number">2</span>+<span class="number">1</span>] = (<span class="keyword">short</span>)(iv &gt;&gt; cv::INTER_BITS);</span><br><span class="line">                m2[j] = (ushort)((iv &amp; (cv::INTER_TAB_SIZE<span class="number">-1</span>))*cv::INTER_TAB_SIZE + (iu &amp; (cv::INTER_TAB_SIZE<span class="number">-1</span>)));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>( m1type == CV_32FC1 )</span><br><span class="line">            &#123;</span><br><span class="line">                m1f[j] = (<span class="keyword">float</span>)u;</span><br><span class="line">                m2f[j] = (<span class="keyword">float</span>)v;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//这三条语句是上面 ”//二维图像平面坐标系-&gt;摄像机坐标系“的一部分，是矩阵iR的第一列，这样写能够简化计算</span></span><br><span class="line">            _x += iR(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">            _y += iR(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            _w += iR(<span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="普通相机模型的畸变校正"><a href="#普通相机模型的畸变校正" class="headerlink" title="普通相机模型的畸变校正"></a>普通相机模型的畸变校正</h3><p>&emsp;&emsp;同样建议参考<a href="https://docs.opencv.org/3.0-beta/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html" target="_blank" rel="noopener">OpenCV官方文档</a>阅读代码。</p>
+<p>&emsp;&emsp;主要流程和上面Fisheye模型差不多，只有第4部分的畸变模型不一样，普通相机的畸变模型如下：</p>
+<p></p><br><div align="center"><img src="http://img.blog.csdn.net/20180128135032366?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ3NTIxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></div><br><p></p> 
+
+<p>&emsp;&emsp;同样把源代码贴上，并加上注解：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> cv::initUndistortRectifyMap( InputArray _cameraMatrix, InputArray _distCoeffs,</span><br><span class="line">                              InputArray _matR, InputArray _newCameraMatrix,</span><br><span class="line">                              Size size, <span class="keyword">int</span> m1type, OutputArray _map1, OutputArray _map2 )</span><br><span class="line">&#123;</span><br><span class="line">    Mat cameraMatrix = _cameraMatrix.getMat(), distCoeffs = _distCoeffs.getMat();</span><br><span class="line">    Mat matR = _matR.getMat(), newCameraMatrix = _newCameraMatrix.getMat();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( m1type &lt;= <span class="number">0</span> )</span><br><span class="line">        m1type = CV_16SC2;</span><br><span class="line">    CV_Assert( m1type == CV_16SC2 || m1type == CV_32FC1 || m1type == CV_32FC2 );</span><br><span class="line">    _map1.create( size, m1type );</span><br><span class="line">    Mat map1 = _map1.getMat(), map2;</span><br><span class="line">    <span class="keyword">if</span>( m1type != CV_32FC2 )</span><br><span class="line">    &#123;</span><br><span class="line">        _map2.create( size, m1type == CV_16SC2 ? CV_16UC1 : CV_32FC1 );</span><br><span class="line">        map2 = _map2.getMat();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        _map2.release();</span><br><span class="line"></span><br><span class="line">    Mat_&lt;<span class="keyword">double</span>&gt; R = Mat_&lt;<span class="keyword">double</span>&gt;::eye(<span class="number">3</span>, <span class="number">3</span>);</span><br><span class="line">    Mat_&lt;<span class="keyword">double</span>&gt; A = Mat_&lt;<span class="keyword">double</span>&gt;(cameraMatrix), Ar;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( !newCameraMatrix.empty() )</span><br><span class="line">        Ar = Mat_&lt;<span class="keyword">double</span>&gt;(newCameraMatrix);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        Ar = getDefaultNewCameraMatrix( A, size, <span class="literal">true</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( !matR.empty() )</span><br><span class="line">        R = Mat_&lt;<span class="keyword">double</span>&gt;(matR);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( !distCoeffs.empty() )</span><br><span class="line">        distCoeffs = Mat_&lt;<span class="keyword">double</span>&gt;(distCoeffs);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        distCoeffs.create(<span class="number">14</span>, <span class="number">1</span>, CV_64F);</span><br><span class="line">        distCoeffs = <span class="number">0.</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    CV_Assert( A.size() == Size(<span class="number">3</span>,<span class="number">3</span>) &amp;&amp; A.size() == R.size() );</span><br><span class="line">    CV_Assert( Ar.size() == Size(<span class="number">3</span>,<span class="number">3</span>) || Ar.size() == Size(<span class="number">4</span>, <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//LU分解求新的内参矩阵Ar与旋转矩阵R乘积的逆矩阵iR</span></span><br><span class="line">    Mat_&lt;<span class="keyword">double</span>&gt; iR = (Ar.colRange(<span class="number">0</span>,<span class="number">3</span>)*R).inv(DECOMP_LU);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span>* ir = &amp;iR(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从旧的内参矩阵中取出光心位置u0,v0,和归一化焦距fx,fy</span></span><br><span class="line">    <span class="keyword">double</span> u0 = A(<span class="number">0</span>, <span class="number">2</span>),  v0 = A(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">double</span> fx = A(<span class="number">0</span>, <span class="number">0</span>),  fy = A(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//尼玛14个畸变系数，不过大多用到的只有(k1,k2,p1,p2)，最多加一个k3，用不到的置为0</span></span><br><span class="line">    CV_Assert( distCoeffs.size() == Size(<span class="number">1</span>, <span class="number">4</span>) || distCoeffs.size() == Size(<span class="number">4</span>, <span class="number">1</span>) ||</span><br><span class="line">               distCoeffs.size() == Size(<span class="number">1</span>, <span class="number">5</span>) || distCoeffs.size() == Size(<span class="number">5</span>, <span class="number">1</span>) ||</span><br><span class="line">               distCoeffs.size() == Size(<span class="number">1</span>, <span class="number">8</span>) || distCoeffs.size() == Size(<span class="number">8</span>, <span class="number">1</span>) ||</span><br><span class="line">               distCoeffs.size() == Size(<span class="number">1</span>, <span class="number">12</span>) || distCoeffs.size() == Size(<span class="number">12</span>, <span class="number">1</span>) ||</span><br><span class="line">               distCoeffs.size() == Size(<span class="number">1</span>, <span class="number">14</span>) || distCoeffs.size() == Size(<span class="number">14</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( distCoeffs.rows != <span class="number">1</span> &amp;&amp; !distCoeffs.isContinuous() )</span><br><span class="line">        distCoeffs = distCoeffs.t();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span>* <span class="keyword">const</span> distPtr = distCoeffs.ptr&lt;<span class="keyword">double</span>&gt;();</span><br><span class="line">    <span class="keyword">double</span> k1 = distPtr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">double</span> k2 = distPtr[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">double</span> p1 = distPtr[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">double</span> p2 = distPtr[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">double</span> k3 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">5</span> ? distPtr[<span class="number">4</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> k4 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">8</span> ? distPtr[<span class="number">5</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> k5 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">8</span> ? distPtr[<span class="number">6</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> k6 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">8</span> ? distPtr[<span class="number">7</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> s1 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">12</span> ? distPtr[<span class="number">8</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> s2 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">12</span> ? distPtr[<span class="number">9</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> s3 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">12</span> ? distPtr[<span class="number">10</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> s4 = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">12</span> ? distPtr[<span class="number">11</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> tauX = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">14</span> ? distPtr[<span class="number">12</span>] : <span class="number">0.</span>;</span><br><span class="line">    <span class="keyword">double</span> tauY = distCoeffs.cols + distCoeffs.rows - <span class="number">1</span> &gt;= <span class="number">14</span> ? distPtr[<span class="number">13</span>] : <span class="number">0.</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//tauX,tauY这个是什么梯形畸变，用不到的话matTilt为单位阵</span></span><br><span class="line">    <span class="comment">// Matrix for trapezoidal distortion of tilted image sensor</span></span><br><span class="line">    cv::Matx33d matTilt = cv::Matx33d::eye();</span><br><span class="line">    cv::detail::computeTiltProjectionMatrix(tauX, tauY, &amp;matTilt);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size.height; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">float</span>* m1f = map1.ptr&lt;<span class="keyword">float</span>&gt;(i);</span><br><span class="line">        <span class="keyword">float</span>* m2f = map2.empty() ? <span class="number">0</span> : map2.ptr&lt;<span class="keyword">float</span>&gt;(i);</span><br><span class="line">        <span class="keyword">short</span>* m1 = (<span class="keyword">short</span>*)m1f;</span><br><span class="line">        ushort* m2 = (ushort*)m2f;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//利用逆矩阵iR将二维图像坐标(j,i)转换到摄像机坐标系(_x,_y,_w)</span></span><br><span class="line">        <span class="keyword">double</span> _x = i*ir[<span class="number">1</span>] + ir[<span class="number">2</span>], _y = i*ir[<span class="number">4</span>] + ir[<span class="number">5</span>], _w = i*ir[<span class="number">7</span>] + ir[<span class="number">8</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; size.width; j++, _x += ir[<span class="number">0</span>], _y += ir[<span class="number">3</span>], _w += ir[<span class="number">6</span>] )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//摄像机坐标系归一化，令Z=1平面</span></span><br><span class="line">            <span class="keyword">double</span> w = <span class="number">1.</span>/_w, x = _x*w, y = _y*w;</span><br><span class="line">             <span class="comment">//这一部分请看OpenCV官方文档，畸变模型部分</span></span><br><span class="line">            <span class="keyword">double</span> x2 = x*x, y2 = y*y;</span><br><span class="line">            <span class="keyword">double</span> r2 = x2 + y2, _2xy = <span class="number">2</span>*x*y;</span><br><span class="line">            <span class="keyword">double</span> kr = (<span class="number">1</span> + ((k3*r2 + k2)*r2 + k1)*r2)/(<span class="number">1</span> + ((k6*r2 + k5)*r2 + k4)*r2);</span><br><span class="line">            <span class="keyword">double</span> xd = (x*kr + p1*_2xy + p2*(r2 + <span class="number">2</span>*x2) + s1*r2+s2*r2*r2);</span><br><span class="line">            <span class="keyword">double</span> yd = (y*kr + p1*(r2 + <span class="number">2</span>*y2) + p2*_2xy + s3*r2+s4*r2*r2);</span><br><span class="line">           <span class="comment">//根据求取的xd,yd将三维坐标重投影到二维畸变图像坐标(u,v)</span></span><br><span class="line">            cv::Vec3d vecTilt = matTilt*cv::Vec3d(xd, yd, <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">double</span> invProj = vecTilt(<span class="number">2</span>) ? <span class="number">1.</span>/vecTilt(<span class="number">2</span>) : <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">double</span> u = fx*invProj*vecTilt(<span class="number">0</span>) + u0;</span><br><span class="line">            <span class="keyword">double</span> v = fy*invProj*vecTilt(<span class="number">1</span>) + v0;</span><br><span class="line">            <span class="comment">//保存u,v的值到Mapx,Mapy中</span></span><br><span class="line">            <span class="keyword">if</span>( m1type == CV_16SC2 )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> iu = saturate_cast&lt;<span class="keyword">int</span>&gt;(u*INTER_TAB_SIZE);</span><br><span class="line">                <span class="keyword">int</span> iv = saturate_cast&lt;<span class="keyword">int</span>&gt;(v*INTER_TAB_SIZE);</span><br><span class="line">                m1[j*<span class="number">2</span>] = (<span class="keyword">short</span>)(iu &gt;&gt; INTER_BITS);</span><br><span class="line">                m1[j*<span class="number">2</span>+<span class="number">1</span>] = (<span class="keyword">short</span>)(iv &gt;&gt; INTER_BITS);</span><br><span class="line">                m2[j] = (ushort)((iv &amp; (INTER_TAB_SIZE<span class="number">-1</span>))*INTER_TAB_SIZE + (iu &amp; (INTER_TAB_SIZE<span class="number">-1</span>)));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>( m1type == CV_32FC1 )</span><br><span class="line">            &#123;</span><br><span class="line">                m1f[j] = (<span class="keyword">float</span>)u;</span><br><span class="line">                m2f[j] = (<span class="keyword">float</span>)v;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                m1f[j*<span class="number">2</span>] = (<span class="keyword">float</span>)u;</span><br><span class="line">                m1f[j*<span class="number">2</span>+<span class="number">1</span>] = (<span class="keyword">float</span>)v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><font color="red" size="3" face="仿宋">希望对需要的人能有所帮助，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
+<p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Word Zzzz
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wordzzzz.github.io/2018/01/28/OPENCV/" title="鱼眼摄像头标定与畸变校正（双OPENCV版本）">https://wordzzzz.github.io/2018/01/28/OPENCV/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OPENCV2/" rel="tag"># OPENCV2</a>
+          
+            <a href="/tags/OPENCV3/" rel="tag"># OPENCV3</a>
+          
+            <a href="/tags/畸变校正/" rel="tag"># 畸变校正</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/26/Recursive/" rel="next" title="LeetCode刷题笔记（递归）：valid-palindrome">
+                <i class="fa fa-chevron-left"></i> LeetCode刷题笔记（递归）：valid-palindrome
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjgzNi85Mzk3"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Word Zzzz" />
+            
+              <p class="site-author-name" itemprop="name">Word Zzzz</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+			<!--my custom code begin-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+			<script type="text/javascript">
+			  $("#sidebar").hover(function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 1});
+			  },function(){
+				$("#mydivshow").velocity('stop').velocity({opacity: 0});
+			  });
+			</script>
+			<div id="mydivshow" class="mydivshow">
+			<!--my custom code end-->
+			
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">147</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wordzzzz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/wordzzzz" target="_blank" title="Gitee">
+                    
+                      <i class="fa fa-fw fa-glide"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:wordzzzzgm@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/u/3191972527?from=107C295010&wm=20005_0002&sourceType=weixin&uid=3191972527&is_all=1" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/wordzzzz" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-bell"></i>知乎</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/u011475210" title="CSDN博客主页" target="_blank">CSDN博客主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wordzzzz.gitee.io" title="中国站主页" target="_blank">中国站主页</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wordzzzz.github.io" title="全球站主页" target="_blank">全球站主页</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <div id="player1" class="aplayer"></div>
+<script src="/js/src/APlayer.min.js"></script>
+<script type="text/javascript">
+var ap = new APlayer({
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: false,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    mode: 'random',                                                    // Optional, play mode, can be `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                                             // Optional, max height of play list
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: '你曾是少年',                                          // Required, music title
+        author: 'cover',                          // Required, music author
+        url: 'http://mp3.qqmusic.cc/yq/102426570.mp3',  // Required, music url
+        pic: '/images/visitor.jpg',  // Optional, music picture
+    }
+});
+</script>
+        </div>
+		<!--my custom code begin-->
+		</div>
+		<!--my custom code end-->
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我的代码"><span class="nav-number">1.</span> <span class="nav-text">我的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可供参考资料"><span class="nav-number">2.</span> <span class="nav-text">可供参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FishEye模型的畸变校正。"><span class="nav-number">2.1.</span> <span class="nav-text">FishEye模型的畸变校正。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通相机模型的畸变校正"><span class="nav-number">2.2.</span> <span class="nav-text">普通相机模型的畸变校正</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Word Zzzz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">172.8k</span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tnjOBN3eibs4dfP2s8dFMF8s-gzGzoHsz", "tDaBF4vRsSyaeSk9vKOOow6E");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
+
+
+  <script src="/js/src/Aplayer-Controler.js"></script>
+<div id="AP-controler"></div>
+<script type="text/javascript">
+var myapc=new APlayer_Controler({
+		APC_dom:$('#AP-controler'),
+		aplayer:ap, //此为绑定的aplayer对象
+		attach_right:false,
+		position:{top:'300px',bottom:''},
+		fixed:true,
+		btn_width:100,
+		btn_height:120,
+		img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/pentigirl.jpg',
+				'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+		img_style:{repeat:'no-repeat',position:'center',size:'contain'},
+		ctrls_color:'rgba(173,255,47,0.8)',
+		ctrls_hover_color:'rgba(255,140,0,0.7)',
+		tips_on:true,
+		tips_width:140,
+		tips_height:25,
+		tips_color:'rgba(255,255,255,0.6)',
+		tips_content:{},
+		timeout:30
+	});
+</script>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+</body>
+</html>
