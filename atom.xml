@@ -5,9 +5,9 @@
   <subtitle>My Awesome Site</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://wordzzzz.gitee.io/"/>
+  <link href="https://wordzzzz.github.io/"/>
   <updated>2018-02-02T12:14:16.797Z</updated>
-  <id>http://wordzzzz.gitee.io/</id>
+  <id>https://wordzzzz.github.io/</id>
   
   <author>
     <name>Word Zzzz</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>LeetCode刷题笔记（模拟）：divide-two-integers</title>
-    <link href="http://wordzzzz.gitee.io/2018/02/02/Simulation3/"/>
-    <id>http://wordzzzz.gitee.io/2018/02/02/Simulation3/</id>
+    <link href="https://wordzzzz.github.io/2018/02/02/Simulation3/"/>
+    <id>https://wordzzzz.github.io/2018/02/02/Simulation3/</id>
     <published>2018-02-01T16:00:00.000Z</published>
     <updated>2018-02-02T12:14:16.797Z</updated>
     
@@ -36,19 +36,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Simulation" scheme="http://wordzzzz.gitee.io/tags/Simulation/"/>
+      <category term="Simulation" scheme="https://wordzzzz.github.io/tags/Simulation/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（模拟）：pascals-triangle-ii</title>
-    <link href="http://wordzzzz.gitee.io/2018/02/02/Simulation2/"/>
-    <id>http://wordzzzz.gitee.io/2018/02/02/Simulation2/</id>
+    <link href="https://wordzzzz.github.io/2018/02/02/Simulation2/"/>
+    <id>https://wordzzzz.github.io/2018/02/02/Simulation2/</id>
     <published>2018-02-01T16:00:00.000Z</published>
     <updated>2018-02-02T12:13:49.803Z</updated>
     
@@ -65,19 +65,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Simulation" scheme="http://wordzzzz.gitee.io/tags/Simulation/"/>
+      <category term="Simulation" scheme="https://wordzzzz.github.io/tags/Simulation/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（穷举）：max-points-on-a-line</title>
-    <link href="http://wordzzzz.gitee.io/2018/02/02/Exhaustive/"/>
-    <id>http://wordzzzz.gitee.io/2018/02/02/Exhaustive/</id>
+    <link href="https://wordzzzz.github.io/2018/02/02/Exhaustive/"/>
+    <id>https://wordzzzz.github.io/2018/02/02/Exhaustive/</id>
     <published>2018-02-01T16:00:00.000Z</published>
     <updated>2018-02-02T12:12:48.156Z</updated>
     
@@ -94,19 +94,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Exhaustive" scheme="http://wordzzzz.gitee.io/tags/Exhaustive/"/>
+      <category term="Exhaustive" scheme="https://wordzzzz.github.io/tags/Exhaustive/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（模拟）：pascals-triangle</title>
-    <link href="http://wordzzzz.gitee.io/2018/02/02/Simulation1/"/>
-    <id>http://wordzzzz.gitee.io/2018/02/02/Simulation1/</id>
+    <link href="https://wordzzzz.github.io/2018/02/02/Simulation1/"/>
+    <id>https://wordzzzz.github.io/2018/02/02/Simulation1/</id>
     <published>2018-02-01T16:00:00.000Z</published>
     <updated>2018-02-02T12:13:21.779Z</updated>
     
@@ -123,19 +123,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Simulation" scheme="http://wordzzzz.gitee.io/tags/Simulation/"/>
+      <category term="Simulation" scheme="https://wordzzzz.github.io/tags/Simulation/"/>
     
   </entry>
   
   <entry>
     <title>鱼眼摄像头标定与畸变校正（双OPENCV版本）</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/28/OPENCV/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/28/OPENCV/</id>
+    <link href="https://wordzzzz.github.io/2018/01/28/OPENCV/"/>
+    <id>https://wordzzzz.github.io/2018/01/28/OPENCV/</id>
     <published>2018-01-27T16:00:00.000Z</published>
     <updated>2018-01-28T05:51:11.704Z</updated>
     
@@ -152,21 +152,21 @@
     
     </summary>
     
-      <category term="OPENCV" scheme="http://wordzzzz.gitee.io/categories/OPENCV/"/>
+      <category term="OPENCV" scheme="https://wordzzzz.github.io/categories/OPENCV/"/>
     
     
-      <category term="OPENCV2" scheme="http://wordzzzz.gitee.io/tags/OPENCV2/"/>
+      <category term="OPENCV2" scheme="https://wordzzzz.github.io/tags/OPENCV2/"/>
     
-      <category term="OPENCV3" scheme="http://wordzzzz.gitee.io/tags/OPENCV3/"/>
+      <category term="OPENCV3" scheme="https://wordzzzz.github.io/tags/OPENCV3/"/>
     
-      <category term="畸变校正" scheme="http://wordzzzz.gitee.io/tags/%E7%95%B8%E5%8F%98%E6%A0%A1%E6%AD%A3/"/>
+      <category term="畸变校正" scheme="https://wordzzzz.github.io/tags/%E7%95%B8%E5%8F%98%E6%A0%A1%E6%AD%A3/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（贪心）：minimum-window-substring</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/26/Greedy3/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/26/Greedy3/</id>
+    <link href="https://wordzzzz.github.io/2018/01/26/Greedy3/"/>
+    <id>https://wordzzzz.github.io/2018/01/26/Greedy3/</id>
     <published>2018-01-25T16:00:00.000Z</published>
     <updated>2018-01-26T13:42:52.897Z</updated>
     
@@ -183,19 +183,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Greedy" scheme="http://wordzzzz.gitee.io/tags/Greedy/"/>
+      <category term="Greedy" scheme="https://wordzzzz.github.io/tags/Greedy/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（贪心）：gas-station</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/26/Greedy1/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/26/Greedy1/</id>
+    <link href="https://wordzzzz.github.io/2018/01/26/Greedy1/"/>
+    <id>https://wordzzzz.github.io/2018/01/26/Greedy1/</id>
     <published>2018-01-25T16:00:00.000Z</published>
     <updated>2018-01-26T13:41:55.145Z</updated>
     
@@ -212,19 +212,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Greedy" scheme="http://wordzzzz.gitee.io/tags/Greedy/"/>
+      <category term="Greedy" scheme="https://wordzzzz.github.io/tags/Greedy/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（递归）：valid-palindrome</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/26/Recursive/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/26/Recursive/</id>
+    <link href="https://wordzzzz.github.io/2018/01/26/Recursive/"/>
+    <id>https://wordzzzz.github.io/2018/01/26/Recursive/</id>
     <published>2018-01-25T16:00:00.000Z</published>
     <updated>2018-01-26T13:41:18.306Z</updated>
     
@@ -241,19 +241,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Recursive" scheme="http://wordzzzz.gitee.io/tags/Recursive/"/>
+      <category term="Recursive" scheme="https://wordzzzz.github.io/tags/Recursive/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（贪心）：maximal-rectangle</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/26/Greedy2/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/26/Greedy2/</id>
+    <link href="https://wordzzzz.github.io/2018/01/26/Greedy2/"/>
+    <id>https://wordzzzz.github.io/2018/01/26/Greedy2/</id>
     <published>2018-01-25T16:00:00.000Z</published>
     <updated>2018-01-26T13:42:23.580Z</updated>
     
@@ -270,19 +270,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="Greedy" scheme="http://wordzzzz.gitee.io/tags/Greedy/"/>
+      <category term="Greedy" scheme="https://wordzzzz.github.io/tags/Greedy/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：reverse-nodes-in-k-group</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/22/LIST1/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/22/LIST1/</id>
+    <link href="https://wordzzzz.github.io/2018/01/22/LIST1/"/>
+    <id>https://wordzzzz.github.io/2018/01/22/LIST1/</id>
     <published>2018-01-21T16:00:00.000Z</published>
     <updated>2018-01-22T03:09:28.469Z</updated>
     
@@ -299,19 +299,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：add-two-numbers</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/22/LIST5/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/22/LIST5/</id>
+    <link href="https://wordzzzz.github.io/2018/01/22/LIST5/"/>
+    <id>https://wordzzzz.github.io/2018/01/22/LIST5/</id>
     <published>2018-01-21T16:00:00.000Z</published>
     <updated>2018-01-22T03:13:11.020Z</updated>
     
@@ -328,19 +328,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：remove-nth-node-from-end-of-list</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/22/LIST4/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/22/LIST4/</id>
+    <link href="https://wordzzzz.github.io/2018/01/22/LIST4/"/>
+    <id>https://wordzzzz.github.io/2018/01/22/LIST4/</id>
     <published>2018-01-21T16:00:00.000Z</published>
     <updated>2018-01-22T03:12:03.256Z</updated>
     
@@ -357,19 +357,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：median-of-two-sorted-arrays</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/22/LIST6/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/22/LIST6/</id>
+    <link href="https://wordzzzz.github.io/2018/01/22/LIST6/"/>
+    <id>https://wordzzzz.github.io/2018/01/22/LIST6/</id>
     <published>2018-01-21T16:00:00.000Z</published>
     <updated>2018-01-22T03:14:00.693Z</updated>
     
@@ -386,19 +386,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：merge-k-sorted-lists</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/22/LIST3/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/22/LIST3/</id>
+    <link href="https://wordzzzz.github.io/2018/01/22/LIST3/"/>
+    <id>https://wordzzzz.github.io/2018/01/22/LIST3/</id>
     <published>2018-01-21T16:00:00.000Z</published>
     <updated>2018-01-22T03:11:07.273Z</updated>
     
@@ -415,19 +415,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：swap-nodes-in-pairs</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/22/LIST2/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/22/LIST2/</id>
+    <link href="https://wordzzzz.github.io/2018/01/22/LIST2/"/>
+    <id>https://wordzzzz.github.io/2018/01/22/LIST2/</id>
     <published>2018-01-21T16:00:00.000Z</published>
     <updated>2018-01-22T03:10:10.036Z</updated>
     
@@ -444,19 +444,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：remove-duplicates-from-sorted-list</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/17/LIST1/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/17/LIST1/</id>
+    <link href="https://wordzzzz.github.io/2018/01/17/LIST1/"/>
+    <id>https://wordzzzz.github.io/2018/01/17/LIST1/</id>
     <published>2018-01-16T16:00:00.000Z</published>
     <updated>2018-01-17T03:09:34.419Z</updated>
     
@@ -473,19 +473,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：merge-two-sorted-lists</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/17/LIST3/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/17/LIST3/</id>
+    <link href="https://wordzzzz.github.io/2018/01/17/LIST3/"/>
+    <id>https://wordzzzz.github.io/2018/01/17/LIST3/</id>
     <published>2018-01-16T16:00:00.000Z</published>
     <updated>2018-01-17T03:10:34.492Z</updated>
     
@@ -502,19 +502,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：rotate-list</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/17/LIST4/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/17/LIST4/</id>
+    <link href="https://wordzzzz.github.io/2018/01/17/LIST4/"/>
+    <id>https://wordzzzz.github.io/2018/01/17/LIST4/</id>
     <published>2018-01-16T16:00:00.000Z</published>
     <updated>2018-01-17T03:11:04.806Z</updated>
     
@@ -531,19 +531,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：remove-duplicates-from-sorted-list-ii</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/17/LIST2/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/17/LIST2/</id>
+    <link href="https://wordzzzz.github.io/2018/01/17/LIST2/"/>
+    <id>https://wordzzzz.github.io/2018/01/17/LIST2/</id>
     <published>2018-01-16T16:00:00.000Z</published>
     <updated>2018-01-17T03:10:06.059Z</updated>
     
@@ -560,19 +560,19 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode刷题笔记（链表）：partition-list</title>
-    <link href="http://wordzzzz.gitee.io/2018/01/16/LIST4/"/>
-    <id>http://wordzzzz.gitee.io/2018/01/16/LIST4/</id>
+    <link href="https://wordzzzz.github.io/2018/01/16/LIST4/"/>
+    <id>https://wordzzzz.github.io/2018/01/16/LIST4/</id>
     <published>2018-01-15T16:00:00.000Z</published>
     <updated>2018-01-16T12:55:12.428Z</updated>
     
@@ -589,12 +589,12 @@
     
     </summary>
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/categories/Leetcode/"/>
     
     
-      <category term="Leetcode" scheme="http://wordzzzz.gitee.io/tags/Leetcode/"/>
+      <category term="Leetcode" scheme="https://wordzzzz.github.io/tags/Leetcode/"/>
     
-      <category term="List" scheme="http://wordzzzz.gitee.io/tags/List/"/>
+      <category term="List" scheme="https://wordzzzz.github.io/tags/List/"/>
     
   </entry>
   
