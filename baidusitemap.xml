@@ -4,6 +4,118 @@
 
     
   <url>
+    <loc>https://wordzzzz.github.io/2018/02/07/Tree4/</loc>
+    <lastmod>2018-02-07T03:21:11.605Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（树）：sum-root-to-leaf-numbers</title>
+        <pubTime>2018-02-06T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Tree</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="https://wordzzzz.github.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wordzzzz.github.io/2018/02/07/Tree3/</loc>
+    <lastmod>2018-02-07T03:20:45.811Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（树）：binary-tree-preorder-traversal</title>
+        <pubTime>2018-02-06T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Tree</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="https://wordzzzz.github.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wordzzzz.github.io/2018/02/07/Tree2/</loc>
+    <lastmod>2018-02-07T03:20:13.994Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（树）：binary-tree-postorder-traversal</title>
+        <pubTime>2018-02-06T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Tree</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="https://wordzzzz.github.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wordzzzz.github.io/2018/02/07/Tree1/</loc>
+    <lastmod>2018-02-07T03:19:46.063Z</lastmod>
+    <data>
+        <display>
+        <title>LeetCode刷题笔记（树）：minimum-depth-of-binary-tree</title>
+        <pubTime>2018-02-06T16:00:00.000Z</pubTime>
+        
+        <tag>Leetcode</tag>
+         
+        <tag>Tree</tag>
+         
+         
+           
+             
+              <breadCrumb title="Leetcode" url="https://wordzzzz.github.io/categories/Leetcode/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wordzzzz.github.io/2017/12/13/offer-43/</loc>
+    <lastmod>2018-02-05T14:44:32.283Z</lastmod>
+    <data>
+        <display>
+        <title>《剑指offer》刷题笔记（树）：把二叉树打印成多行</title>
+        <pubTime>2017-12-12T16:00:00.000Z</pubTime>
+        
+        <tag>AtOffer</tag>
+         
+        <tag>c++</tag>
+         
+        <tag>树</tag>
+         
+         
+           
+             
+              <breadCrumb title="AtOffer" url="https://wordzzzz.github.io/categories/AtOffer/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://wordzzzz.github.io/2018/02/02/Simulation3/</loc>
     <lastmod>2018-02-02T12:14:16.797Z</lastmod>
     <data>
@@ -2937,30 +3049,6 @@
     <data>
         <display>
         <title>《剑指offer》刷题笔记（树）：按之字形顺序打印二叉树</title>
-        <pubTime>2017-12-12T16:00:00.000Z</pubTime>
-        
-        <tag>AtOffer</tag>
-         
-        <tag>c++</tag>
-         
-        <tag>树</tag>
-         
-         
-           
-             
-              <breadCrumb title="AtOffer" url="https://wordzzzz.github.io/categories/AtOffer/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://wordzzzz.github.io/2017/12/13/offer-43/</loc>
-    <lastmod>2018-01-01T06:58:54.733Z</lastmod>
-    <data>
-        <display>
-        <title>《剑指offer》刷题笔记（树）：把二叉树打印成多行</title>
         <pubTime>2017-12-12T16:00:00.000Z</pubTime>
         
         <tag>AtOffer</tag>

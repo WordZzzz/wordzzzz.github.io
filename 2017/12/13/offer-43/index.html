@@ -136,18 +136,18 @@
 
 
 
-<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/Note/tree/master/AtOffer 刷题平台：https://www.nowcoder.com/ 题&amp;emsp;&amp;emsp;库：剑指offer 编&amp;emsp;&amp;emsp;者：WordZzzz   题目描述从上到下按层打印二叉树，">
+<meta name="description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/Note/tree/master/AtOffer 刷题平台：https://www.nowcoder.com/ 题&amp;emsp;&amp;emsp;库：剑指offer 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 题目描述从上到下按层">
 <meta name="keywords" content="AtOffer,c++,树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《剑指offer》刷题笔记（树）：把二叉树打印成多行">
 <meta property="og:url" content="https://wordzzzz.github.io/2017/12/13/offer-43/index.html">
 <meta property="og:site_name" content="WordZzzz">
-<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/Note/tree/master/AtOffer 刷题平台：https://www.nowcoder.com/ 题&amp;emsp;&amp;emsp;库：剑指offer 编&amp;emsp;&amp;emsp;者：WordZzzz   题目描述从上到下按层打印二叉树，">
+<meta property="og:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/Note/tree/master/AtOffer 刷题平台：https://www.nowcoder.com/ 题&amp;emsp;&amp;emsp;库：剑指offer 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 题目描述从上到下按层">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-01T06:58:54.733Z">
+<meta property="og:updated_time" content="2018-02-05T14:44:32.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《剑指offer》刷题笔记（树）：把二叉树打印成多行">
-<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/Note/tree/master/AtOffer 刷题平台：https://www.nowcoder.com/ 题&amp;emsp;&amp;emsp;库：剑指offer 编&amp;emsp;&amp;emsp;者：WordZzzz   题目描述从上到下按层打印二叉树，">
+<meta name="twitter:description" content="转载请注明作者和出处：http://blog.csdn.net/u011475210 代码地址：https://github.com/WordZzzz/Note/tree/master/AtOffer 刷题平台：https://www.nowcoder.com/ 题&amp;emsp;&amp;emsp;库：剑指offer 编&amp;emsp;&amp;emsp;者：WordZzzz   [toc] 题目描述从上到下按层">
 
 
 
@@ -428,8 +428,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T14:58:54+08:00">
-                2018-01-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-05T22:44:32+08:00">
+                2018-02-05
               </time>
             
           </span>
@@ -489,7 +489,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  449
+                  629
                 </span>
               
 
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -535,11 +535,17 @@
 <li><strong>编&emsp;&emsp;者：WordZzzz</strong></li>
 </ul>
 <hr>
+<p>[toc]</p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>层序遍历，之前求数的深度的时候简单用过。</p>
-<p>在线测试由于种种原因，测试结果需要是一个二维数组（vector<vector<int> &gt;），而不是原著中的每一层输出一行（其实意思都差不多），所以我们这里用两个队列进行实现（如果没有分行输出这个要求，一个队列就够了）。</vector<int></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>层序遍历，之前求树的深度的时候简单用过。</p>
+<p>在线测试的测试结果需要是一个二维数组（vector<vector<int> &gt;），而不是原著中的每一层输出一行（其实意思都差不多）。</vector<int></p>
 <p>queue是先进先出规则，我们初始化两个queue（q1和q2）交替来存储每一层结点（这种结构在下一个题目中也将用到，只不过queue变成了stack），从而达到所谓的每一层输出一行。</p>
-<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; Print(TreeNode* pRoot) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">            <span class="keyword">if</span>(pRoot==<span class="literal">NULL</span>) <span class="keyword">return</span> ret;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; q1;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; q2;</span><br><span class="line">            q1.push(pRoot);</span><br><span class="line">            <span class="keyword">while</span>(!q1.empty()||!q2.empty())&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line">                <span class="keyword">while</span>(!q1.empty())&#123;</span><br><span class="line">                    v1.push_back(q1.front()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(q1.front()-&gt;left!=<span class="literal">NULL</span>) q2.push(q1.front()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(q1.front()-&gt;right!=<span class="literal">NULL</span>) q2.push(q1.front()-&gt;right);</span><br><span class="line">                    q1.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v1.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v1);</span><br><span class="line">                <span class="keyword">while</span>(!q2.empty())&#123;</span><br><span class="line">                    v2.push_back(q2.front()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(q2.front()-&gt;left!=<span class="literal">NULL</span>)   q1.push(q2.front()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(q2.front()-&gt;right!=<span class="literal">NULL</span>)  q1.push(q2.front()-&gt;right);</span><br><span class="line">                    q2.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v2.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v2);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>—2018/02/05更新开始—</p>
+<p>第一次做这道题的时候，竟然错把两个队列的实现当成了最优解。今天再回来看这道题，明明可以一个队列就能解决嘛，我也忘了当时自己是怎么想的了。</p>
+<p>所以这次将单队列的代码补上，同时保留双队列的代码。</p>
+<p>—2018/02/05更新结束—</p>
+<h2 id="C-版代码实现"><a href="#C-版代码实现" class="headerlink" title="C++版代码实现"></a>C++版代码实现</h2><h3 id="单队列"><a href="#单队列" class="headerlink" title="单队列"></a>单队列</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; Print(TreeNode* pRoot) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; ret;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">        <span class="keyword">if</span>(pRoot) que.push(pRoot);</span><br><span class="line">        <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">            <span class="keyword">int</span> n = que.size();</span><br><span class="line">            <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">                TreeNode* node = que.front();</span><br><span class="line">                tmp.push_back(node-&gt;val);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;left) que.push(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;right) que.push(node-&gt;right);</span><br><span class="line">                que.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            ret.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="双队列"><a href="#双队列" class="headerlink" title="双队列"></a>双队列</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; Print(TreeNode* pRoot) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ret;</span><br><span class="line">            <span class="keyword">if</span>(pRoot==<span class="literal">NULL</span>) <span class="keyword">return</span> ret;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; q1;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; q2;</span><br><span class="line">            q1.push(pRoot);</span><br><span class="line">            <span class="keyword">while</span>(!q1.empty()||!q2.empty())&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2;</span><br><span class="line">                <span class="keyword">while</span>(!q1.empty())&#123;</span><br><span class="line">                    v1.push_back(q1.front()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(q1.front()-&gt;left!=<span class="literal">NULL</span>) q2.push(q1.front()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(q1.front()-&gt;right!=<span class="literal">NULL</span>) q2.push(q1.front()-&gt;right);</span><br><span class="line">                    q1.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v1.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v1);</span><br><span class="line">                <span class="keyword">while</span>(!q2.empty())&#123;</span><br><span class="line">                    v2.push_back(q2.front()-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(q2.front()-&gt;left!=<span class="literal">NULL</span>)   q1.push(q2.front()-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(q2.front()-&gt;right!=<span class="literal">NULL</span>)  q1.push(q2.front()-&gt;right);</span><br><span class="line">                    q2.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(v2.size()!=<span class="number">0</span>)</span><br><span class="line">                ret.push_back(v2);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong><font color="red" size="3" face="仿宋">系列教程持续发布中，欢迎订阅、关注、收藏、评论、点赞哦～～(￣▽￣～)～</font></strong></p>
 <p><strong><font color="red" size="3" face="仿宋">完的汪(∪｡∪)｡｡｡zzz</font></strong></p>
 
@@ -722,7 +728,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">151</span>
+                  <span class="site-state-item-count">155</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -744,7 +750,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">80</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -868,7 +874,7 @@ var ap = new APlayer({
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-版代码实现"><span class="nav-number">3.</span> <span class="nav-text">C++版代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-版代码实现"><span class="nav-number">3.</span> <span class="nav-text">C++版代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单队列"><span class="nav-number">3.1.</span> <span class="nav-text">单队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双队列"><span class="nav-number">3.2.</span> <span class="nav-text">双队列</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -902,7 +908,7 @@ var ap = new APlayer({
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">174.9k</span>
+    <span title="Site words total count">176.8k</span>
   
 </div>
 
